@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const IconComponent = ({ icon }) => {
     return (
-        <img src={`${icon}.svg`} alt = {icon} />
+        <img src={`/assets/images/icons/${icon}.svg`} alt = {icon} />
     )
 };
 IconComponent.propTypes = {

@@ -19,3 +19,19 @@ export const setLocation = (dispatch, location) => {
         location,
     })
 };
+export const getCountryCode = (dispatch) => {
+    fetch('https://extreme-ip-lookup.com/json/')
+        .then(res => res.json())
+        .then(response => {
+            dispatch({
+                type: types.SET_COUNTRY,
+                country: response.country,
+            })
+        })
+};
+export const setSliderImages = (imagesArr) => {
+    return {
+        type: types.SET_SLIDER_IMAGES,
+        imagesArr,
+    };
+};

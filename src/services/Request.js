@@ -1,23 +1,24 @@
 export default class ServerConnector {
-    constructor(path, api = '/api/') {
-        this.path = api + path;
+    constructor(path) {
+        this.path = '/v1/' + path;
     }
-    
+
     isOkStatus(status) {
-        return [200, 201, 204].includes(status);
+        return [200, 201, 204].includes(status); //TODO 200 300
     }
-    
-    static makeQuery(obj){
+
+    static makeQuery(obj) {
         let query = '';
-        Object.keys(obj).forEach((key, i) => {
+        Object.keys(obj).forEach((key) => {
             query += `&${key}=${obj[key]}`
         });
-        return query.substr(1);
+        return query;
     }
 
     static _handleErrors(res) {
-        if(res.status !== 401) return res;
+        //if (res.status !== 401) return res;
         //logout
+        return res;
     }
 
     send(req, errHandler) {
@@ -26,13 +27,13 @@ export default class ServerConnector {
             return res;
         })
     }
-    
+
     static _makeRequest(req, path, errHandler) {
         return ServerConnector.fetcher(req, path, errHandler)
             .then((res) => ServerConnector._handleErrors(res))
             .then((res) => {
                     return res.json().then(json => {
-                        return { status: res.status, json };
+                        return {status: res.status, json};
                     });
                 }
             )
@@ -40,11 +41,11 @@ export default class ServerConnector {
                 if (errHandler) {
 
                 }
-                return { status: error.message, json: {} }
+                return {status: error.message, json: {}}
             });
     }
 
-    static fetcher(req, path, errHandler) {
+    static fetcher(req, path) {
         const headersObj = Object.assign({
             'content-type': 'application/json',
             'Cache-Control': 'no-cache',
@@ -54,7 +55,6 @@ export default class ServerConnector {
 
         const options = Object.assign({
             method: 'POST',
-            //credentials: 'same-origin',
         }, req.options);
 
         options.headers = headers;
