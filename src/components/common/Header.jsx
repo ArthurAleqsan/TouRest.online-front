@@ -51,7 +51,7 @@ const Header = () => {
             setVisibleModal(false)
         }
     };
-    const handleResetImages = (dispatch) => {
+    const handleResetImages = () => {
         resetImagesArr(dispatch)
     }
     return (

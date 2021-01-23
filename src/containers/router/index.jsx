@@ -11,6 +11,9 @@ import SocialIcons from '../../components/common/SocialIcons';
 import { CityPopup } from '../../components/popup/CityPopup';
 import { WithTitle } from '../../components/common/withTitle/WithTitle';
 import WithSlider from '../../components/common/withSlider/WithSlider';
+import About from '../pages/About';
+import Privacy from '../pages/Privacy';
+import CartPage from '../pages/CartPage';
 
 
 const MainRouter = () => {
@@ -40,7 +43,6 @@ const MainRouter = () => {
         }
     };
     window.onload = handleWindowOnLoad;
-    console.log('object');
 
     return (
         <div className="app" style={{
@@ -54,11 +56,11 @@ const MainRouter = () => {
                     className='static'
                 />
                 <Switch>
-                    {/* <Route path={`/:location/:lng/cart`} component={() => <WithTitle title='Your selected tours'><CartPage /></WithTitle>} />
-                    <Route path={`/:location/:lng/blog/:id`} component={() => <SingleBlog />} />
-                    <Route path={`/:location/:lng/blog`} component={() => <Blog />} />
+                     <Route path={`/:location/:lng/cart`} component={() => <WithTitle title='Your selected tours'><CartPage /></WithTitle>} />
+                   {/* <Route path={`/:location/:lng/blog/:id`} component={() => <SingleBlog />} />
+                    <Route path={`/:location/:lng/blog`} component={() => <Blog />} />*/}
                     <Route path={`/:location/:lng/privacy`} component={() => <Privacy />} />
-                    <Route path={`/:location/:lng/about`} component={() => <Suspense fallback={<div>555</div>}><About /></Suspense>} /> */}
+                    <Route path={`/:location/:lng/about`} component={() => <Suspense fallback={<div>555</div>}><About /></Suspense>} /> 
                     <Route path={`/:location/:lng`} component={() => <WithSlider singleTourName={singleTour && singleTour[`en_name`]} />} />
                     {location ? <Redirect to={`/${location}/${lng}`} /> : <Redirect to={`/${location}`} />}
                 </Switch>
