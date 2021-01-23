@@ -1,0 +1,46 @@
+.modal-container-antd {
+    width: 410px !important;
+    .ant-modal-content {
+        border-radius: unset;
+        height: 340px;
+    }
+    .modal-register {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .modal-img {
+            width: 76px;
+            height: 76px;
+        }
+        .modal-text {
+            font-size: 30px;
+            font-weight: 600;
+            font-family: Gotham-Ultra;
+        }
+        .success {
+            color: #33b7c9;
+        }
+
+        .text {
+            font-family: Gotham-Bold;
+            font-size: 18px;
+            margin: 20px;
+            text-align: center;
+            color: #363636;
+        }
+        .modal-button {
+            width: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(77, 76, 76);
+            border-radius: 20px;
+            color: #fff;
+            height: 40px;
+            margin-top: 10px;
+            font-family: Gotham-Rounded;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    }
+}

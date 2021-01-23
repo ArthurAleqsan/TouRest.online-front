@@ -1,0 +1,47 @@
+.simpleExcursion-container {
+  width: fit-content;
+  height: fit-content;
+  margin: 10px;
+  .simpleExcursion-container-header {
+    padding: 5px;
+    height: 100px;
+    .simpleExcursion-container-header-p {
+      display: flex;
+      flex-direction: column;
+    }
+    .simpleExcursion-container-header-span {
+      font-family: "MontserratMedium";
+      font-size: 18px;
+      color: #343340;
+    }
+    .tour-start {
+      font-family: "MontserratMedium";
+    }
+    .tour-time {
+      font-family: "MontserratRgular";
+    }
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+    .simpleExcursion-container .simpleExcursion-container-header{
+        margin-top: 10px;
+    }
+  }
+  
+@media only screen and (max-width: 834px) {
+  .simpleExcursion-container .simpleExcursion-container-header {
+    padding: unset;
+    .simpleExcursion-container-header-span {
+      font-size: 16px;
+    }
+  }
+}
+
+@media only screen and (max-width: 834px) {
+  .simpleExcursion-container .simpleExcursion-container-header {
+       .simpleExcursion-container-header-span {
+      font-size: 14px;
+    }
+  }
+}

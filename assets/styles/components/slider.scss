@@ -1,0 +1,150 @@
+.slider {
+    // width: 60%;
+    position: relative;
+    .carusel-item-container {
+        position: relative;
+    }
+
+    .ant-carousel {
+        position: relative;
+        .carousel-container {
+            .image {
+                width: 60%;
+                height: 860px;
+                object-fit: cover;
+            }
+            .slick-dots {
+                position: absolute;
+                bottom: 5px;
+                opacity: 0.8;
+                height: 50px;
+                background-color: #343140;
+            }
+            .slick-dots li {
+                margin: 0px;
+                vertical-align: sub;
+                opacity: 1;
+                button {
+                    width: 90px;
+                    height: 4px;
+                    border-radius: unset;
+                }
+            }
+            .slick-dots-bottom {
+                width: 60%;
+                object-fit: cover;
+                background-color: #343140;
+            }
+        }
+        .slick-dots li.slick-active button {
+            opacity: 1;
+        }
+    }
+    .slick-active {
+        .content-container {
+            //   display: flex;
+        }
+    }
+}
+
+.buttom-container {
+    position: absolute;
+    width: 100px;
+    display: flex;
+    left: calc(60% - 50px);
+    bottom: 5px;
+
+    .button-prev {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+        background-color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0.4;
+        transition: opacity 2s;
+    }
+    .button-prev:hover {
+        opacity: 0.8;
+    }
+    .button-next {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+        background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0.6;
+        transition: opacity 2s;
+    }
+    .button-next:hover {
+        opacity: 1;
+    }
+}
+.hide-buttom {
+    display: none;
+}
+@media only screen and (max-width: 1440px) {
+    .slider {
+        .ant-carousel {
+            .carousel-container {
+                .image {
+                    width: 55%;
+                    height: 810px;
+                }
+                .slick-dots-bottom {
+                    width: 55%;
+                }
+            }
+        }
+        .buttom-container {
+            left: calc(55% - 50px);
+        }
+    }
+}
+@media only screen and (max-width: 1280px) {
+    .slider {
+        .buttom-container {
+            display: none;
+        }
+        .ant-carousel {
+            .carousel-container {
+                .image {
+                    width: 100%;
+                    height: 700px;
+                }
+                .slick-dots {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 800px) {
+    .slider {
+        .ant-carousel {
+            .carousel-container {
+                .image {
+                    height: 600px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .slider {
+        .ant-carousel {
+            .carousel-container {
+                .image {
+                    height: 500px;
+                }
+                .slick-dots {
+                    display: none !important;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,186 @@
+.collapse-container {
+    display: flex;
+    padding: 15px 0px 0px 100px;
+    .header-text {
+        color: #1a2b49;
+        font-family: "MontserratBold";
+        font-size: 20px;
+        padding-bottom: 15px;
+        font-weight: bold;
+    }
+    .left-column {
+        margin-left: 1%;
+        .left-column-selectBox {
+            width: 470px;
+            height: 300px;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.85);
+            opacity: 0.8;
+        }
+        .left-column-info-container {
+            display: flex;
+            flex-direction: column;
+            border-radius: 15px;
+            width: 470px;
+            min-height: 80px;
+            box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.15);
+            background: #fff;
+            margin-bottom: 20px;
+            justify-content: space-between;
+            font-size: 18px;
+            padding: 10px 25px;
+            //   font-weight: 600;
+            font-family: "MontSerratSemiBold";
+            color: #707070;
+            .left-column-text {
+                color: #33b7c9;
+                font-family: "MontserratMedium";
+            }
+        }
+    }
+    .right-column {
+        width: 60%;
+    }
+    .right-column-desc {
+        padding: 0px 10px 30px;
+        .right-column-text {
+            font-size: 14px;
+            color: #707070;
+            font-family: "MontserratRegular";
+        }
+    }
+    .right-column-activity {
+        padding: 0px 10px 30px;
+        border-bottom: 1px solid #d9d9d9;
+        .activity-content {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+
+            .activity-content-desc {
+                padding-left: 10px;
+                font-family: "MontserratMedium";
+                font-size: 16px;
+                color: #343340;
+            }
+        }
+    }
+
+    .right-column-collapse {
+        padding-bottom: 30px;
+        font-family: "MontserratMedium";
+    }
+    .ant-collapse-item {
+        background-color: #f2f2f2;
+        .ant-collapse-header {
+            font-family: "MontserratMedium";
+            font-size: 18px;
+            color: #343340;
+        }
+        .ant-collapse-content .ant-collapse-content-active {
+            font-size: 16px;
+            color: #707070;
+        }
+    }
+    .review-container {
+        padding-bottom: 30px;
+        .review-btn {
+            width: 150px;
+            padding: 5px;
+            border-radius: 20px;
+            box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+            background: #ffffff;
+            color: #343340;
+            font-size: 15px;
+            font-weight: 600;
+            text-align: center;
+            transition: 1s;
+        }
+        .review-btn:hover {
+            background-color: #33b7c9;
+            color: #ffffff;
+        }
+        .review-container-rate {
+            padding-bottom: 10px;
+        }
+    }
+    .textarea-conatiner {
+        padding-top: 20px;
+        .textarea {
+            width: 100%;
+            height: 200px;
+        }
+        .add-review-btn-container {
+            display: flex;
+            justify-content: center;
+            .add-review-btn {
+                padding: 5px;
+                font-family: "MontSerratSemiBold";
+                font-size: 16px;
+                width: 100px;
+                margin: 1%;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.login-with-app-container {
+    padding: 40px;
+    .login-with-app-header {
+        text-align: center;
+        font-size: 25px;
+    }
+    .login-with-icons {
+        display: flex;
+        justify-content: space-evenly;
+        padding-top: 25px;
+    }
+    .login-content {
+        padding: 20px;
+    }
+    // .fb {
+    //   color: #fff;
+    //   background-color: rgb(58, 128, 240);
+    //   border-radius: 20px;
+    // }
+    // .yandex {
+    //   color: rgb(243, 16, 16);
+    //   background-color: rgb(236, 236, 76);
+    //   border-radius: 20px;
+    // }
+    // .google {
+    //   color: #fff;
+    //   background-color: rgb(243, 16, 16);
+    //   border-radius: 20px;
+    // }
+}
+.kep-login-facebook {
+    padding: unset !important;
+    text-transform: none !important;
+    font-size: unset !important;
+    width: 150px !important;
+    border-radius: 20px !important;
+}
+@media only screen and (max-width: 1084px) {
+    .collapse-container {
+        flex-direction: column;
+        padding: 3%;
+        .right-column {
+            width: 100%;
+        }
+        .left-column {
+        }
+    }
+}
+@media only screen and (max-width: 600px) {
+    .collapse-container .left-column {
+        width: 100%;
+        .left-column-info-container {
+            width: 100%;
+        }
+        .left-column-selectBox {
+            width: 100%;
+        }
+    }
+}

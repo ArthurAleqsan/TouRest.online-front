@@ -1,0 +1,18 @@
+.static {
+  position: absolute;
+  right: 0vw;
+  top: 45vh;
+  z-index: 999;
+  .icon-container {
+    margin: 3vw;
+    transition: .2s;
+  }
+  .icon-container:hover {
+    color: #33b7c9 !important;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .social-container {
+    display: none;
+  }
+}

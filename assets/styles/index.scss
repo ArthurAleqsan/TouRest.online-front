@@ -1,0 +1,197 @@
+* {
+    box-sizing: border-box;
+    // font-family: "MontSerratSemiBold";
+}
+
+html,
+body {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+div,
+span,
+object,
+iframe,
+img,
+table,
+caption,
+thead,
+tbody,
+tfoot,
+tr,
+tr,
+td,
+article,
+aside,
+canvas,
+details,
+figure,
+hgroup,
+menu,
+nav,
+footer,
+header,
+section,
+summary,
+mark,
+audio,
+video {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+address,
+cit,
+code,
+del,
+dfn,
+em,
+ins,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+b,
+i,
+hr,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+legend,
+label {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    border-collapse: separate;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table caption,
+table th,
+table td {
+    text-align: left;
+    vertical-align: middle;
+}
+
+a img {
+    border: 0;
+}
+
+:focus {
+    outline: 0;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    outline: 0;
+    text-decoration: none;
+    color: inherit;
+}
+
+p {
+    cursor: default;
+}
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.app-content-container {
+    min-height: calc(100vh - 85px);
+}
+.icon-image {
+    width: 15px;
+    height: 15px;
+}
+.link {
+    cursor: pointer;
+}
+.btn {
+    outline: none;
+    border: none;
+}
+
+.btn-style {
+    border-radius: 20px;
+    background-color: #33b7c9;
+    transition: background-color ease-in-out 2s;
+    color: #ffffff;
+}
+.btn-style:hover {
+    background-color: #08a2f0;
+}
+a {
+    color: unset !important;
+}
+a:hover {
+    color: unset;
+}
+.tab-icon {
+    margin-right: 5px;
+}
+@import "./fonts";
+@import "./components/category";
+@import "./components/checkout";
+@import "./components/cityPopup";
+@import "./components/excursion";
+@import "./components/footer";
+@import "./components/header";
+@import "./components/hoverBox";
+@import "./components/hoverBoxInfo";
+@import "./components/loader";
+@import "./components/orderPopup";
+@import "./components/selectBox";
+@import "./components/simpleExcursion";
+@import "./components//imagesSliderPopup";
+@import "./components/slider";
+@import "./components/socialIcons";
+@import "./components/tabs";
+@import "./components/eyeSlider";
+@import "./components/successFailContainer";
+@import "./components/tourBooking";
+@import "./pages/cartpage";
+@import "./pages/categoriespage";
+@import "./pages/tours";
+@import "./pages/tours_page";
+@import "./pages/blog";
+@import "./pages/404";
+@import "./pages/taxi";
+@import "./pages/about";
+@import "./components/headerModal";
+@import "./components/contactUs.scss";

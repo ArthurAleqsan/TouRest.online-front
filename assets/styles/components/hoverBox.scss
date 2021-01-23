@@ -1,0 +1,132 @@
+.hoverbox-content {
+    width: 390px;
+    height: 590px;
+    position: relative;
+}
+
+.hoverbox-content-image {
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.hoverbox-content-details {
+    position: absolute;
+    text-align: center;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.16);
+    background: #fff;
+    width: 100%;
+    opacity: 0;
+    top: 0;
+    right: -50%;
+    -webkit-transform: translate(-50%, 265%);
+    -moz-transform: translate(-50%, 265%);
+    transform: translate(-50%, 265%);
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.hoverbox-content-overlay {
+    height: 100%;
+}
+
+.hoverbox-content:hover .hoverbox-content-overlay {
+    opacity: 1;
+}
+
+.hoverbox-content:hover .hoverbox-content-details {
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+    border-radius: 0 0 10px 10px;
+}
+
+.hoverbox-content-details p {
+    font-family: "MontserratBold";
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1.21;
+    letter-spacing: 0.56px;
+    color: #ffffff;
+}
+
+@media only screen and (max-width: 1440px) {
+    .hoverbox-content {
+        width: 350px;
+        height: 450px;
+
+        .hoverbox-content-details {
+            -webkit-transform: translate(-50%, 179%);
+            -moz-transform: translate(-50%, 179%);
+            transform: translate(-50%, 179%);
+        }
+    }
+}
+
+@media only screen and (max-width: 1366px) {
+    .hoverbox-content-details {
+        -webkit-transform: translate(-50%, 179%);
+        -moz-transform: translate(-50%, 179%);
+        transform: translate(-50%, 179%);
+    }
+}
+
+@media only screen and (max-width: 1280px) {
+    .hoverbox-content:hover {
+        pointer-events: none;
+    }
+    .hoverbox-content-details {
+        -webkit-transform: unset;
+        -moz-transform: unset;
+        transform: unset;
+        opacity: 1;
+        top: 224px;
+        transition: unset;
+        border-radius: 0 0 10px 10px;
+        top: 57%;
+    }
+}
+
+@media only screen and (max-width: 1080px) {
+    .hoverbox-content {
+        height: 400px;
+
+        .hoverbox-content-details {
+            -webkit-transform: translate(-50%, 99%);
+            -moz-transform: translate(-50%, 99%);
+            transform: translate(-50%, 99%);
+        }
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .hoverbox-content {
+        height: 350px;
+        .hoverbox-content-details {
+            height: 67px;
+            -webkit-transform: translate(-50%, 119%);
+            -moz-transform: translate(-50%, 119%);
+            transform: translate(-50%, 119%);
+        }
+    }
+}
+
+@media only screen and (max-width: 415px) {
+    .hoverbox-content {
+        .hoverbox-content-details {
+            .hoverBoxInfo-container {
+                font-size: 12px;
+                padding: 5px;
+                .price {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .hoverbox-content-details {
+            -webkit-transform: translate(-50%, 125%);
+            -moz-transform: translate(-50%, 125%);
+            transform: translate(-50%, 125%);
+        }
+    }
+}

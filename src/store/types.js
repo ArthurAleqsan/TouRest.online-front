@@ -1,0 +1,17 @@
+export const SET_LOCATION = 'SET_LOCATION';
+export const SET_LNG = 'SET_LNG';
+export const SET_SLIDER_IMAGES = 'SET_SLIDER_IMAGES';
+export const RESET_IMAGES = 'RESET_IMAGES';
+export const SET_COUNTRY = 'SET_COUNTRY';
+
+export const GET_CATEGORIES = 'GET_CATEGORIES';
+export const RESET_CATEGORIES = 'RESET_CATEGORIES';
+
+
+export const SET_ORDER_DATA = 'SET_ORDER_DATA';
+export const GET_SINGLE_TOUR = 'GET_SINGLE_TOUR';
+export const MUTATE_TO_CART = 'MUTATE_TO_CART';
+export const SET_TOUR_DATA = 'SET_TOUR_DATA';
+export const SET_TOURS = 'SET_TOURS';
+export const SET_BLOG_POSTS = 'SET_BLOG_POSTS';
+export const SET_SINGLE_BLOG_POSTS = 'SET_SINGLE_BLOG_POSTS';

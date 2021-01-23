@@ -1,0 +1,98 @@
+.single-excursion-container {
+  cursor: pointer;
+  width: 70%;
+  max-width: 660px;
+  height: 300px;
+  margin: 5px;
+  display: flex;
+  .image-column {
+    // width: 360px;
+    img {
+      border-radius: 10px;
+      object-fit: cover;
+    }
+  }
+  .desc-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // cursor: pointer;
+    // width: 325px;
+    margin-left: 10px;
+    .excursion-name {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.5;
+      color: #2f2f2f;
+      font-family: "MontSerratSemiBold";
+      cursor: pointer;
+    }
+    .excursion-desc-str {
+      margin: 5px 0;
+      display: flex;
+      align-items: center;
+      font-family: "MontSerratRegular";
+      cursor: pointer;
+      .excursion-desc-span {
+        font-family: "MontSerratRegular";
+        line-height: 1.19;
+        color: #2f2f2f;
+        padding-bottom: 3px;
+      }
+      .excursion-category-name {
+        font-weight: 500;
+        margin-left: 5px;
+        font-family: "MontserratMedium";
+      }
+      .excursion-price {
+        font-size: 25px;
+        line-height: 1.23;
+        letter-spacing: 1.05px;
+        color: #33b7c9;
+        margin-left: 5px;
+        font-family: "MontserratSemiBold";
+      }
+      .icon-image {
+        margin-right: 5px;
+      }
+      .btn {
+        width: 115px;
+        height: 30px;
+        font-family: "MontSerratRegular";
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 1.3px;
+      }
+    }
+    .excursion-desc-str-cartpage {
+      font-family: "MontSerratRegular";
+      font-size: 16px;
+      color: #2f2f2f;
+      margin: 5px 0;
+    }
+    .excursion-desc-span {
+      font-family: "MontSerratRegular";
+    }
+    .price {
+      font-family: "MontserratMedium";
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  // .single-excursion-container {
+  //   width: 100%;
+  //   .desc-column {
+  //     .excursion-desc-str {
+  //       .btn {
+  //         width: 90px;
+  //         height: 25px;
+  //         font-size: 11px;
+  //       }
+  //       .excursion-price {
+  //         font-size: 25px;
+  //       }
+  //     }
+  //   }
+  // }
+}

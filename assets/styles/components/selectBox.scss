@@ -1,0 +1,76 @@
+.selectBox-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+  .selectBox-header {
+    font-family: "MontserratBold";
+    font-size: 22px;
+    color: #fff;
+    padding: 10px;
+  }
+  .selectBox-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px 10px 30px 10px;
+    .selectBox-content-elem {
+      padding: 10px;
+    }
+  }
+  .ant-calendar-picker-input.ant-input {
+    line-height: 0;
+    padding: 8px;
+    border-radius: 5px;
+    width: 130px;
+    cursor: pointer;
+    border: none;
+  }
+  .select-elem {
+    width: 130px;
+  }
+
+  .select-elem-option {
+    width: 410px;
+  }
+
+  .ant-calendar-picker-icon {
+    cursor: pointer;
+  }
+  .ant-select-selection {
+    border: none;
+  }
+  .selectBox-btn {
+    font-family: "MontserratSemibold";
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 auto;
+    width: 150px;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+  }
+}
+
+@media only screen and (max-width: 1084px) {
+  .selectBox-container {
+    .select-elem {
+      width: 100%;
+    }
+    .ant-calendar-picker {
+      width: 100%;
+    }
+    .ant-calendar-picker-input.ant-input {
+      width: 100%;
+    }
+    .selectBox-btn {
+      padding: 5px;
+    }
+    .selectBox-content {
+      display: unset;
+      padding: 0 15px 0 15px;
+      width: 100%;
+    }
+  }
+}

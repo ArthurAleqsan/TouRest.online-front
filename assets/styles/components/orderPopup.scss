@@ -1,0 +1,111 @@
+.orderPoup-modal {
+    .input-container {
+        margin: 5px 0;
+        .ant-calendar-picker {
+            margin-right: 5px;
+        }
+    }
+    .input-label:after {
+        content: "*";
+        color: #ff0000;
+    }
+    .space-between-input-container {
+        display: flex;
+        justify-content: space-between;
+        .hotel-input-group {
+            flex: 0.7;
+        }
+        .room-input-group {
+            flex: 0.25;
+        }
+    }
+    .orderPopup-card-info-container {
+        .card-input-container {
+            padding: 10px;
+        }
+        .card-input-container-content {
+            display: flex;
+            justify-content: space-between;
+            .cvv {
+                flex: 0.6;
+            }
+        }
+        .paymant-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            .paymant-content {
+                font-size: 20px;
+                margin: 5px;
+            }
+            .paymant-amount {
+                font-size: 30px;
+                color: #33b7c9;
+                font-family: "MontserratBold";
+                font-weight: 600;
+            }
+        }
+        .date-input {
+            flex: 0.4;
+            .ant-calendar-picker {
+                border: 1px solid #d9d9d9;
+                border-radius: 4px;
+                transition: 0.3s;
+                margin-right: 5px !important;
+            }
+            .ant-calendar-picker:hover {
+                border-color: rgba(0, 0, 0, 0.65);
+            }
+        }
+        .ant-input {
+            // width: 330px;
+        }
+    }
+    .ant-modal-content {
+        height: 430px;
+        font-family: "MontserratMedium";
+
+        .ant-input:hover {
+            border-color: #33b7c9 !important;
+        }
+    }
+    .second-step {
+        margin-top: 20px;
+    }
+    .order-popup-footer {
+        display: flex;
+        justify-content: flex-end;
+        padding: 10px 0;
+        .ant-btn-primary {
+            background-color: #33b7c9;
+            border: unset;
+            box-shadow: unset;
+            width: 100px;
+            border-radius: 20px;
+            justify-content: center;
+            margin: 0 5px;
+        }
+    }
+    .second-page-footer {
+        margin-top: 20px;
+        button {
+            align-items: center;
+        }
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .orderPoup-modal {
+        .orderPopup-card-info-container {
+            .paymant-container {
+                .paymant-amount {
+                    font-size: 25px;
+                }
+            }
+        }
+        .order-popup-footer {
+            justify-content: center;
+        }
+    }
+}

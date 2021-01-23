@@ -1,0 +1,122 @@
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    position: relative;
+    bottom: 5px;
+    .tabs-container {
+        display: flex;
+        justify-content: center;
+        background-color: #fff;
+        box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.15);
+        transition: background-color ease-in-out 2s;
+        :hover {
+            background-color: #e6e6e6;
+        }
+        .tab {
+            display: flex;
+            align-items: center;
+            padding: 20px 30px;
+            cursor: pointer;
+        }
+        .active {
+            border-bottom: 1.5px solid #33b7c9;
+            height: 4px;
+        }
+        .vip-tours {
+            background-color: #33b7c9;
+            transition: background-color ease-in-out 2s;
+            color: #fff;
+            padding: 24px 30px;
+            .ant-dropdown-link {
+                display: flex;
+                align-items: center;
+                .tab-icon {
+                    margin-right: unset;
+                    margin-left: 5px;
+                }
+            }
+        }
+        .vip-tours:hover {
+            background-color: #08a2f0;
+        }
+        .tabs-name {
+            font-family: "MontserratMedium";
+        }
+    }
+    .list-container {
+        display: none;
+        cursor: pointer;
+    }
+}
+.tabs .tabs-container :hover {
+    background-color: unset;
+}
+.ant-calendar-header {
+    cursor: pointer;
+}
+.ant-calendar-footer-btn {
+    cursor: pointer;
+}
+
+// @media only screen and (max-width: 1024px) {
+//   .tabs {
+//     max-height: 70px;
+//   }
+
+//   .tab {
+//     padding: 15px !important;
+//     font-size: 12px;
+//   }
+// }
+
+@media screen and (max-width: 800px) {
+    .tabs {
+        display: unset;
+    }
+    .responsive-tab-container {
+        flex-direction: row;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: flex-start;
+        position: relative !important;
+        background-color: #fff;
+        box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.15);
+        padding: 20px 30px;
+        border-bottom: 1.5px solid #33b7c9;
+    }
+    .tabs-container {
+        display: block !important;
+        position: relative !important;
+        transition: all ease-in-out 0.3s;
+        .active {
+            border-bottom: unset !important;
+            height: unset !important;
+        }
+
+        // .tabs a:not(:first-child) {
+        //   display: none;
+        // }
+        // .tabs .tabs-container .tab:not(:first-child) {
+        //   display: none;
+        // }
+
+        .tab {
+            border-bottom: 1px solid #d9d9d9;
+        }
+        .list-container {
+            display: block;
+            padding: 20px;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        .vip-tours {
+            background-color: #fff !important;
+            color: unset !important;
+            padding: 20px 20px 20px 55px !important;
+            border-bottom: unset;
+        }
+    }
+}

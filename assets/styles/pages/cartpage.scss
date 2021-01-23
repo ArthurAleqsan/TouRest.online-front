@@ -1,0 +1,225 @@
+.cartpage-container {
+    padding: 100px;
+
+    .cartpage-header {
+        text-align: center;
+        font-family: "MontSerratSemiBold";
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 1.21;
+        letter-spacing: 0.56px;
+        color: #343340;
+        padding: 30px 0;
+    }
+
+    .cartpage-content {
+        display: flex;
+
+        .left-column {
+            width: 70%;
+
+            .left-column-content {
+                border-bottom: 1.5px solid #e1e1e1;
+
+                .tour-container {
+                    display: flex;
+                    width: 100%;
+                    justify-content: space-between;
+
+                    .tours-container-slider {
+                        width: 50%;
+                        height: 430px;
+
+                        .slick-list {
+                            border-radius: 10px;
+                            height: 410px;
+
+                            .tours-container-slider-image {
+                                height: 430px;
+                                img {
+                                    object-fit: cover;
+                                    border-radius: 10px;
+                                }
+                            }
+                        }
+                    }
+
+                    .tours-container-info {
+                        width: 50%;
+                    }
+                }
+            }
+
+            .left-column-footer {
+                display: flex;
+                justify-content: space-between;
+                padding: 15px;
+                font-family: "MontSerratSemiBold";
+
+                .footer-elements {
+                    font-size: 26px;
+                    font-weight: 600;
+                    line-height: 1.23;
+                    letter-spacing: 0.52px;
+                }
+
+                .text {
+                    color: #343340;
+                }
+
+                .amount {
+                    color: #33b7c9;
+                }
+            }
+        }
+
+        .single-excursion-container {
+            width: 95%;
+            .desc-column {
+                width: 73%;
+            }
+
+            .excursion-name {
+                font-size: 18px;
+                margin: 5px 0;
+                width: 80%;
+            }
+
+            .excursion-desc-str {
+                font-size: 16px;
+                color: #2f2f2f;
+
+                .excursion-price {
+                    font-size: 18px;
+                }
+
+                .remove-btn {
+                    font-family: "MontSerratRegular";
+                    font-size: 14px;
+                    letter-spacing: 0.28px;
+                    padding: 5px;
+                    width: 100px;
+                }
+            }
+        }
+
+        .right-column {
+            display: flex;
+            align-items: center;
+            margin-left: 40px;
+        }
+    }
+}
+
+.tours {
+    padding: 100px 30px;
+}
+
+@media only screen and (max-width: 1366px) {
+    .cartpage-container {
+        .cartpage-content {
+            display: unset;
+
+            .single-excursion-container {
+                width: 100%;
+
+                .image-column {
+                    min-width: 300px;
+                }
+
+                .excursion-name {
+                    font-size: 16px;
+                }
+            }
+
+            .left-column {
+                width: 100%;
+            }
+
+            .right-column {
+                margin-left: unset;
+            }
+        }
+    }
+
+    .single-excursion-container {
+        width: 73%;
+    }
+}
+
+@media only screen and (max-width: 1280px) {
+    .cartpage-container {
+        .cartpage-content {
+            display: unset;
+
+            .single-excursion-container {
+                width: 100%;
+
+                .image-column {
+                    min-width: 300px;
+                }
+
+                .excursion-name {
+                    font-size: 16px;
+                }
+            }
+
+            .left-column {
+                width: 100%;
+            }
+
+            .right-column {
+                margin-left: unset;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .cartpage-container {
+        padding: 100px 0px 20px 0;
+
+        .cartpage-tours-header-container {
+            padding: unset;
+            padding-bottom: 20px;
+        }
+
+        .cartpage-content {
+            .left-column .left-column-content .tour-container {
+                flex-direction: column;
+
+                .tours-container-slider {
+                    width: 90%;
+                    margin: 0 auto;
+                }
+
+                .single-excursion-container {
+                    width: 85%;
+                    margin: 0 auto;
+                }
+            }
+
+            .right-column {
+                justify-content: center;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .cartpage-container {
+        .cartpage-content {
+            .single-excursion-container {
+                .desc-column {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 415px) {
+    .cartpage-container .cartpage-content .left-column .left-column-content .tour-container .tours-container-info {
+        width: 100%;
+    }
+}

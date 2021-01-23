@@ -1,0 +1,227 @@
+.tours-container {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin: 0 auto;
+
+    .single-excursion-container {
+        margin: 0px;
+
+        .img {
+            object-fit: cover;
+        }
+    }
+
+    .tours-container-dropdown {
+        padding-bottom: 25px;
+
+        .tours-container-sort {
+            font-family: "MontSerratRegular";
+            font-size: 18px;
+            color: #2f2f2f;
+        }
+
+        .text {
+            color: #33b7c9;
+            font-family: "MontserratMedium";
+        }
+    }
+
+    .tours-container-content {
+        display: flex;
+        flex-wrap: wrap;
+        cursor: pointer;
+
+        .tour-container {
+            display: flex;
+            width: 50%;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .single-excursion-container {
+            height: unset;
+            width: unset;
+
+            .desc-column {
+                padding-top: 30px;
+
+                .excursion-name {
+                    font-size: 18px;
+                    font-family: "MontSerratSemiBold";
+                }
+
+                .excursion-desc-str {
+                    margin: 3px 0;
+                    font-size: 16px;
+                    font-family: "MontSerratRegular";
+                }
+            }
+        }
+
+        .tours-container-slider {
+            width: 50%;
+        }
+
+        .tours-container-info {
+            width: 50%;
+        }
+
+        .tours-container-slider-btn {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 10px;
+            position: absolute;
+        }
+
+        .ant-carousel {
+            .slick-dots-bottom {
+                opacity: 1;
+                background-color: #343140;
+                bottom: 0px;
+                height: 15px;
+            }
+
+            .slick-list {
+                height: 300px;
+            }
+
+            .slick-slide img {
+                object-fit: cover;
+            }
+
+            .slick-dots li {
+                background-color: #343140;
+                vertical-align: text-top;
+                margin: unset;
+            }
+
+            .slick-dots li button {
+                height: 4px;
+                border-radius: unset;
+                opacity: 0.6;
+                width: 50px;
+            }
+
+            .slick-dots li.slick-active button {
+                opacity: 1 !important;
+            }
+        }
+
+        .tour-description-container {
+            margin-top: 5px;
+            width: 80%;
+            height: 150px;
+            box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.15);
+            border-radius: 20px;
+            background: #fff;
+            padding: 20px;
+            font-size: 15px;
+        }
+
+        .tours-button-container {
+            position: absolute;
+            display: flex;
+            justify-content: space-between;
+            width: 50%;
+            top: 40%;
+
+            .tours-button-container-next {
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
+
+.tours-container-slider-image {
+    height: 300px;
+}
+
+.ant-dropdown-menu-item {
+    p {
+        margin: unset !important;
+    }
+}
+
+.ant-dropdown-menu-item:hover {
+    background-color: unset !important;
+}
+
+@media only screen and (max-width: 1280px) {
+    .tours-container {
+        .tours-container-content {
+            display: unset;
+
+            .tour-container {
+                width: 80%;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .tours-container {
+        .tours-container-dropdown {
+            padding-top: 25px;
+        }
+        .tours-container-content {
+            padding-top: 30px;
+            .tour-container {
+                flex-wrap: unset;
+                width: 100%;
+            }
+            .tours-container-slider {
+                min-width: 50%;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .tours-container {
+        .tours-container-content {
+            .tours-container-slider {
+                min-width: 60%;
+            }
+
+            .tours-container-slider-image {
+                min-width: 300px;
+            }
+
+            .single-excursion-container {
+                .desc-column {
+                    .excursion-name {
+                        font-size: 15px;
+                    }
+
+                    .excursion-desc-str {
+                        font-size: 14px;
+
+                        .excursion-price {
+                            font-size: 25px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 415px) {
+    .tours-container {
+        .tours-container-content {
+            .tour-container {
+                flex-direction: column;
+            }
+
+            .tours-container-slider {
+                width: 100%;
+            }
+            .tours-container-info {
+                width: 100%;
+            }
+        }
+    }
+}

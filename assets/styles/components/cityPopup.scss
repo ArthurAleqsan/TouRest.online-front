@@ -1,0 +1,87 @@
+// .sliderpopup-content {
+//   position: relative;
+//   .btn-container {
+//     display: flex;
+//     justify-content: space-between;
+//     width: 100%;
+//     top: 50%;
+//     width: 100%;
+//     padding: 0 10px;
+//     position: absolute;
+//   }
+// }
+// .ant-modal-content {
+//   width: 650px;
+// }
+.city-modal {
+    height: 200px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .ant-modal-content {
+        .ant-modal-body {
+            padding: 50px;
+        }
+
+        .modal-header {
+            font-size: 25px;
+            font-weight: bold;
+            text-align: center;
+            font-family: "MontSerratSemiBold";
+        }
+        .modal-header-text {
+            text-align: center;
+            font-size: 15px;
+            font-family: "MontSerratSemiBold";
+        }
+        .modal-btn-container {
+            display: flex;
+            margin-top: 30px;
+            justify-content: center;
+            font-family: "MontSerratSemiBold";
+            .modal-button {
+                width: 150px;
+                border: 1px solid;
+                border-radius: 20px;
+                text-align: center;
+                padding: 5px;
+                margin-right: 15px;
+                border-color: #33b7c9;
+                color: #33b7c9;
+                transition: 1s color;
+                transition: 1s border-color;
+                background-color: #fff;
+            }
+        }
+        .modal-button:hover {
+            color: #08a2f0;
+            border-color: #08a2f0;
+        }
+    }
+}
+
+@media only screen and (max-width: 415px) {
+    .city-modal {
+        .modal-header-container {
+            .modal-header {
+                font-size: 20px;
+            }
+        }
+        .modal-btn-container {
+            font-size: 13px;
+        }
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .city-modal {
+        .modal-header-container {
+            .modal-header {
+                font-size: 17px;
+            }
+        }
+        .modal-btn-container {
+            font-size: 11px;
+        }
+    }
+}

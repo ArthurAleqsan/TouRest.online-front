@@ -1,0 +1,40 @@
+.hoverBoxInfo-container {
+    .hoverBoxInfo-content {
+        display: flex;
+        margin-left: 3%;
+
+        .hoverBoxInfo-content-span {
+            font-family: "MontSerratRegular";
+            //   font-size: 14px;
+            // letter-spacing: 0.9px;
+            color: #343340;
+            padding: 3px;
+        }
+
+        .categoryname {
+            font-weight: 600;
+            font-family: "MontSerratSemiBold";
+        }
+
+        .price {
+            //   font-size: 14px;
+            font-weight: 600;
+            color: #2fb7c9;
+            font-family: "MontSerratSemiBold";
+        }
+    }
+}
+
+@media only screen and (max-width: 1080px) {
+    .hoverBoxInfo-container {
+        .hoverBoxInfo-content {
+            .hoverBoxInfo-content-span {
+                padding: unset;
+            }
+
+            .price {
+                font-size: 18px;
+            }
+        }
+    }
+}
