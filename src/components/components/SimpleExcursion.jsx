@@ -10,7 +10,6 @@ import { HoverBoxInfo } from '../common/HoverBoxInfo';
 import { AMD_Rate } from '../../util/config';
 import { makeRoundedRate } from '../../util/helpers';
 
-
 // eslint-disable-next-line react/display-name
 export const SimpleExcursion = memo(({ tour, lng, fromToursToday }) => {
     const { t } = useTranslation();

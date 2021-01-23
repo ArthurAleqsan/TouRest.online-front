@@ -1,9 +1,10 @@
 import * as types from './../types';
 import { message } from 'antd';
 
-import ToursService from '../../services/ToursService';
 import { replaceCitisChars } from '../../util/helpers';
 import { setSliderImages } from '../global/global.actions';
+import ToursService from '../../services/ToursService';
+
 
 
 export const getTours = (dispatch, c) => {

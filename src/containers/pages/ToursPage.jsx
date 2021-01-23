@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 
 import { useTranslation } from 'react-i18next';
 
-import { getTours, resetTours, resetSingleTour, getTourById } from '../../../store/tours/tours.actions';
-import { Loader } from '../../../components/simpleUIComponents/Loader';
+import { Loader } from '../../components/simpleUIComponents/Loader';
 import { _404_Page } from './_404_Page';
-import { SimpleExcursion } from '../../../components/components/SimpleExcursion';
+import { SimpleExcursion } from '../../components/components/SimpleExcursion';
+import { getTours, resetTours, resetSingleTour, getTourById  } from '../../store/tours/tours.actions';
 
 
 const ToursPage = ({ headerName, fromToursToday }) => {

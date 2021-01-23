@@ -40,6 +40,7 @@ const MainRouter = () => {
         }
     };
     window.onload = handleWindowOnLoad;
+    console.log('object');
 
     return (
         <div className="app" style={{
