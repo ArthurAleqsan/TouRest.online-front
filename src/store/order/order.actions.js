@@ -27,10 +27,6 @@ export const resetOrderData = (dispatch) => {
     });
 }
 
-// export const checkout = (data) => {
-//     return () => TransactionService.checkout(data)
-//         .then(r => {
-//             console.log(r);
-//             EmailService.sendEmail(data).then(a => console.log(a))
-//         });
-// }
+export const checkout = (data) => {
+    console.log(data)
+}

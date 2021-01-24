@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { getCategories } from '../../../store/categories/categories.actions';
@@ -11,9 +11,13 @@ const CategoriesPage = () => {
     const dispatch = useDispatch();
     const { location, lng } = useSelector(s => s.globals);
     const { categories } = useSelector(s => s.categories);
-    if (location && categories.length === 0) {
-        getCategories(dispatch, location);
-    }
+    console.log(categories);
+    useEffect(() => {
+        if (location && categories.length === 0) {
+            getCategories(dispatch, location);
+        }
+    }, [])
+
     return (
         <div className='tours-page-container categories-container'>
             <div className='tours-page-container-header'>

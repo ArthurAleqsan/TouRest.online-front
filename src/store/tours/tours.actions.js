@@ -1,7 +1,7 @@
 import * as types from './../types';
 import { message } from 'antd';
 
-import { replaceCitisChars } from '../../util/helpers';
+import { removeFromArray, replaceCitisChars } from '../../util/helpers';
 import { setSliderImages } from '../global/global.actions';
 import ToursService from '../../services/ToursService';
 
@@ -48,4 +48,18 @@ export const resetSingleTour = (dispatch) => {
         type: types.GET_SINGLE_TOUR,
         singleTour: null,
     });
+}
+export const removeFromCart = (dispatch, getState, id) => {
+    const { cartToursArray } = getState().tours;
+    const newCartToursArray = removeFromArray(cartToursArray, tour => tour.id === id);
+    dispatch({
+        type: types.MUTATE_TO_CART,
+        cartToursArray: newCartToursArray,
+    });
+    const localStorageToursArr = JSON.parse(localStorage.getItem('cartToursArray'));
+    for (let i = 0; i < localStorageToursArr.length; i++) {
+        localStorageToursArr.splice(i, 1);
+        localStorage.removeItem('cartToursArray');
+        localStorage.setItem('cartToursArray', JSON.stringify(localStorageToursArr));
+    }
 }
