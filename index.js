@@ -28,6 +28,14 @@ app.use(
         secure: false
     })
 );
+app.use(
+    '/v1/blogs',
+    createProxyMiddleware({
+        target: API,
+        changeOrigin: true,
+        secure: false
+    })
+);
 app.use(async (req, res, next) => {
     res.sendFile(path.join(__dirname + '/public/index.html'));
 });

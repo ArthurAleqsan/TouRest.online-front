@@ -10,9 +10,6 @@ import Taxi from '../../../containers/pages/Taxi';
 import CategoryContainer from '../../../containers/pages/category/CategoryContainer';
 import Tours from '../../../containers/pages/Tours';
 import TourBookingPage from '../../../containers/pages/TourBookingPage';
-// import Tabs from '../common/Tabs/Tabs';
-// import TourBookingPage from './tourBooking/TourBookingPage';
-// import Tours from './tours/Tours';
 
 const WithSlider = ({ singleTourName }) => {
     const isTaxiPage = window.location.pathname.includes('taxi');

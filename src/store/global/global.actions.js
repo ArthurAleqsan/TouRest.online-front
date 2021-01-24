@@ -1,3 +1,5 @@
+import { message } from 'antd';
+import BlogService from '../../services/BlogService';
 import * as types from './../types';
 
 export const setLng = (dispatch, lng) => {
@@ -35,3 +37,37 @@ export const setSliderImages = (imagesArr) => {
         imagesArr,
     };
 };
+
+export const getBlogPosts = (dispatch) => {
+    BlogService.getBlogs()
+        .then(res => {
+            const { status, json: blogPosts } = res;
+            console.log(blogPosts)
+            if (BlogService.isOkStatus(status)) {
+                dispatch({
+                    type: types.SET_BLOG_POSTS,
+                    blogPosts,
+                });
+            } else {
+                message.error(blogPosts.message);
+            }
+
+        })
+};
+export const getSingleBlogPost = (dispatch, id) => {
+    dispatch(setSliderImages([]));
+    BlogService.getSingleBlog(id)
+        .then(res => {
+            const { status, json: singleBlogPost } = res;
+            console.log(res)
+            if (BlogService.isOkStatus(status)) {
+                dispatch(setSliderImages(singleBlogPost.urls));
+                dispatch({
+                    type: types.SET_SINGLE_BLOG_POSTS,
+                    singleBlogPost
+                });
+            } else {
+                message.error(singleBlogPost.message);
+            }
+        })
+}

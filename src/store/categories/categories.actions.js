@@ -1,4 +1,4 @@
-import CategoryService from '../../containers/services/CategoryService';
+import CategoryService from '../../services/CategoryService';
 import { replaceCitisChars } from '../../util/helpers';
 import * as types from './../types';
 

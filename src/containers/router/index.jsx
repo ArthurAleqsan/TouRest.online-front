@@ -15,6 +15,8 @@ import About from '../pages/About';
 import Privacy from '../pages/Privacy';
 import CartPage from '../pages/CartPage';
 import { Loader } from '../../components/simpleUIComponents/Loader';
+import Blog from '../pages/Blog';
+import SingleBlog from '../pages/SingleBlog';
 
 
 const MainRouter = () => {
@@ -57,11 +59,12 @@ const MainRouter = () => {
                     className='static'
                 />
                 <Switch>
-                     <Route path={`/:location/:lng/cart`} component={() => <WithTitle title='Your selected tours'><CartPage /></WithTitle>} />
-                   {/* <Route path={`/:location/:lng/blog/:id`} component={() => <SingleBlog />} />
-                    <Route path={`/:location/:lng/blog`} component={() => <Blog />} />*/}
+
+                    <Route path={`/:location/:lng/cart`} component={() => <WithTitle title='Your selected tours'><CartPage /></WithTitle>} />
+                    <Route path={`/:location/:lng/blog/:id`} component={() => <SingleBlog />} />
+                    <Route path={`/:location/:lng/blog`} component={() => <Blog />} />
                     <Route path={`/:location/:lng/privacy`} component={() => <Privacy />} />
-                    <Route path={`/:location/:lng/about`} component={() => <Suspense fallback={<Loader />}><About /></Suspense>} /> 
+                    <Route path={`/:location/:lng/about`} component={() => <Suspense fallback={<Loader />}><About /></Suspense>} />
                     <Route path={`/:location/:lng`} component={() => <WithSlider singleTourName={singleTour && singleTour[`en_name`]} />} />
                     {location ? <Redirect to={`/${location}/${lng}`} /> : <Redirect to={`/${location}`} />}
                 </Switch>
