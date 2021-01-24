@@ -7,11 +7,12 @@ import Routes from './containers/router';
 import 'antd/dist/antd.css';
 import './../assets/styles/index.scss';
 import './i18n';
+import { Loader } from './components/simpleUIComponents/Loader';
 
 render((
     <Provider store={store} >
         <Router history={history}>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loader />}>
                 <Routes />
             </Suspense>
         </Router>

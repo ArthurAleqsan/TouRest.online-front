@@ -21,6 +21,8 @@ const CartPage = () => {
     const { cartToursArray } = useSelector(s => s.tours);
     const isFromArmenia = country == 'Armenia';
 
+    console.log(cartToursArray);
+
     let total = 0;
     let discount = 0;
     const remove = (name, id) => {

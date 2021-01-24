@@ -37,6 +37,21 @@ export const getTourById = (dispatch, id) => {
             }
         });
 }
+export const getToursByCategory = (dispatch, c, category) => {
+    const city = (c == 'hurgada' || c == 'Hurgada') ? 'Hurgada' : 'Sharm El Sheikh';
+    ToursService.getTours({ city, categoryId: category })
+        .then(res => {
+            const { status, json: tours } = res;
+            if (ToursService.isOkStatus(status)) {
+                dispatch({
+                    type: types.SET_TOURS,
+                    tours,
+                });
+            } else {
+                message.error(tours.message);
+            }
+        })
+}
 export const resetTours = (dispatch) => {
     dispatch({
         type: types.SET_TOURS,
@@ -62,4 +77,21 @@ export const removeFromCart = (dispatch, getState, id) => {
         localStorage.removeItem('cartToursArray');
         localStorage.setItem('cartToursArray', JSON.stringify(localStorageToursArr));
     }
+}
+
+export const setTourData = (dispatch, name, value) => {
+    dispatch({
+        type: types.SET_TOUR_DATA,
+        name,
+        value,
+    });
+}
+export const addToCart = (dispatch, getState, tour) => {
+    const { cartToursArray } = getState().tours;
+    const newArray = [...cartToursArray, tour];
+    dispatch({
+        type: types.MUTATE_TO_CART,
+        cartToursArray: newArray,
+    });
+    localStorage.setItem('cartToursArray', JSON.stringify(newArray));
 }

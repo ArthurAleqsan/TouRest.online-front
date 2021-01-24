@@ -12,7 +12,7 @@ import SuccessFailContainer from './SuccessFailContainer';
 const OrderPopup = ({ visible, setVisible, grandtotal }) => {
     const { t } = useTranslation();
     const { cartToursArray } = useSelector(s => s.tours);
-    const { userData } = useSelector(s => s.order);
+    const { userData } = useSelector(s => s.orders);
     const [visibleModal, setVisibleModal] = useState(false);
     const [isSuccess, setBool] = useState(false);
     const carousel = useRef(null);

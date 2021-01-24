@@ -16,13 +16,11 @@ const Excursion = memo(({ location, tour, disabled, handleClick, openTourPage, f
     const { country } = useSelector(s => s.globals);
     const isFromArmenia = country == 'Armenia';
 
-    const { en_name: name, category, rate } = tour;
-    const priceForAdults = tour.transactionTemplate && tour.transactionTemplate.data.costForAdults;
-    const priceForChilds = tour.transactionTemplate && tour.transactionTemplate.data.costForChildren;
+    const { en_name: name, category, rate, priceForAdults, priceForChildren } = tour;
 
     const carousel = useRef(null);
     const [index, setIndex] = useState(0);
-
+    console.log(tour);
     const handleChange = () => {
         setIndex(index + 1);
     };
@@ -50,15 +48,15 @@ const Excursion = memo(({ location, tour, disabled, handleClick, openTourPage, f
                         <p className='excursion-name'>{tour[`${getLngKey(lng)}_name`]}</p>
                         <p className='excursion-desc-str'>
                             <span className='excursion-desc-span'>{t('Category')} : </span>
-                            <span className='excursion-category-name'> {t(category)}</span>
+                            <span className='excursion-category-name'> {category[`${getLngKey(lng)}_name`]}</span>
                         </p>
                         <p className='excursion-desc-str'>
                             <span className='excursion-desc-span'>{t(priceForAdults ? 'Cost for Adults' : 'Starting From')} : </span>
                             <span className='excursion-price'> {isFromArmenia ? `${+priceForAdults * AMD_Rate}֏` : `${priceForAdults}$`}</span>
                         </p>
-                        {priceForChilds && tour.childCount !== 0 && <p className='excursion-desc-str'>
+                        {priceForChildren && tour.childCount !== 0 && <p className='excursion-desc-str'>
                             <span className='excursion-desc-span'>{t('Cost for Children')} : </span>
-                            <span className='excursion-price'> {isFromArmenia ? `${+priceForChilds * AMD_Rate}֏` : `${priceForChilds}$`}</span>
+                            <span className='excursion-price'> {isFromArmenia ? `${+priceForChildren * AMD_Rate}֏` : `${priceForChildren}$`}</span>
                         </p>}
                         {fromCart ? <div className='excursion-desc-str-cartpage'>
                             <span className='excursion-desc-span'>{t('Ticket count for adults')} : </span>
