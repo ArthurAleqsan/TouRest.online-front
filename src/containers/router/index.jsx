@@ -1,5 +1,5 @@
 import React, { useState, lazy, Suspense, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 
 import { resetCategories } from '../../store/categories/categories.actions';
@@ -17,13 +17,13 @@ import CartPage from '../pages/CartPage';
 import { Loader } from '../../components/simpleUIComponents/Loader';
 import Blog from '../pages/Blog';
 import SingleBlog from '../pages/SingleBlog';
+import { getLngKey } from '../../util/helpers';
 
 
 const MainRouter = () => {
 
     const [visible, setVisible] = useState(false);
-    const { location, lng, languages, cities } = useSelector(s => s.globals);
-    const { singleTour } = useSelector(s => s.tours);
+    const { location, lng, cities } = useSelector(s => s.globals, shallowEqual);
     const dispatch = useDispatch();
 
     const handleLoad = () => {
@@ -32,11 +32,11 @@ const MainRouter = () => {
     const handleWindowOnLoad = () => {
         getCountryCode(dispatch);
         if (window.location.pathname !== '/') {
-            const city = window.location.pathname.split('/')[1];
-            if (cities.indexOf(city) > -1) {
-                sessionStorage.setItem('city', JSON.stringify(city));
+            const city = window.location.pathname.split('/')[1];            
+            if (city == 'hurghada') {
+                sessionStorage.setItem('city', JSON.stringify('Hurghada'));
             } else {
-                sessionStorage.setItem('city', JSON.stringify('sharm-el-sheikh'));
+                sessionStorage.setItem('city', JSON.stringify('Sharm El Sheikh'));
             }
         }
         if (sessionStorage.getItem('city')) {
@@ -45,8 +45,9 @@ const MainRouter = () => {
             handleLoad();
         }
     };
-    window.onload = handleWindowOnLoad;
-
+    useEffect(() => {
+        handleWindowOnLoad();
+    }, []);
     return (
         <div className="app" style={{
             background: '#f2f2f2'
@@ -59,14 +60,13 @@ const MainRouter = () => {
                     className='static'
                 />
                 <Switch>
-
                     <Route path={`/:location/:lng/cart`} component={() => <WithTitle title='Your selected tours'><CartPage /></WithTitle>} />
                     <Route path={`/:location/:lng/blog/:id`} component={() => <SingleBlog />} />
                     <Route path={`/:location/:lng/blog`} component={() => <Blog />} />
                     <Route path={`/:location/:lng/privacy`} component={() => <Privacy />} />
                     <Route path={`/:location/:lng/about`} component={() => <Suspense fallback={<Loader />}><About /></Suspense>} />
-                    <Route path={`/:location/:lng`} component={() => <WithSlider singleTourName={singleTour && singleTour[`en_name`]} />} />
-                    {location ? <Redirect to={`/${location}/${lng}`} /> : <Redirect to={`/${location}`} />}
+                    <Route path={`/:location/:lng`} component={() => <WithSlider />} />
+                    {location ? <Redirect to={`/${location}/${lng}`} /> : <Redirect to={`/${location}`} />} 
                 </Switch>
             </section>
             <CityPopup

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 import { WithTitle } from '../withTitle/WithTitle';
 import Tabs from '../Tabs';
@@ -11,9 +10,8 @@ import CategoryContainer from '../../../containers/pages/category/CategoryContai
 import Tours from '../../../containers/pages/Tours';
 import TourBookingPage from '../../../containers/pages/TourBookingPage';
 
-const WithSlider = ({ singleTourName }) => {
+const WithSlider = () => {
     const isTaxiPage = window.location.pathname.includes('taxi');
-
     return (
         <div>
             <Slider />
@@ -23,14 +21,11 @@ const WithSlider = ({ singleTourName }) => {
                 <Route path='/:location/:lng/tours/:id' component={() => (<WithTitle title='Choose best tours'><Tours /></WithTitle>)} />
                 <Route path='/:location/:lng/tours-today' component={() => (<WithTitle title='Todays avaiable tours'><ToursPage headerName={'Tours Today'} fromToursToday={true} /></WithTitle>)} />
                 <Route path='/:location/:lng/vip-tours' component={() => (<WithTitle title='VIP Tours'><ToursPage headerName='VIP Tours' fromToursToday={false} /></WithTitle>)} />
-                <Route path='/:location/:lng/tour-booking' component={() => (<WithTitle title={singleTourName}><TourBookingPage /></WithTitle>)} />
+                <Route path='/:location/:lng/tour-booking' component={() => (<WithTitle title='Book Tour'><TourBookingPage /></WithTitle>)} />
                 <Route path='/:location/:lng/taxi' component={() => (<WithTitle title={'Online taxi'}><Taxi /></WithTitle>)} />
                 <Route path='/:location/:lng' component={() => (<WithTitle><ToursPage headerName='Most Popular' fromToursToday={false} /></WithTitle>)} />
             </Switch>
         </div>
     )
-};
-WithSlider.propTypes = {
-    singleTourName: PropTypes.string,
 };
 export default WithSlider;

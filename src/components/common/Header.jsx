@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { capitalizeFirstLetter } from '../../util/helpers';
-import { setLng, resetImagesArr, setLocation } from '../../store/global/global.actions';
+import { setLng, resetImagesArr, setLocation, getCountryCode } from '../../store/global/global.actions';
 
 import SocialIcons from './SocialIcons';
 import { CityPopup } from './../popup/CityPopup';
@@ -27,7 +27,7 @@ const Header = () => {
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    });
+    }, []);
     const [visible, setVisible] = useState(false);
     const handleSelectLng = lng => {
         let newPath = '';
@@ -157,4 +157,4 @@ const Header = () => {
     )
 };
 
-export default withRouter(Header);
+export default Header;

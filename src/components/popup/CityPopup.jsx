@@ -17,12 +17,14 @@ export const CityPopup = memo(withRouter(({ visible, setVisible, cities, setCity
     const history = useHistory();
     const handleSelectCity = (city) => {
         const location = makePath(city);
+        console.log(city);
         setCity(dispatch, location);
         setVisible(!visible);
         sessionStorage.setItem('city', JSON.stringify(location));
         resetCategories(dispatch);
         setOrderData(dispatch, 'city', city);
         history.push(`/${location}`);
+        
     };
     return (
         <div className='modal-container'>

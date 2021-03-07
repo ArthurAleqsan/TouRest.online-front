@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -8,40 +8,40 @@ import { useTranslation } from 'react-i18next';
 import { Loader } from '../../components/simpleUIComponents/Loader';
 import { _404_Page } from './_404_Page';
 import { SimpleExcursion } from '../../components/components/SimpleExcursion';
-import { getTours, resetTours, resetSingleTour, getTourById  } from '../../store/tours/tours.actions';
-
+import { getTours, resetTours, resetSingleTour, getTourById } from '../../store/tours/tours.actions';
 
 const ToursPage = ({ headerName, fromToursToday }) => {
     const [loader, setDisableLoader] = useState(true);
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const history = useHistory();
-    const { tours, singleTour } = useSelector(s => s.tours);
-    const { location:city, lng } = useSelector(s => s.globals);
+    const { tours, singleTour } = useSelector(s => s.tours, shallowEqual);
+    const { location: city, lng } = useSelector(s => s.globals);
+
     useEffect(() => {
-        if (!tours) {
-            switch (headerName) {
-                case 'Most Popular':
-                    getTours(dispatch, city)
-                    break;
-                case 'Tours Today':
-                    // getMostPopularTours(city);
-                    setTimeout(() => {
-                        setDisableLoader(false);
-                    }, 2000);
+        switch (headerName) {
+            case 'Most Popular':
+                console.log(headerName);
+                getTours(dispatch, city)
+                break;
+            case 'Tours Today':
+                // getMostPopularTours(city);
+                setTimeout(() => {
+                    setDisableLoader(false);
+                }, 2000);
 
-                    break;
-                case 'VIP Tours':
-                    // getTourByCategory('VIP tours', city);
-                    break;
+                break;
+            case 'VIP Tours':
+                // getTourByCategory('VIP tours', city);
+                break;
 
-            }
-            return () => {
-                resetTours(dispatch);
-                resetSingleTour(dispatch);
-            };
         }
+        return () => {
+            resetTours(dispatch);
+            resetSingleTour(dispatch);
+        };
     }, []);
+    console.log(tours);
     const handleRedirectClick = (id) => {
         if (singleTour && singleTour.id !== id) {
             resetSingleTour();
