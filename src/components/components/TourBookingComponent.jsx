@@ -25,10 +25,9 @@ const TourBookingComponent = ({ singleTour }) => {
     const lngPrefix = lng === 'Eng' ? 'en' : 'ru';
     console.log(singleTour);
 
-    const startTime = singleTour.isOpenAllDay ? moment(new Date(singleTour.startDateAndTime)).format('HH mm') : moment(new Date(singleTour.startDateAndTime)).format('HH mm');
+    const startTime = moment(new Date(singleTour.startDateAndTime)).format('HH mm');
     const languages = singleTour.languages;
-    const days = !singleTour.isOpenAllDay && singleTour.availableDates;
-    const duration = singleTour.duration / 60 / 60 / 1000
+    const duration = Math.round(singleTour.duration / 60 / 60 / 1000);
     const { Panel } = Collapse;
 
     const [selectBoxData, setSelectBoxData] = useState({
@@ -69,7 +68,7 @@ const TourBookingComponent = ({ singleTour }) => {
                             <IconComponent icon='time' />
                         </div>
                         <div className='activity-content-desc'>
-                            {t('Start at')}: {startTime} {t('every')} {singleTour.isOpenAllDay ? 'day' : days.map(d => <span key={d}>{d}, </span>)}
+                            {t('Start at')}: {startTime} 
                         </div>
                     </div>
                     <div className='activity-content'>

@@ -30,7 +30,7 @@ const MainRouter = () => {
         setVisible(true);
     };
     const handleWindowOnLoad = () => {
-        getCountryCode(dispatch);
+        // getCountryCode(dispatch);
         if (window.location.pathname !== '/') {
             const city = window.location.pathname.split('/')[1];            
             if (city == 'hurghada') {

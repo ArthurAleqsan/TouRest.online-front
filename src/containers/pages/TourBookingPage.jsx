@@ -1,5 +1,5 @@
 import React, { useEffect, Fragment } from 'react';
-import { useDispatch, useSelector, useStore } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector, useStore } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { getIdFromPath } from '../../util/helpers';
 import { addToCart, getTourById, setTourData } from '../../store/tours/tours.actions';
@@ -9,17 +9,18 @@ import TourBookingComponent from '../../components/components/TourBookingCompone
 const TourBookingPage = () => {
     const dispatch = useDispatch();
     const { search } = useLocation();
-    const { singleTour } = useSelector(s => s.tours);
+    const { singleTour } = useSelector(s => s.tours, shallowEqual);
 
-    useEffect(() => {
-        if (!singleTour) {
-            // resetImages();
-            console.log(search);
-            const id = getIdFromPath(search, 'id=tour_');
-            console.log(id);
-            getTourById(dispatch, id);
-        }
-    }, []);
+    // useEffect(() => {
+    //     // resetImages();
+
+
+    // }, []);
+    if(!singleTour) {
+        const id = getIdFromPath(search, 'id=tour_');
+        getTourById(dispatch, id);
+    }
+    // console.log(singleTour);
     return (
         <div className='tourBookingPage-container'>
             {singleTour ? (
