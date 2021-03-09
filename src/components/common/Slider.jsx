@@ -30,7 +30,7 @@ const Slider = () => {
                 afterChange={() => handleChange()}
                 className='carousel-container'
                 ref={carousel}
-                autoplay
+                // autoplay
             >
                 {imagesArr && imagesArr.map((image, i) => (<div key={i} className='carusel-item-container'>
                     <img className='image' src={image} />

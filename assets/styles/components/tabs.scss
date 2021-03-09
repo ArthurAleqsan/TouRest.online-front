@@ -3,7 +3,7 @@
     justify-content: center;
     margin-bottom: 50px;
     position: relative;
-    bottom: 5px;
+
     .tabs-container {
         display: flex;
         justify-content: center;
@@ -20,8 +20,7 @@
             cursor: pointer;
         }
         .active {
-            border-bottom: 1.5px solid #33b7c9;
-            height: 4px;
+            border-bottom: 2px solid #33b7c9;
         }
         .vip-tours {
             background-color: #33b7c9;

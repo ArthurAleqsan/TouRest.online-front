@@ -18,6 +18,7 @@ import { Loader } from '../../components/simpleUIComponents/Loader';
 import Blog from '../pages/Blog';
 import SingleBlog from '../pages/SingleBlog';
 import { getLngKey } from '../../util/helpers';
+import Footer from '../../components/common/Footer';
 
 
 const MainRouter = () => {
@@ -69,6 +70,7 @@ const MainRouter = () => {
                     {location ? <Redirect to={`/${location}/${lng}`} /> : <Redirect to={`/${location}`} />} 
                 </Switch>
             </section>
+            <Footer />
             <CityPopup
                 visible={visible}
                 setVisible={setVisible}
