@@ -14,6 +14,7 @@ const SuccessFailContainer = ({ visibleModal, setVisibleModal, handleClick, isFr
                 closable={false}
                 centered={true}
                 footer={null}
+                maskStyle={{ background: 'rgba(0, 0, 0, 0.65)' }}
             >
                 <SuccessFailContent
                     handleClick={handleClick}
