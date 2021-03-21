@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { resetImagesArr } from "../../store/global/global.actions";
 import IconComponent from "../simpleUIComponents/IconComponent";
+import ResponsiveTabs from "./ResponsiveTabs";
 
 const Tabs = () => {
     const { t } = useTranslation();
@@ -52,9 +53,9 @@ const Tabs = () => {
         setActiveIcon(selectedIcon);
     };
     return (
-        <div className='tabs'>
-        <div className='tabs-container'>
-            {width <= 800 && <div className='responsive-tab-container' style={{ height: '100' }}>
+        <div className="tabs">
+            <div className="tabs-container">
+                {/* {width <= 800 && <div className='responsive-tab-container' style={{ height: '100' }}>
                 <div className='tab-icon' style={{ width: 25, height: 25, color: '#33b7c9' }}>
                     {activeHeader !== 'Vip Tours' && <IconComponent icon={`${activeIcon}`} />}
                 </div>
@@ -62,63 +63,97 @@ const Tabs = () => {
                     <span className='tabs-name'>{activeHeader == 'Most Popular' ? t('Most Popular') : activeHeader} </span>
                 </div>
             </div>
-            }
-            <Link to='/'>
-                <div
-                    className='tab'
-                    style={{ display: width > 800 || isVisibleDisplay ? 'flex' : 'none' }}
-                    onClick={() => handleTabClick(() => setActive('mostPopulars'), 'Most Popular', 'star')}
+            } */}
+                <Link
+                    to="/"
+                    className={`${
+                        activeTab === "mostPopulars" ? " active" : ""
+                    }`}
                 >
-                    <div className='tab-icon' style={{ width: 25, height: 25, color: '#33b7c9' }}>
-                        <IconComponent icon='star' />
+                    <div
+                        className="tab"
+                        onClick={() =>
+                            handleTabClick(
+                                () => setActive("mostPopulars"),
+                                "Most Popular",
+                                "star"
+                            )
+                        }
+                    >
+                        <div
+                            className="tab-icon"
+                            style={{ width: 25, height: 25, color: "#33b7c9" }}
+                        >
+                            <IconComponent icon="star" />
+                        </div>
+                        <span className="tabs-name">{t("Most Popular")} </span>
                     </div>
-                    <span className='tabs-name'>{t('Most Popular')} </span>
-                </div>
-                <div className={`${activeTab === 'mostPopulars' ? ' active' : ''}`}> </div>
-            </Link>
-            <Link to={`/${location}/${lng}/tours-today`} >
-                <div
-                    className='tab'
-                    style={{ display: width > 800 || isVisibleDisplay ? 'flex' : 'none' }}
-                    onClick={() => handleTabClick(() => setActive('toursToday'), 'Tours Today', 'timetable')}
+                </Link>
+                <Link
+                    to={`/${location}/${lng}/tours-today`}
+                    className={`${activeTab === "toursToday" ? " active" : ""}`}
                 >
-                    <div className='tab-icon' style={{ width: 25, height: 25, color: '#33b7c9' }}>
-                        <IconComponent icon='timetable' />
+                    <div
+                        className="tab"
+                       
+                    >
+                        <div
+                            className="tab-icon"
+                            style={{ width: 25, height: 25, color: "#33b7c9" }}
+                        >
+                            <IconComponent icon="timetable" />
+                        </div>
+                        <span className="tabs-name">{t("Tours Today")}</span>
                     </div>
-                    <span className='tabs-name' >{t('Tours Today')}</span>
-                </div>
-                <div className={`${activeTab === 'toursToday' ? ' active' : ''}`}> </div>
-            </Link>
-            <Link to={`/${location}/${lng}/categories`} >
-                <div
-                    className='tab'
-                    style={{ display: width > 800 || isVisibleDisplay ? 'flex' : 'none' }}
-                    onClick={() => handleTabClick(() => setActive('category'), 'Tours by Category', 'list')}
+                </Link>
+                <Link
+                    to={`/${location}/${lng}/categories`}
+                    className={`${activeTab === "category" ? " active" : ""}`}
                 >
-                    <div className='tab-icon' style={{ width: 25, height: 25, color: '#33b7c9' }}>
-                        <IconComponent icon='list' />
+                    <div
+                        className="tab"
+                        onClick={() =>
+                            handleTabClick(
+                                () => setActive("category"),
+                                "Tours by Category",
+                                "list"
+                            )
+                        }
+                    >
+                        <div
+                            className="tab-icon"
+                            style={{ width: 25, height: 25, color: "#33b7c9" }}
+                        >
+                            <IconComponent icon="list" />
+                        </div>
+                        <span className="tabs-name">
+                            {t("Tours by Category")}
+                        </span>
                     </div>
-                    <span className='tabs-name'>{t('Tours by Category')}</span>
-                </div>
-                <div className={`${activeTab === 'category' ? ' active' : ''}`}></div>
-            </Link>
-            <Link to={`/${location}/${lng}/vip-tours`}>
-                <div className='tab vip-tours'
-                    style={{ display: width > 800 || isVisibleDisplay ? 'flex' : 'none' }}
-                    onClick={() => handleTabClick(() => setActive('vipTours'), 'Vip Tours')}
-                >
-                    <span className='tabs-name'> {t('VIP Tours')}</span>
-                </div>
-            </Link>
-            <div className='list-container' onClick={() => toogleList()}>
+                </Link>
+                <Link to={`/${location}/${lng}/vip-tours`}>
+                    <div
+                        className="tab vip-tours"
+                        onClick={() =>
+                            handleTabClick(
+                                () => setActive("vipTours"),
+                                "Vip Tours"
+                            )
+                        }
+                    >
+                        <span className="tabs-name"> {t("VIP Tours")}</span>
+                    </div>
+                </Link>
+                {/* <div className='list-container' onClick={() => toogleList()}>
                 <a className='menu-icon' >
                     <div className='list-icon' style={{ width: 25, height: 25, color: '#000' }}>
                         <IconComponent icon='menu' />
                     </div>
                 </a>
+            </div> */}
             </div>
+            {width <= 800 && <ResponsiveTabs location={location} lng={lng} />}
         </div>
-    </div >
     );
 };
 

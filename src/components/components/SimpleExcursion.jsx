@@ -25,13 +25,7 @@ export const SimpleExcursion = memo(({ tour, lng, fromToursToday }) => {
                     </span>
                 </p>
 
-                <Rate
-                    allowHalf
-                    value={makeRoundedRate(tour.rate)}
-                    character={() => (
-                        <img src="/assets/images/icons/rate.svg" />
-                    )}
-                />
+                <Rate allowHalf value={makeRoundedRate(tour.rate)} />
                 {fromToursToday ? (
                     <div>
                         <span className="tour-start">

@@ -65,9 +65,26 @@
     .ant-modal-content {
         height: 430px;
         font-family: "MontserratMedium";
-
+        display: flex;
+        justify-content: center;
+        align-items: center;
         .ant-input:hover {
             border-color: #33b7c9 !important;
+        }
+        // comming-soon
+        .comming-soon-container {
+            flex-direction: column;
+            display: flex;
+            align-items: center;
+            .comming-soon-image {
+                width: 150px;
+            }
+            .comming-soon-text {
+                font-size: 45px;
+                color: #33b7c9;
+                font-weight: 700;
+                margin-top: 40px;
+            }
         }
     }
     .second-step {

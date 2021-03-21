@@ -58,20 +58,36 @@
     cursor: pointer;
 }
 
-// @media only screen and (max-width: 1024px) {
-//   .tabs {
-//     max-height: 70px;
-//   }
-
-//   .tab {
-//     padding: 15px !important;
-//     font-size: 12px;
-//   }
-// }
+// responsve-tabs
+.responsive-tab {
+    .ant-menu-submenu-title {
+        height: 60px !important;
+        border-bottom: 1px solid #33b7c9;
+        margin-bottom: unset  !important;
+    }
+    .ant-menu-item {
+        padding-left: 20px !important;
+        border-bottom: 1px solid #d9d9d9;
+        height: 60px !important;
+        margin-bottom: unset !important;
+        .tab {
+            display: flex;
+            .tab-icon {
+                margin-right: 10px;
+            }
+            .tabs-name {
+                font-family: "MontserratMedium";
+            }
+        }
+    }
+}
 
 @media screen and (max-width: 800px) {
     .tabs {
         display: unset;
+    }
+    .tabs-container {
+        display: none;
     }
     .responsive-tab-container {
         flex-direction: row;
@@ -86,7 +102,7 @@
         border-bottom: 1.5px solid #33b7c9;
     }
     .tabs-container {
-        display: block !important;
+        display: none !important;
         position: relative !important;
         transition: all ease-in-out 0.3s;
         .active {

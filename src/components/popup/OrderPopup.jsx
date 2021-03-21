@@ -88,7 +88,7 @@ const OrderPopup = ({ visible, setVisible, grandtotal }) => {
                 centered={true}
                 maskStyle={{ background: 'rgba(0, 0, 0, 0.95)' }}
             >
-                <Carousel
+                {/* <Carousel
                     afterChange={handleChange}
                     className='carousel-container'
                     ref={carousel}
@@ -109,17 +109,25 @@ const OrderPopup = ({ visible, setVisible, grandtotal }) => {
                         handlePagination={handlePagination}
                         buy={buy}
                     />
-                </Carousel>
+                </Carousel> */}
+             <div className='comming-soon-container'>
+                 <div className='comming-soon-image'>
+                 <img src='/assets/images/icons/coming-soon.svg'/>
+                 </div>
+                 <div className='comming-soon-text'>
+                     {t('In development ...')}
+                 </div>
+             </div>
             </Modal>
 
-            <SuccessFailContainer
+            {/* <SuccessFailContainer
                 visibleModal={visibleModal}
                 setVisibleModal={setVisibleModal}
                 handleClick={() => handleClick()}
                 isFromCartPage={false}
                 isSuccess={isSuccess}
                 text={isSuccess ? 'Ordered is done' : 'Something is wrong'}
-            />
+            /> */}
         </div>
     )
 }

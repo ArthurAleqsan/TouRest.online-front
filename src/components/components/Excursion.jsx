@@ -129,9 +129,6 @@ const Excursion = memo(
                                         allowHalf
                                         value={makeRoundedRate(rate)}
                                         disabled={disabled}
-                                        character={
-                                            <img src="/assets/images/icons/rate.svg" />
-                                        }
                                     />
                                 </div>
                             )}

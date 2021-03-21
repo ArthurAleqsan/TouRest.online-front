@@ -33,6 +33,9 @@ const ToursPage = ({ headerName, fromToursToday }) => {
                 break;
             case 'VIP Tours':
                 // getTourByCategory('VIP tours', city);
+                setTimeout(() => {
+                    setDisableLoader(false);
+                }, 2000);
                 break;
 
         }
