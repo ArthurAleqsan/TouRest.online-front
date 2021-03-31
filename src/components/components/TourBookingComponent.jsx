@@ -157,10 +157,10 @@ const TourBookingComponent = ({ singleTour }) => {
                         <span className='left-column-name'>{t('For Adults Starting from')} :</span>
                         <span className='left-column-text' > {isFromArmenia ? `${singleTour.priceForAdults * AMD_Rate}֏`: `${singleTour.priceForAdults}$`}</span>
                     </p>
-                    {singleTour.priceForChildren && <p>
+                    {singleTour.priceForChildren && singleTour.priceForChildren != 0 && (<p>
                         <span className='left-column-name'>{t('For Childs Starting from')} :</span>
                         <span className='left-column-text' > {isFromArmenia ? `${singleTour.priceForChildren * AMD_Rate}֏`: `${singleTour.priceForChildren}$`}</span>
-                    </p>}
+                    </p>)}
                     <p>
                         <span className='left-column-name'>{t('Tour name')}:</span>
                         <span className='left-column-text'> {t(`${singleTour[`${lngPrefix}_name`]}`)}</span>
