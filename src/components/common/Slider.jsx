@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-// import { SliderContentDesc } from './SliderContentDesc';
+import  SliderContentDesc  from './SliderContentesc';
 import { Carousel } from 'antd';
 import { useSelector } from 'react-redux';
 import IconComponent from '../simpleUIComponents/IconComponent';
@@ -30,7 +30,7 @@ const Slider = () => {
                 afterChange={() => handleChange()}
                 className='carousel-container'
                 ref={carousel}
-                autoplay
+                // autoplay
             >
                 {imagesArr && imagesArr.map((image, i) => (<div key={i} className='carusel-item-container'>
                     <img className='image' src={image} />
@@ -50,6 +50,7 @@ const Slider = () => {
                     </div>
                 </div>
             </div>
+            <SliderContentDesc />
         </div>
     )
 };

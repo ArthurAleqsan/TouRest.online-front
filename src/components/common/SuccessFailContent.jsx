@@ -12,7 +12,7 @@ const SuccessFailContent = ({ handleClick, isFromCartPage, isSuccess, text }) =>
                 <img src={'/assets/images/icons/success.svg'} />
             </div>
             <div className='modal-text success'>{t('Success!')}</div>
-            <div className='text'>{isFromCartPage ? t('Tour is removed') : t('Tour is added to your cart')}</div>
+            <div className='text'>{isFromCartPage ? t('Tour is removed') : t('Tour is added to your cart !')}</div>
             <div className='modal-button' onClick={() => handleClick()}>{t('Ok')}</div>
         </div>
     } else {

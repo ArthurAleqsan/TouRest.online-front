@@ -21,6 +21,9 @@ export const setLocation = (dispatch, location) => {
         location,
     })
 };
+export const sendEmail = (data) => {
+    console.log(data)
+} ;
 export const getCountryCode = (dispatch) => {
     fetch('https://extreme-ip-lookup.com/json/')
         .then(res => res.json())

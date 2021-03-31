@@ -1,8 +1,9 @@
 .modal-container-antd {
     width: 410px !important;
     .ant-modal-content {
-        border-radius: unset;
+        border-radius: 15px;
         height: 340px;
+        background: #34333a;
     }
     .modal-register {
         display: flex;
@@ -15,31 +16,26 @@
         .modal-text {
             font-size: 30px;
             font-weight: 600;
-            font-family: Gotham-Ultra;
+            color: #fff;
         }
-        .success {
-            color: #33b7c9;
-        }
-
         .text {
-            font-family: Gotham-Bold;
             font-size: 18px;
             margin: 20px;
             text-align: center;
-            color: #363636;
+            color: #fff;
         }
         .modal-button {
             width: 150px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: rgb(77, 76, 76);
+            background-color: #33b7c9;
             border-radius: 20px;
             color: #fff;
             height: 40px;
             margin-top: 10px;
-            font-family: Gotham-Rounded;
             font-size: 16px;
+            padding: 10px;
             cursor: pointer;
         }
     }
