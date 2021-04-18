@@ -9,21 +9,21 @@ import { setOrderData } from '../../store/order/order.actions';
 import { dateFormat } from '../../util/config';
 
 // eslint-disable-next-line react/display-name
-const SelectBox = memo(({ peopleMaxCount, handleSelect, handlerChange, hasChildPrise, defaultSelectBoxValues, aviableDays }) => {
+const SelectBox = memo(({ peopleMaxCount, handleSelect, handlerChange, 
+    hasChildPrise, defaultSelectBoxValues, aviableDays, dateType }) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const { Option } = Select;
     const peoplesCountsArray = [];
     // const languageArray = ['En', 'Ru'];
 
-
     for (let i = 1; i < peopleMaxCount + 1; i++) {
         peoplesCountsArray.push(i);
     }
     const handleChange = (value, name) => {
         handlerChange({ ...defaultSelectBoxValues, [name]: value });
+        console.log(name, value);
         setOrderData(dispatch, name, value);
-
     };
     const onChange = (dateString) => {
         handlerChange({ ...defaultSelectBoxValues, 'firstDate': dateString.toString() });
@@ -32,13 +32,14 @@ const SelectBox = memo(({ peopleMaxCount, handleSelect, handlerChange, hasChildP
 
     };
     const disabledDays = (current) => {
-        if(typeof aviableDays ==='object') {
-            const currentNextDay = moment(current).format(dateFormat);
-            const momentAviableDates = typeof aviableDays ==='object' && aviableDays.map(d => moment(d).format(dateFormat));
-            return current && current < moment().endOf('day') || !momentAviableDates.includes(currentNextDay);
-        } else {
-            return current && current < moment().endOf('day');
+        if(dateType == 'everyday') {
+            return current && current < moment().endOf('day');  
         }
+        // if(typeof aviableDays ==='object') {
+        //     const currentNextDay = moment(current).format(dateFormat);
+        //     const momentAviableDates = typeof aviableDays ==='object' && aviableDays.map(d => moment(d).format(dateFormat));
+        //     return current && current < moment().endOf('day') || !momentAviableDates.includes(currentNextDay);
+        // }
       }
 
     return (

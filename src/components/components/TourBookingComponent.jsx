@@ -10,6 +10,7 @@ import SuccessFailContainer from '../popup/SuccessFailContainer';
 import { AMD_Rate } from '../../util/config';
 import IconComponent from '../simpleUIComponents/IconComponent';
 import SelectBox from '../common/SelectBox';
+import { startTimeConverter } from '../../util/helpers';
 
 const TourBookingComponent = ({ singleTour }) => {
     const { lng } = useSelector(s => s.globals);
@@ -23,10 +24,13 @@ const TourBookingComponent = ({ singleTour }) => {
     const { country } = useSelector(s => s.globals);
     const isFromArmenia = country == 'Armenia';
     const lngPrefix = lng === 'Eng' ? 'en' : 'ru';
-    console.log(singleTour);
 
-    const startTime = moment(new Date(singleTour.startDateAndTime)).format('HH mm');
-    const languages = singleTour.languages;
+    // const aviableDays = 
+    const days = new Array(moment().daysInMonth()).fill(null).map((x, i) => moment().startOf('month').add(i, 'days'));
+    const d = days.map(d => moment().subtract(days.length,'d'))
+    console.log(d);
+    const { startTime, languages } = singleTour;
+
     const duration = Math.round(singleTour.duration / 60 / 60 / 1000);
     const { Panel } = Collapse;
 
@@ -58,7 +62,7 @@ const TourBookingComponent = ({ singleTour }) => {
             <div className='right-column'>
                 <div className='right-column-desc '>
                     <div className='right-column-header header-text '>{t('Overview')}</div>
-                    <div className='right-column-text '>{singleTour[`overview${lngPrefix}_description`]}
+                    <div className='right-column-text '>{singleTour[`${lngPrefix}_shortDescription`]}
                     </div>
                 </div>
                 <div className='right-column-activity'>
@@ -68,7 +72,7 @@ const TourBookingComponent = ({ singleTour }) => {
                             <IconComponent icon='time' />
                         </div>
                         <div className='activity-content-desc'>
-                            {t('Start at')}: {startTime} 
+                            {t('Start at')}: {startTimeConverter(startTime)}
                         </div>
                     </div>
                     <div className='activity-content'>
@@ -87,7 +91,7 @@ const TourBookingComponent = ({ singleTour }) => {
                         <div style={{ width: 15, height: 15, color: '#000' }}>
                             <IconComponent icon='chat' />
                         </div>
-                        <div className='activity-content-desc'>{languages}</div>
+                        <div className='activity-content-desc'>{languages.map(l => `${l} `)}</div>
                     </div>
                     <div className='activity-content'>
                         <div style={{ width: 15, height: 15, color: '#000' }}>
@@ -155,11 +159,11 @@ const TourBookingComponent = ({ singleTour }) => {
                 <div className='left-column-info-container'>
                     <p>
                         <span className='left-column-name'>{t('For Adults Starting from')} :</span>
-                        <span className='left-column-text' > {isFromArmenia ? `${singleTour.priceForAdults * AMD_Rate}֏`: `${singleTour.priceForAdults}$`}</span>
+                        <span className='left-column-text' > {isFromArmenia ? `${singleTour.priceForAdults * AMD_Rate}֏` : `${singleTour.priceForAdults}$`}</span>
                     </p>
                     {singleTour.priceForChildren != 0 && (<p>
                         <span className='left-column-name'>{t('For Childs Starting from')} :</span>
-                        <span className='left-column-text' > {isFromArmenia ? `${singleTour.priceForChildren * AMD_Rate}֏`: `${singleTour.priceForChildren}$`}</span>
+                        <span className='left-column-text' > {isFromArmenia ? `${singleTour.priceForChildren * AMD_Rate}֏` : `${singleTour.priceForChildren}$`}</span>
                     </p>)}
                     <p>
                         <span className='left-column-name'>{t('Tour name')}:</span>
@@ -176,10 +180,11 @@ const TourBookingComponent = ({ singleTour }) => {
                         defaultSelectBoxValues={selectBoxData}
                         hasChildPrise={singleTour.priceForChildren}
                         aviableDays={singleTour.availableDates}
+                        dateType = {singleTour.dateType}
                     />
                 </div>
             </div>
-        
+
 
             <SuccessFailContainer
                 visibleModal={visibleModal}

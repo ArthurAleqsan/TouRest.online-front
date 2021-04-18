@@ -16,6 +16,7 @@ export const SimpleExcursion = memo(({ tour, lng, fromToursToday }) => {
     const lngPrefix = lng === "Eng" ? "en" : "ru";
     const { country } = useSelector((s) => s.globals);
     const isFromArmenia = country == "Armenia";
+    
     return (
         <div className="simpleExcursion-container">
             <div className="simpleExcursion-container-header">
@@ -46,9 +47,9 @@ export const SimpleExcursion = memo(({ tour, lng, fromToursToday }) => {
                             : "$" + tour.priceForAdults
                     }
                     childPrice={
-                        tour.priceForChildren && isFromArmenia
+                        tour?.priceForChildren != 0 && (isFromArmenia
                             ? "֏" + tour.priceForChildren * AMD_Rate
-                            : "$" + tour.priceForChildren
+                            : "$" + tour.priceForChildren)
                     }
                 />
             </HoverBox>

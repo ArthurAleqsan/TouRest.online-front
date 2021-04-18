@@ -29,5 +29,5 @@ export const HoverBoxInfo = memo(({ categoryName, adultPrice, childPrice }) => {
 HoverBoxInfo.propTypes = {
     categoryName: PropTypes.string.isRequired,
     adultPrice: PropTypes.string.isRequired,
-    childPrice: PropTypes.string,
+    childPrice: PropTypes.any,
 };

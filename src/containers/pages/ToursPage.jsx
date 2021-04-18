@@ -44,7 +44,6 @@ const ToursPage = ({ headerName, fromToursToday }) => {
             resetSingleTour(dispatch);
         };
     }, []);
-    console.log(tours);
     const handleRedirectClick = (id) => {
         if (singleTour && singleTour.id !== id) {
             resetSingleTour();

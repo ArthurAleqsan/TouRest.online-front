@@ -65,4 +65,23 @@ export const timeConversion = (millisec) => {
 
     return hours;
 }
+export const startTimeConverter = str => {
+    const splited = str.split(':');
+    return `${splited[0]}:${splited[1]}`;
+}
+
+export const setAviableDates = (type, aviableDates, weekDates) => {
+    let dates;
+    switch (type) {
+        case 'week':
+            break;
+        case 'date':
+            dates = aviableDates;
+            break;
+        default:
+           
+
+    }
+    return dates;
+}
 

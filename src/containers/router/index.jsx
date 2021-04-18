@@ -33,9 +33,11 @@ const MainRouter = () => {
     const handleWindowOnLoad = () => {
         // getCountryCode(dispatch);
         if (window.location.pathname !== '/') {
-            const city = window.location.pathname.split('/')[1];            
+            const city = window.location.pathname.split('/')[1];
             if (city == 'hurghada') {
                 sessionStorage.setItem('city', JSON.stringify('Hurghada'));
+            } if (city == 'Aswan') {
+                sessionStorage.setItem('city', JSON.stringify('Aswan'));
             } else {
                 sessionStorage.setItem('city', JSON.stringify('Sharm El Sheikh'));
             }
@@ -67,7 +69,7 @@ const MainRouter = () => {
                     <Route path={`/:location/:lng/privacy`} component={() => <Privacy />} />
                     <Route path={`/:location/:lng/about`} component={() => <Suspense fallback={<Loader />}><About /></Suspense>} />
                     <Route path={`/:location/:lng`} component={() => <WithSlider />} />
-                    {location ? <Redirect to={`/${location}/${lng}`} /> : <Redirect to={`/${location}`} />} 
+                    {location ? <Redirect to={`/${location}/${lng}`} /> : <Redirect to={`/${location}`} />}
                 </Switch>
             </section>
             <Footer />
