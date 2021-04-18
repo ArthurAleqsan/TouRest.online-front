@@ -35,7 +35,6 @@ const Excursion = memo(
 
         const carousel = useRef(null);
         const [index, setIndex] = useState(0);
-        console.log(tour);
         const handleChange = () => {
             setIndex(index + 1);
         };
@@ -100,7 +99,7 @@ const Excursion = memo(
                                         : `${priceForAdults}$`}
                                 </span>
                             </p>
-                            {priceForChildren && tour.childCount !== 0 && (
+                            {tour.priceForChildren !== 0 && (
                                 <p className="excursion-desc-str">
                                     <span className="excursion-desc-span">
                                         {t("Cost for Children")} :{" "}
@@ -164,7 +163,7 @@ const Excursion = memo(
                                             {" "}
                                             {isNaN(+tour.duration)
                                                 ? tour.duration
-                                                : `${tour.duration} hour`}
+                                                : `${Math.round(tour.duration / 60 / 60 / 1000)} hour`}
                                         </span>
                                     </div>
                                 </Fragment>

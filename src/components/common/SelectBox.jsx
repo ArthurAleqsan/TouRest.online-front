@@ -39,9 +39,7 @@ const SelectBox = memo(({ peopleMaxCount, handleSelect, handlerChange, hasChildP
         } else {
             return current && current < moment().endOf('day');
         }
-
       }
-
 
     return (
         <div className='selectBox-container'>
@@ -60,7 +58,7 @@ const SelectBox = memo(({ peopleMaxCount, handleSelect, handlerChange, hasChildP
                         ))}
                     </Select>
                 </div>
-                {hasChildPrise && <div className='selectBox-content-elem'>
+                {hasChildPrise != 0 && <div className='selectBox-content-elem'>
                     <Select
                         onChange={(v) => handleChange(v, 'childCount')}
                         defaultValue={t(`Child x1`)}

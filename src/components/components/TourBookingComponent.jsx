@@ -40,18 +40,18 @@ const TourBookingComponent = ({ singleTour }) => {
         if (!orderData.firstDate) {
             toggleIsSuccess(false)
             setVisibleModal(true)
-        }
-        else {
+        } else {
             toggleIsSuccess(true)
             setVisibleModal(true);
+            addToCart(dispatch, getState, { ...singleTour, ...selectBoxData });
+            resetOrderData(dispatch);
+            setSelectBoxData({ childCount: 0, peopleCount: 1, firstDate: '' });
         }
-        addToCart(dispatch, getState, { ...singleTour, ...selectBoxData });
-        resetOrderData(dispatch);
-        setSelectBoxData({ childCount: 0, peopleCount: 1, firstDate: '' });
     };
     const handleClick = () => {
         setVisibleModal(false);
     };
+
     return (
         <div className='collapse-container'>
 
@@ -157,7 +157,7 @@ const TourBookingComponent = ({ singleTour }) => {
                         <span className='left-column-name'>{t('For Adults Starting from')} :</span>
                         <span className='left-column-text' > {isFromArmenia ? `${singleTour.priceForAdults * AMD_Rate}֏`: `${singleTour.priceForAdults}$`}</span>
                     </p>
-                    {singleTour.priceForChildren && singleTour.priceForChildren != 0 && (<p>
+                    {singleTour.priceForChildren != 0 && (<p>
                         <span className='left-column-name'>{t('For Childs Starting from')} :</span>
                         <span className='left-column-text' > {isFromArmenia ? `${singleTour.priceForChildren * AMD_Rate}֏`: `${singleTour.priceForChildren}$`}</span>
                     </p>)}
