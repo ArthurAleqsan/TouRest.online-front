@@ -27,8 +27,8 @@ const SelectBox = memo(({ peopleMaxCount, handleSelect, handlerChange,
     };
     const onChange = (dateString) => {
         handlerChange({ ...defaultSelectBoxValues, 'firstDate': dateString.toString() });
-
-        setOrderData('firstDate', dateString.toString());
+        console.log(dateString);
+        setOrderData(dispatch, 'firstDate', dateString.toString());
 
     };
     const disabledDays = (current) => {

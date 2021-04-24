@@ -46,8 +46,7 @@ const CartPage = () => {
                     <div className='left-column'>
                         <div className='left-column-content'>
                             {cartToursArray && cartToursArray.map(tour => {
-                                console.log(tour);
-                                total += tour.pricetForChildren ? tour.childCount * tour.pricetForAdults : tour.peopleCount * tour.pricetForAdults;
+                                total += tour.priceForChildren ? tour.childCount * tour.pricetForAdults : tour.peopleCount * tour.priceForAdults;
                                 return (<div key={tour.id} className='tour-container' >
                                     <Excursion
                                         key={tour.id}

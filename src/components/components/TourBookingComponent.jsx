@@ -7,14 +7,14 @@ import { Collapse, Rate, message, Modal } from 'antd';
 import { addToCart } from '../../store/tours/tours.actions';
 import { resetOrderData } from '../../store/order/order.actions';
 import SuccessFailContainer from '../popup/SuccessFailContainer';
-import { AMD_Rate } from '../../util/config';
+import { AMD_Rate, weekDays } from '../../util/config';
 import IconComponent from '../simpleUIComponents/IconComponent';
 import SelectBox from '../common/SelectBox';
 import { startTimeConverter } from '../../util/helpers';
 
 const TourBookingComponent = ({ singleTour }) => {
     const { lng } = useSelector(s => s.globals);
-    const { orderData } = useSelector(s => s.orders);
+    const { firstDate, childCount, peopleCount } = useSelector(s => s.orders);
     const dispatch = useDispatch();
     const { getState } = useStore();
     const { t } = useTranslation();
@@ -35,13 +35,14 @@ const TourBookingComponent = ({ singleTour }) => {
     const { Panel } = Collapse;
 
     const [selectBoxData, setSelectBoxData] = useState({
-        childCount: orderData.childCount,
-        peopleCount: orderData.peopleCount,
-        firstDate: orderData.firstDate,
+        childCount,
+        peopleCount,
+        firstDate,
     });
 
     const addingToCart = () => {
-        if (!orderData.firstDate) {
+
+        if (!selectBoxData.firstDate) {
             toggleIsSuccess(false)
             setVisibleModal(true)
         } else {
@@ -55,6 +56,21 @@ const TourBookingComponent = ({ singleTour }) => {
     const handleClick = () => {
         setVisibleModal(false);
     };
+
+    const getStartAtContent = () => {
+        let content = '';
+        switch(singleTour.dateType) {
+            case 'week':
+                content = 'Every ';
+                singleTour.weekdays.forEach(i => content += `${weekDays[i]}, `);
+                content = content.substring(0, content.length - 2);
+                content = `${content} at`;
+                break
+        }
+        return content;
+    }
+
+    console.log(singleTour);
 
     return (
         <div className='collapse-container'>
@@ -72,7 +88,7 @@ const TourBookingComponent = ({ singleTour }) => {
                             <IconComponent icon='time' />
                         </div>
                         <div className='activity-content-desc'>
-                            {t('Start at')}: {startTimeConverter(startTime)}
+                            {t('Start')}: {getStartAtContent()} {startTimeConverter(startTime)}
                         </div>
                     </div>
                     <div className='activity-content'>

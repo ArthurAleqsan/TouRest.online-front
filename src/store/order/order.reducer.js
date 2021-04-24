@@ -15,7 +15,6 @@ const initialState = {
     cardNumber: '',
     cvv2: '',
     expireDate: '',
-    orderData: {},
 };
 
 const orderReducer = (state = initialState, action) => {

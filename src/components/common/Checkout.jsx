@@ -12,6 +12,8 @@ export const Checkout = memo(({ subtotal, discount, grandtotal }) => {
     const [visible, setVisible] = useState(false);
     const { country } = useSelector((s) => s.globals);
     const isFromArmenia = country == "Armenia";
+
+    console.log(subtotal, grandtotal);
     return (
         <div className="checkout-container">
             <div className="content-container">
@@ -21,10 +23,9 @@ export const Checkout = memo(({ subtotal, discount, grandtotal }) => {
                 <p className="text-container">
                     <span className="text-container-text">{t("Subtotal")}</span>
                     <span className="text-container-price">
-                        {/* {isFromArmenia
-                            ? `AMD  ${subtotal * AMD_Rate}`
-                            : `USD  ${subtotal}`} */}
-                        0 USD
+                        {isFromArmenia
+                            ? `${subtotal * AMD_Rate} AMD`
+                            : `${subtotal} USD`}
                     </span>
                 </p>
                 {discount && (
@@ -33,10 +34,9 @@ export const Checkout = memo(({ subtotal, discount, grandtotal }) => {
                             {t("Discount")}
                         </span>
                         <span className="text-container-price">
-                            {/* {isFromArmenia
+                            {isFromArmenia
                                 ? `AMD  ${discount * AMD_Rate}`
-                                : `USD  ${discount}`} */}
-                            0 USD
+                                : `USD  ${discount}`}
                         </span>
                     </p>
                 )}
@@ -45,8 +45,7 @@ export const Checkout = memo(({ subtotal, discount, grandtotal }) => {
                         {t("Grand Total")}
                     </span>
                     <span className="text-container-price total">
-                        {/* {isFromArmenia ? `AMD  ${grandtotal * AMD_Rate}` : `USD  ${grandtotal}`} */}
-                        0 USD
+                        {isFromArmenia ? `${grandtotal * AMD_Rate} AMD` : `${grandtotal} USD`}
                     </span>
                 </p>
                 <div

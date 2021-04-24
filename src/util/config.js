@@ -5,6 +5,7 @@ export const sliderImages = [
     '/assets/images/slider/4.jpg',
     '/assets/images/slider/5.jpg',
 ];
+export const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 export const dateFormat = 'YYYY/MM/DD';
 export const about = {
     en_titles: ['About our team', 'Our mission', 'Travelling has never been so easy', 'TouRest is for everyone', 'From our travelers',],
