@@ -31,12 +31,12 @@ const MainRouter = () => {
         setVisible(true);
     };
     const handleWindowOnLoad = () => {
-        // getCountryCode(dispatch);
+        getCountryCode(dispatch);
         if (window.location.pathname !== '/') {
             const city = window.location.pathname.split('/')[1];
-            if (city == 'hurghada') {
+            if (city == 'hurghada' || city == 'Hurghada') {
                 sessionStorage.setItem('city', JSON.stringify('Hurghada'));
-            } if (city == 'Aswan') {
+            } else if (city == 'Aswan' || city == 'aswan') {
                 sessionStorage.setItem('city', JSON.stringify('Aswan'));
             } else {
                 sessionStorage.setItem('city', JSON.stringify('Sharm El Sheikh'));

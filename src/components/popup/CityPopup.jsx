@@ -24,9 +24,9 @@ export const CityPopup = memo(
             const history = useHistory();
             const handleSelectCity = (city) => {
                 const location = makePath(city);
+                sessionStorage.setItem("city", JSON.stringify(location));
                 setCity(dispatch, location);
                 setVisible(!visible);
-                sessionStorage.setItem("city", JSON.stringify(location));
                 resetCategories(dispatch);
                 setOrderData(dispatch, "city", city);
                 history.push(`/${location}`);

@@ -3,7 +3,7 @@ import { Link, useHistory, withRouter } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
-import { capitalizeFirstLetter } from "../../util/helpers";
+import { capitalizeFirstLetter, makePath } from "../../util/helpers";
 import {
     setLng,
     resetImagesArr,
@@ -22,8 +22,9 @@ const Header = () => {
     const history = useHistory();
 
     const dispatch = useDispatch();
-    const { lng, location, cities } = useSelector((s) => s.globals);
-
+    let { lng, location, cities } = useSelector((s) => s.globals);
+    location = makePath(location).toLowerCase();
+    lng = lng.toLowerCase();
     const [activetab, setActive] = useState(lng);
     const [visibleModal, setVisibleModal] = useState(false);
     const [width, setWidth] = useState(window.innerWidth);
@@ -48,13 +49,13 @@ const Header = () => {
             newPath = slicedURLArray.join("/");
             window.location.search
                 ? history.push(
-                      `/${location}/${lng.toLowerCase()}/${
+                      `/${location}/${lng}/${
                           newPath + window.location.search
                       }`
                   )
-                : history.push(`/${location}/${lng.toLowerCase()}/${newPath}`);
+                : history.push(`/${location}/${lng}/${newPath}`);
         } else {
-            history.push(`/${location}/${lng.toLowerCase()}`);
+            history.push(`/${location}/${lng}`);
         }
         setActive(lng);
     };
