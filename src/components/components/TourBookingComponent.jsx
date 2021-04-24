@@ -27,7 +27,7 @@ const TourBookingComponent = ({ singleTour }) => {
 
     // const aviableDays = 
     const days = new Array(moment().daysInMonth()).fill(null).map((x, i) => moment().startOf('month').add(i, 'days'));
-    const d = days.map(d => moment().subtract(days.length,'d'))
+    const d = days.map(d => moment().subtract(days.length, 'd'))
     const { startTime, languages } = singleTour;
 
     const duration = Math.round(singleTour.duration / 60 / 60 / 1000);
@@ -55,16 +55,21 @@ const TourBookingComponent = ({ singleTour }) => {
     const handleClick = () => {
         setVisibleModal(false);
     };
-
+    console.log(singleTour);
     const getStartAtContent = () => {
         let content = '';
-        switch(singleTour.dateType) {
+        switch (singleTour.dateType) {
+            case 'date':
+                content = 'Aviable dates at ';
+                break;
             case 'week':
                 content = 'Every ';
                 singleTour.weekdays.forEach(i => content += `${weekDays[i]}, `);
                 content = content.substring(0, content.length - 2);
                 content = `${content} at`;
-                break
+                break;
+            default:
+                content = 'Every day at'
         }
         return content;
     }
@@ -193,7 +198,7 @@ const TourBookingComponent = ({ singleTour }) => {
                         defaultSelectBoxValues={selectBoxData}
                         hasChildPrise={singleTour.priceForChildren}
                         aviableDays={singleTour.availableDates}
-                        dateType = {singleTour.dateType}
+                        dateType={singleTour.dateType}
                     />
                 </div>
             </div>

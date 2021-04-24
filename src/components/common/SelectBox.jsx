@@ -9,13 +9,12 @@ import { setOrderData } from '../../store/order/order.actions';
 import { dateFormat } from '../../util/config';
 
 // eslint-disable-next-line react/display-name
-const SelectBox = memo(({ peopleMaxCount, handleSelect, handlerChange, 
+const SelectBox = memo(({ peopleMaxCount, handleSelect, handlerChange,
     hasChildPrise, defaultSelectBoxValues, aviableDays, dateType }) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const { Option } = Select;
     const peoplesCountsArray = [];
-    // const languageArray = ['En', 'Ru'];
 
     for (let i = 1; i < peopleMaxCount + 1; i++) {
         peoplesCountsArray.push(i);
@@ -27,18 +26,16 @@ const SelectBox = memo(({ peopleMaxCount, handleSelect, handlerChange,
     const onChange = (dateString) => {
         handlerChange({ ...defaultSelectBoxValues, 'firstDate': dateString.toString() });
         setOrderData(dispatch, 'firstDate', dateString.toString());
-
     };
     const disabledDays = (current) => {
-        if(dateType == 'everyday') {
-            return current && current < moment().endOf('day');  
+        if (dateType == 'everyday') {
+            return current && current < moment().endOf('day');
+        } else if (dateType == 'date') {
+            const currentNextDay = moment(current).format(dateFormat);
+            const momentAviableDates = typeof aviableDays === 'object' && aviableDays.map(d => moment(d).format(dateFormat));
+            return current && current < moment().endOf('day') || !momentAviableDates.includes(currentNextDay);
         }
-        // if(typeof aviableDays ==='object') {
-        //     const currentNextDay = moment(current).format(dateFormat);
-        //     const momentAviableDates = typeof aviableDays ==='object' && aviableDays.map(d => moment(d).format(dateFormat));
-        //     return current && current < moment().endOf('day') || !momentAviableDates.includes(currentNextDay);
-        // }
-      }
+    }
 
     return (
         <div className='selectBox-container'>
@@ -72,7 +69,7 @@ const SelectBox = memo(({ peopleMaxCount, handleSelect, handlerChange,
                     <DatePicker
                         onChange={onChange}
                         format={dateFormat}
-                        disabledDate = {disabledDays}
+                        disabledDate={disabledDays}
                     />
                 </div>
                 {/* <div className='selectBox-content-elem' >
