@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const imageminMozjpeg = require('imagemin-mozjpeg');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const cssnano = require('cssnano');
 const path = require('path');
 const modules = require('./webpack.config.modules');
@@ -30,16 +30,16 @@ const config = {
     },
     optimization: {
         minimize: env === 'production',
-        noEmitOnErrors: env !== 'production',
+        emitOnErrors: env === 'production',
         splitChunks: {
             chunks: 'all',
             minChunks: 1,
             maxAsyncRequests: 5,
             maxInitialRequests: 3,
             automaticNameDelimiter: '~',
-            name: true,
+            name: false,
             cacheGroups: {
-                vendors: {
+                defaultVendors: {
                     test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
                     priority: 0,
                     chunks: 'all',
@@ -55,7 +55,7 @@ const config = {
     },
     module: modules,
     resolve: {
-        extensions: ['.json5', '.js', '.jsx'],
+        extensions: ['.json5', '.js', '.jsx', ".json", ".ts",],
     },
     plugins: [
         new webpack.DefinePlugin({
@@ -69,21 +69,34 @@ const config = {
         new MiniCssExtractPlugin({
             filename: "[name]-[hash].css",
         }),
-        new OptimizeCssAssetsPlugin({
-            assetNameRegExp: /\.css$/g,
-            cssProcessor: cssnano,
-            cssProcessorPluginOptions: {
-                preset: ['default', { discardComments: { removeAll: true } }],
-            },
-            canPrint: true
+        new CssMinimizerPlugin({
+            test: /\.css$/g,
+            // cache: true,
+            minimizerOptions: {
+                preset: [
+                  'default',
+                  {
+                    discardComments: { removeAll: true },
+                  },
+                ],
+            }
         }),
-        new CopyWebpackPlugin([
+        // new OptimizeCssAssetsPlugin({
+        //     assetNameRegExp: /\.css$/g,
+        //     // cssProcessor: cssnano,
+        //     cssProcessorPluginOptions: {
+        //         preset: ['default', { discardComments: { removeAll: true } }],
+        //     }
+        // }),
+        new CopyWebpackPlugin(
             {
-                from: 'assets/**/*',
-                to: outputPath,
-                ignore: ['assets/styles/**/*']
+                patterns: [{
+                    from: 'assets/**/*',
+                    to: outputPath,
+                    // ignore: ['assets/styles/**/*']
+                }]
             },
-        ] , { debug: 'warning', copyUnmodified: env === 'production' }),
+            { debug: 'warning', copyUnmodified: env === 'production' }),
         new ImageminPlugin({
             disable: env !== 'production',
             test: /\.(jpe?g|png|gif|svg)$/i,

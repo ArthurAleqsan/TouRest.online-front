@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link, useHistory, withRouter } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -19,6 +19,7 @@ import IconComponent from "../simpleUIComponents/IconComponent";
 
 const Header = () => {
     const { t, i18n } = useTranslation();
+    const history = useHistory();
 
     const dispatch = useDispatch();
     const { lng, location, cities } = useSelector((s) => s.globals);
@@ -26,6 +27,7 @@ const Header = () => {
     const [activetab, setActive] = useState(lng);
     const [visibleModal, setVisibleModal] = useState(false);
     const [width, setWidth] = useState(window.innerWidth);
+
     useEffect(() => {
         const handleResize = () => setWidth(window.innerWidth);
         window.addEventListener("resize", handleResize);

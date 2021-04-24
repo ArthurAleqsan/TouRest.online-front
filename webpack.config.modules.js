@@ -1,3 +1,4 @@
+
 const path = require('path');
 const srcPath = path.join(__dirname, 'src');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -6,18 +7,19 @@ const autoprefixer = require('autoprefixer');
 const skin = process.env.skin || 'default';
 
 module.exports = {
-    rules: [{
+    rules: [
+        {
             enforce: 'pre',
             test: /\.(jsx|js)?/,
             include: [path.resolve(__dirname, 'skin', skin, 'src'), srcPath],
             loader: 'babel-loader',
+            // issuer: /\.css$/,
         },
         {
             test: /\.css$/,
-            loaders: ['style-loader', 'css-loader'],
+            rules: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
         },
         {
-
             test: /\.(png|jpg|gif|svg|woff|woff2|eot|ttf|otf|webm)$/,
             use: [{
                 loader: 'file-loader',
@@ -29,9 +31,9 @@ module.exports = {
         },
         {
             test: /\.scss$/,
-            loaders: [
-                MiniCssExtractPlugin.loader,
-                'css-loader',
+            rules: [
+                {loader: MiniCssExtractPlugin.loader,},
+                {loader: 'css-loader'},
                 {
                     loader: 'postcss-loader',
                     options: {
