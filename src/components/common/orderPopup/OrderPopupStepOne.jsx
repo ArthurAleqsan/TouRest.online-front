@@ -63,7 +63,7 @@ export const OrderPopupStepOne = memo(({ userData, setOrderData, handlePaginatio
     )
 });
 OrderPopupStepOne.propTypes = {
-    // userData: PropTypes.object.isRequired,
+    userData: PropTypes.object,
     setOrderData: PropTypes.func.isRequired,
     handlePagination: PropTypes.func.isRequired,
     startDate: PropTypes.string.isRequired,

@@ -15,7 +15,7 @@ const OrderPopup = ({ visible, setVisible, grandtotal }) => {
     const userData = useSelector(s => s.orders);
     const [visibleModal, setVisibleModal] = useState(false);
     const [isSuccess, setBool] = useState(false);
-    const carousel = useRef(null);
+    const ref = useRef(null);
     const [step, setStep] = useState(0);
     const handleChange = () => {
         step === 0 ? setStep(1) : setStep(0);
@@ -55,10 +55,10 @@ const OrderPopup = ({ visible, setVisible, grandtotal }) => {
             })) return message.error(t('Please fill all required fileds'));
             if (userData.email !== userData.confirm) return message.error(t('Please confirm Your email'));
             if (!isEmail(userData.email)) return message.error(t('Please fill valid email'));
-            
-            carousel.current.next();
+
+            ref.current.next();
         } else {
-            carousel.current.prev();
+            ref.current.prev();
         }
     };
     const buy = () => {
@@ -90,27 +90,27 @@ const OrderPopup = ({ visible, setVisible, grandtotal }) => {
                 <Carousel
                     afterChange={handleChange}
                     className='carousel-container'
-                    ref={carousel}
+                    ref={ref}
                     dots={false}
                 >
-                    <OrderPopupStepOne
+                    {step == 0 ? <OrderPopupStepOne
                         userData={userData}
                         city={cartToursArray[0].city}
                         setOrderData={setOrderData}
                         handlePagination={handlePagination}
                         startDate={sortedStartDates[0]}
                         lastDate={sortedLastDates[sortedLastDates.length - 1]}
-                    />
-                    <div>efsdgsdf</div>
-                    {/* <OrderPopupStepTwo
-                        userData={userData}
-                        grandtotal={grandtotal}
-                        setOrderData={setOrderData}
-                        handlePagination={handlePagination}
-                        buy={buy}
-                    /> */}
+                    /> : <OrderPopupStepTwo
+                            userData={userData}
+                            grandtotal={grandtotal}
+                            setOrderData={setOrderData}
+                            handlePagination={handlePagination}
+                            buy={buy}
+                        />}
+
+
                 </Carousel>
-             {/* <div className='comming-soon-container'>
+                {/* <div className='comming-soon-container'>
                  <div className='comming-soon-image'>
                  <img src='/assets/images/icons/coming-soon.svg'/>
                  </div>

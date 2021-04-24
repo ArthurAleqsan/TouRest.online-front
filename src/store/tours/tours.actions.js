@@ -72,6 +72,7 @@ export const removeFromCart = (dispatch, getState, id) => {
         cartToursArray: newCartToursArray,
     });
     const localStorageToursArr = JSON.parse(localStorage.getItem('cartToursArray'));
+
     for (let i = 0; i < localStorageToursArr.length; i++) {
         localStorageToursArr.splice(i, 1);
         localStorage.removeItem('cartToursArray');
