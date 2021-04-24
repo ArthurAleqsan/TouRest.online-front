@@ -55,7 +55,6 @@ const TourBookingComponent = ({ singleTour }) => {
     const handleClick = () => {
         setVisibleModal(false);
     };
-    console.log(singleTour);
     const getStartAtContent = () => {
         let content = '';
         switch (singleTour.dateType) {
