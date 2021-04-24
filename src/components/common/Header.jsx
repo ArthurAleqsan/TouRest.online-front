@@ -140,7 +140,7 @@ const Header = () => {
                     >
                         <div
                             className={`lng-container  ${
-                                lng === "Eng" ? "lng-eng" : "lng-arm"
+                                lng.toLowerCase() === "eng" ? "lng-eng" : "lng-arm"
                             }`}
                             style={{ display: width > 1280 ? "flex" : "none" }}
                         >
@@ -148,7 +148,7 @@ const Header = () => {
                                 <p
                                     onClick={() => handleSelectLng("Eng")}
                                     className={
-                                        activetab === "Eng" ? "active" : ""
+                                        activetab.toLowerCase() === "eng" ? "active" : ""
                                     }
                                 >
                                     {t("Eng")}
@@ -160,7 +160,7 @@ const Header = () => {
                                 <p
                                     onClick={() => handleSelectLng("Rus")}
                                     className={
-                                        activetab === "Rus" ? "active" : ""
+                                        activetab.toLowerCase() === "rus" ? "active" : ""
                                     }
                                 >
                                     {t("Rus")}
