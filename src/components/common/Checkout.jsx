@@ -13,7 +13,6 @@ export const Checkout = memo(({ subtotal, discount, grandtotal }) => {
     const { country } = useSelector((s) => s.globals);
     const isFromArmenia = country == "Armenia";
 
-    console.log(subtotal, grandtotal);
     return (
         <div className="checkout-container">
             <div className="content-container">

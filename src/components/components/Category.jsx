@@ -5,7 +5,6 @@ import { getLngKey, makePath } from '../../util/helpers';
 
 // eslint-disable-next-line react/display-name
 export const Category = memo(({ category, location, lng }) => {
-    console.log(category);
     const { url, id } = category;
 
     return (

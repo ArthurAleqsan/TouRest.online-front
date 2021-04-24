@@ -22,12 +22,10 @@ const SelectBox = memo(({ peopleMaxCount, handleSelect, handlerChange,
     }
     const handleChange = (value, name) => {
         handlerChange({ ...defaultSelectBoxValues, [name]: value });
-        console.log(name, value);
         setOrderData(dispatch, name, value);
     };
     const onChange = (dateString) => {
         handlerChange({ ...defaultSelectBoxValues, 'firstDate': dateString.toString() });
-        console.log(dateString);
         setOrderData(dispatch, 'firstDate', dateString.toString());
 
     };

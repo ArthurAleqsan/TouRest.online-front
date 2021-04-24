@@ -28,7 +28,6 @@ const TourBookingComponent = ({ singleTour }) => {
     // const aviableDays = 
     const days = new Array(moment().daysInMonth()).fill(null).map((x, i) => moment().startOf('month').add(i, 'days'));
     const d = days.map(d => moment().subtract(days.length,'d'))
-    console.log(d);
     const { startTime, languages } = singleTour;
 
     const duration = Math.round(singleTour.duration / 60 / 60 / 1000);
@@ -69,8 +68,6 @@ const TourBookingComponent = ({ singleTour }) => {
         }
         return content;
     }
-
-    console.log(singleTour);
 
     return (
         <div className='collapse-container'>

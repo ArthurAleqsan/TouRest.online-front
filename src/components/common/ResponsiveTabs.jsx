@@ -9,7 +9,6 @@ const ResponsiveTabs = ({ location, lng }) => {
     const [activeHeader,setActiveHeader] = useState('Most Popular');
     const { t } = useTranslation();
     const { SubMenu } = Menu;
-    console.log(activeHeader);
     return (
         <div className="responsive-tab">
             <Menu

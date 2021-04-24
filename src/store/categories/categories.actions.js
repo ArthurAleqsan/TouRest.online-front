@@ -8,7 +8,6 @@ export const getCategories = (dispatch, c) => {
         .then(res => {
             const { status, json: categories } = res;
             if (CategoryService.isOkStatus(status)) {
-                console.log(categories)
                 const filteredCategories = categories.filter(category => category.city == city);
                 dispatch({
                     type: types.GET_CATEGORIES,

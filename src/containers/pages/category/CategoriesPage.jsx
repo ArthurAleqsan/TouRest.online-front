@@ -11,7 +11,6 @@ const CategoriesPage = () => {
     const dispatch = useDispatch();
     const { location, lng } = useSelector(s => s.globals);
     const { categories } = useSelector(s => s.categories);
-    console.log(categories);
     useEffect(() => {
         if (location && categories.length === 0) {
             getCategories(dispatch, location);

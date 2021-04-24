@@ -45,7 +45,6 @@ export const getBlogPosts = (dispatch) => {
     BlogService.getBlogs()
         .then(res => {
             const { status, json: blogPosts } = res;
-            console.log(blogPosts)
             if (BlogService.isOkStatus(status)) {
                 dispatch({
                     type: types.SET_BLOG_POSTS,
@@ -62,7 +61,6 @@ export const getSingleBlogPost = (dispatch, id) => {
     BlogService.getSingleBlog(id)
         .then(res => {
             const { status, json: singleBlogPost } = res;
-            console.log(res)
             if (BlogService.isOkStatus(status)) {
                 dispatch(setSliderImages(singleBlogPost.urls));
                 dispatch({

@@ -12,7 +12,7 @@ import SuccessFailContainer from './SuccessFailContainer';
 const OrderPopup = ({ visible, setVisible, grandtotal }) => {
     const { t } = useTranslation();
     const { cartToursArray } = useSelector(s => s.tours);
-    const { userData } = useSelector(s => s.orders);
+    const userData = useSelector(s => s.orders);
     const [visibleModal, setVisibleModal] = useState(false);
     const [isSuccess, setBool] = useState(false);
     const carousel = useRef(null);
@@ -71,7 +71,6 @@ const OrderPopup = ({ visible, setVisible, grandtotal }) => {
             checkout(userData);
             setBool(true);
         } else {
-            console.log(userData);
             setBool(false);
         }
 
@@ -88,7 +87,7 @@ const OrderPopup = ({ visible, setVisible, grandtotal }) => {
                 centered={true}
                 maskStyle={{ background: 'rgba(0, 0, 0, 0.95)' }}
             >
-                {/* <Carousel
+                <Carousel
                     afterChange={handleChange}
                     className='carousel-container'
                     ref={carousel}
@@ -102,32 +101,33 @@ const OrderPopup = ({ visible, setVisible, grandtotal }) => {
                         startDate={sortedStartDates[0]}
                         lastDate={sortedLastDates[sortedLastDates.length - 1]}
                     />
-                    <OrderPopupStepTwo
+                    <div>efsdgsdf</div>
+                    {/* <OrderPopupStepTwo
                         userData={userData}
                         grandtotal={grandtotal}
                         setOrderData={setOrderData}
                         handlePagination={handlePagination}
                         buy={buy}
-                    />
-                </Carousel> */}
-             <div className='comming-soon-container'>
+                    /> */}
+                </Carousel>
+             {/* <div className='comming-soon-container'>
                  <div className='comming-soon-image'>
                  <img src='/assets/images/icons/coming-soon.svg'/>
                  </div>
                  <div className='comming-soon-text'>
                      {t('In development ...')}
                  </div>
-             </div>
+             </div> */}
             </Modal>
 
-            {/* <SuccessFailContainer
+            <SuccessFailContainer
                 visibleModal={visibleModal}
                 setVisibleModal={setVisibleModal}
                 handleClick={() => handleClick()}
                 isFromCartPage={false}
                 isSuccess={isSuccess}
                 text={isSuccess ? 'Ordered is done' : 'Something is wrong'}
-            /> */}
+            />
         </div>
     )
 }

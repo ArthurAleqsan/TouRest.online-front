@@ -12,7 +12,6 @@ import TourBookingPage from '../../../containers/pages/TourBookingPage';
 
 const WithSlider = () => {
     const isTaxiPage = window.location.pathname.includes('taxi');
-    console.log('WithSlider');
     return (
         <div>
             <Slider />

@@ -21,7 +21,6 @@ const ToursPage = ({ headerName, fromToursToday }) => {
     useEffect(() => {
         switch (headerName) {
             case 'Most Popular':
-                console.log(headerName);
                 getTours(dispatch, city)
                 break;
             case 'Tours Today':

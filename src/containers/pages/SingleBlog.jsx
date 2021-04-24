@@ -12,15 +12,13 @@ const SingleBlog = () => {
     const location = useLocation();
     const dispatch = useDispatch();
     const id = getIdFromPath(location.pathname, '/blog/').split('&')[0];
-    console.log(id);
     const { singleBlogPost, lng } = useSelector(s => s.globals);
-    console.log(singleBlogPost && singleBlogPost.city);
+
     useEffect(() => {
         if(!singleBlogPost) {
             getSingleBlogPost(dispatch, id);
         }
     }, []);
-    console.log(singleBlogPost && singleBlogPost.images);
     return (
         <div className='single-blog-page'>
             {singleBlogPost ? <div className='single-blog-body'>
