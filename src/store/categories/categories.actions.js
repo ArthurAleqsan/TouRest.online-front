@@ -2,8 +2,19 @@ import CategoryService from '../../services/CategoryService';
 import { replaceCitisChars } from '../../util/helpers';
 import * as types from './../types';
 
+const _getCity = (city) => {
+    switch(city) {
+        case 'Sharm El Sheikh':
+            return 'Sharm El Sheikh';
+        case 'Aswan':
+            return 'Aswan';
+        default:
+            return 'Hurgada';
+    }
+}
+
 export const getCategories = (dispatch, c) => {
-    const city = (c == 'hurgada' || c == 'Hurgada') ? 'Hurgada' : 'Sharm El Sheikh' ;
+    const city = _getCity(c);
     CategoryService.getCategories()
         .then(res => {
             const { status, json: categories } = res;

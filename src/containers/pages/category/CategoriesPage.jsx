@@ -17,6 +17,8 @@ const CategoriesPage = () => {
         }
     }, [])
 
+    console.log(categories);
+
     return (
         <div className='tours-page-container categories-container'>
             <div className='tours-page-container-header'>
