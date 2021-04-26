@@ -22,8 +22,8 @@ const config = {
     output: {
         path: outputPath,
         publicPath: publicPath,
-        filename: '[name]-[hash]-bundle.js',
-        chunkFilename: "[name]-[hash]-bundel.js"
+        filename: '[name]-[contenthash]-bundle.js',
+        chunkFilename: "[name]-[contenthash]-bundel.js"
     },
     watchOptions: {
         ignored: /node_modules/,
@@ -67,7 +67,7 @@ const config = {
             title: 'test'
         }),
         new MiniCssExtractPlugin({
-            filename: "[name]-[hash].css",
+            filename: "[name]-[contenthash].css",
         }),
         new CssMinimizerPlugin({
             test: /\.css$/g,
