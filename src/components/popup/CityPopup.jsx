@@ -40,16 +40,18 @@ export const CityPopup = memo(
                         onCancel={() => setVisible(false)}
                         centered={true}
                         className={"city-modal"}
-                        maskStyle={{ background: "rgba(0, 0, 0, 0.75)" }}
+                        maskStyle={{ background: "rgba(0, 0, 0, 0.85)" }}
                         maskClosable={false}
                     >
                         <div className="modal-header-container">
-                            <p className="modal-header">
+                            {/* <p className="modal-header">
                                 {t("Welcome to TouRest.online")}
-                            </p>
+                            </p> */}
+                            <img src='/assets/images/icons/location.svg' />
                             <p className="modal-header-text">
-                                {t("Please choose the location")}
+                                {t("Please choose location.")}
                             </p>
+
                         </div>
                         <div className="modal-btn-container">
                             {cities.map((city) => (

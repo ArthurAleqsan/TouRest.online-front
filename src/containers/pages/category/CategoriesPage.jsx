@@ -16,9 +16,7 @@ const CategoriesPage = () => {
             getCategories(dispatch, location);
         }
     }, [])
-
-    console.log(categories);
-
+console.log(categories);
     return (
         <div className='tours-page-container categories-container'>
             <div className='tours-page-container-header'>
@@ -26,13 +24,14 @@ const CategoriesPage = () => {
             </div>
             <div className='tours-page-container-content'>
                 {categories && categories.length > 0 ? categories.map((category, i) => (
+
                     <div className='categories-content' key={category.id}>
-                        <Category
+                      {category.en_name !== 'VIP tours' && <Category
                             category={category}
                             index={i}
                             location={location}
                             lng={lng}
-                        />
+                        />}
                     </div>
                 )) : <Loader />}
             </div>
