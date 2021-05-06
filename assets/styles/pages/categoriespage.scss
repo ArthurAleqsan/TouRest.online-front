@@ -1,6 +1,10 @@
 .categories-container {
   .categories-content {
-    width: 33%;
+    // width: 33%;
+    .category-container{
+        width: 560px;
+        height: 560px;
+    }
   }
 }
 

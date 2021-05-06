@@ -119,7 +119,6 @@ const OrderPopup = ({ visible, setVisible, grandtotal }) => {
                  </div>
              </div> */}
             </Modal>
-
             <SuccessFailContainer
                 visibleModal={visibleModal}
                 setVisibleModal={setVisibleModal}
