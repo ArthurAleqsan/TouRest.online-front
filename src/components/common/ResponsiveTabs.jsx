@@ -6,6 +6,7 @@ import { Menu } from "antd";
 import IconComponent from "../simpleUIComponents/IconComponent";
 
 const ResponsiveTabs = ({ location, lng }) => {
+    console.log(location);
     const [activeHeader,setActiveHeader] = useState('Most Popular');
     const { t } = useTranslation();
     const { SubMenu } = Menu;

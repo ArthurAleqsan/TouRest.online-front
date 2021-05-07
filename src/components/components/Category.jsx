@@ -8,7 +8,7 @@ export const Category = memo(({ category, location, lng }) => {
     const { url, id } = category;
 
     return (
-        <Link to={`/${location}/${lng}/categories/${id}`} style={{ width: 'fit-content' }}>
+        <Link to={`/${makePath(location)}/${lng}/categories/${id}`} style={{ width: 'fit-content' }}>
             <div className='category-container link'>
                 <img src={url} className='category-image' />
                 <div className='category-name-container link'>{category[`${getLngKey(lng)}_name`]}</div>

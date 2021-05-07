@@ -22,6 +22,9 @@ export const getTours = (dispatch, c) => {
             }
         })
 }
+export const getVipTours = (dispatch, c) => {
+    
+}
 export const getTourById = (dispatch, id) => {
     ToursService.getTourById(id)
         .then(res => {

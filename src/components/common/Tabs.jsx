@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { resetImagesArr } from "../../store/global/global.actions";
 import IconComponent from "../simpleUIComponents/IconComponent";
 import ResponsiveTabs from "./ResponsiveTabs";
+import { makePath } from "../../util/helpers";
 
 const Tabs = () => {
     const { t } = useTranslation();
@@ -90,12 +91,11 @@ const Tabs = () => {
                     </div>
                 </Link>
                 <Link
-                    to={`/${location}/${lng}/tours-today`}
+                    to={`/${makePath(location)}/${lng}/tours-today`}
                     className={`${activeTab === "toursToday" ? " active" : ""}`}
                 >
                     <div
                         className="tab"
-                       
                     >
                         <div
                             className="tab-icon"
@@ -107,7 +107,7 @@ const Tabs = () => {
                     </div>
                 </Link>
                 <Link
-                    to={`/${location}/${lng}/categories`}
+                    to={`/${makePath(location)}/${lng}/categories`}
                     className={`${activeTab === "category" ? " active" : ""}`}
                 >
                     <div
@@ -131,7 +131,7 @@ const Tabs = () => {
                         </span>
                     </div>
                 </Link>
-                <Link to={`/${location}/${lng}/vip-tours`}>
+                <Link to={`/${makePath(location)}/${lng}/vip-tours`}>
                     <div
                         className="tab vip-tours"
                         onClick={() =>
@@ -152,7 +152,7 @@ const Tabs = () => {
                 </a>
             </div> */}
             </div>
-            {width <= 800 && <ResponsiveTabs location={location} lng={lng} />}
+            {width <= 800 && <ResponsiveTabs location={makePath(location)} lng={lng} />}
         </div>
     );
 };

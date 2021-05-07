@@ -17,7 +17,7 @@ import CartPage from '../pages/CartPage';
 import { Loader } from '../../components/simpleUIComponents/Loader';
 import Blog from '../pages/Blog';
 import SingleBlog from '../pages/SingleBlog';
-import { getLngKey } from '../../util/helpers';
+import { getLngKey, makePath } from '../../util/helpers';
 import Footer from '../../components/common/Footer';
 import CategoryContainer from '../pages/category/CategoryContainer';
 
@@ -69,10 +69,21 @@ const MainRouter = () => {
                     <Route path={`/:location/:lng/blog`} component={() => <Blog />} />
                     <Route path={`/:location/:lng/privacy`} component={() => <Privacy />} />
                     <Route path={`/:location/:lng/about`} component={() => <Suspense fallback={<Loader />}><About /></Suspense>} />
-                    <Route path={`/:location/:lng/categories`} component={() => <Suspense fallback={<Loader />}>
-                        <WithSlider><CategoryContainer /></WithSlider></Suspense>} /><Route path={`/:location/:lng/categories/:id`} component={() => <Suspense fallback={<Loader />}><CategoryContainer /></Suspense>} />
+                    <Route path={`/:location/:lng/categories`}
+                        component={() => <Suspense fallback={<Loader />}>
+                            <WithSlider>
+                                <CategoryContainer />
+                            </WithSlider>
+                        </Suspense>} 
+                        />
+                    {/* <Route path={`/:location/:lng/vip-tours`}
+                        component={() => <Suspense fallback={<Loader />}>
+                            <WithSlider>
+                                <CategoryContainer vip/>
+                            </WithSlider>
+                        </Suspense>} /> */}
                     <Route path={`/:location/:lng`} component={() => <WithSlider />} />
-                    {location ? <Redirect to={`/${location}/${lng}`} /> : <Redirect to={`/${location}`} />}
+                    {location ? <Redirect to={`/${makePath(location)}/${lng}`} /> : <Redirect to={`/${makePath(location)}`} />}
                 </Switch>
             </section>
             <Footer />

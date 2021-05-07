@@ -9,6 +9,7 @@ import { Loader } from '../../components/simpleUIComponents/Loader';
 import { _404_Page } from './_404_Page';
 import { SimpleExcursion } from '../../components/components/SimpleExcursion';
 import { getTours, resetTours, resetSingleTour, getTourById } from '../../store/tours/tours.actions';
+import { getVipCategory } from '../../store/categories/categories.actions';
 
 const ToursPage = ({ headerName, fromToursToday }) => {
     const [loader, setDisableLoader] = useState(true);
@@ -31,10 +32,11 @@ const ToursPage = ({ headerName, fromToursToday }) => {
 
                 break;
             case 'VIP Tours':
+                // getVipCategory(dispatch, city)
                 // getTourByCategory('VIP tours', city);
-                setTimeout(() => {
-                    setDisableLoader(false);
-                }, 2000);
+                // setTimeout(() => {
+                //     setDisableLoader(false);
+                // }, 2000);
                 break;
 
         }
