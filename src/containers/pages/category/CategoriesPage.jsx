@@ -7,7 +7,6 @@ import { Category } from '../../../components/components/Category';
 
 
 const CategoriesPage = () => {
-    console.log(1111);
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const { location, lng } = useSelector(s => s.globals);

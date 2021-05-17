@@ -1,12 +1,14 @@
 import CategoryService from '../../services/CategoryService';
 import { replaceCitisChars } from '../../util/helpers';
 import * as types from './../types';
+import {makePath} from "../../util/helpers";
 
 const _getCity = (city) => {
+    city = makePath(city);
     switch(city) {
-        case 'Sharm El Sheikh':
+        case 'sharm-el-sheikh':
             return 'Sharm El Sheikh';
-        case 'Aswan':
+        case 'aswan':
             return 'Aswan';
         default:
             return 'Hurgada';
