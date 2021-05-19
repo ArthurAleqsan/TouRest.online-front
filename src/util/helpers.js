@@ -1,4 +1,8 @@
 import moment from 'moment';
+import ToursService from "../services/ToursService";
+import {setSliderImages} from "../store/global/global.actions";
+import * as types from "../store/types";
+import {message} from "antd";
 
 
 
@@ -84,4 +88,3 @@ export const setAviableDates = (type, aviableDates, weekDates) => {
     }
     return dates;
 }
-
