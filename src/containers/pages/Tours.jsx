@@ -10,6 +10,7 @@ import { Loader } from '../../components/simpleUIComponents/Loader';
 import ImageSliderPopup from '../../components/popup/ImageSliderPopup';
 import Excursion from '../../components/components/Excursion';
 import { getToursByCategory, resetTours } from '../../store/tours/tours.actions';
+import {getLngKey, makePath} from "../../util/helpers";
 
 
 const Tours = () => {
@@ -23,7 +24,7 @@ const Tours = () => {
     const [visible, setVisible] = useState(false);
     const [tourImages, setTourImages] = useState([]);
     useEffect(() => {
-        if(!tours) {
+        if(!tours || Array.isArray(tours)) {
             getToursByCategory(dispatch, location, id,);
             return () => resetTours(dispatch);
         }
@@ -45,8 +46,9 @@ const Tours = () => {
             </Menu.Item>
         </Menu>
     );
-    const handleOpenTourPage = (id) => {
-        history.push(`/${location}/${lng}/tour-booking?id=tour_${id}`);
+    const handleOpenTourPage = (id,tourName) => {
+        tourName = makePath(tourName);
+        history.push(`/${location}/${lng}/tour-booking?name=${tourName}&id=tour_${id}`);
     };
     const openImageModal = (images) => {
         setVisible(true);
@@ -69,7 +71,7 @@ const Tours = () => {
                         <Excursion
                             tour={tour}
                             fromCart={false}
-                            openTourPage={() => handleOpenTourPage(tour.id)}
+                            openTourPage={() => handleOpenTourPage(tour.id,tour[`${getLngKey(lng)}_name`])}
                             lng={lng}
                             openImageModal={openImageModal}
                         />

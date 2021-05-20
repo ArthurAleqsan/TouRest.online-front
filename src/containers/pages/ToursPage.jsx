@@ -10,6 +10,8 @@ import { _404_Page } from './_404_Page';
 import { SimpleExcursion } from '../../components/components/SimpleExcursion';
 import { getTours, resetTours, resetSingleTour, getTourById } from '../../store/tours/tours.actions';
 import { getVipCategory } from '../../store/categories/categories.actions';
+import  {getLngKey} from "../../util/helpers";
+import {makePath} from "../../util/helpers";
 
 const ToursPage = ({ headerName, fromToursToday }) => {
     const [loader, setDisableLoader] = useState(true);
@@ -45,14 +47,15 @@ const ToursPage = ({ headerName, fromToursToday }) => {
             resetSingleTour(dispatch);
         };
     }, []);
-    const handleRedirectClick = (id) => {
+    const handleRedirectClick = (id,tourName) => {
         if (singleTour && singleTour.id !== id) {
             resetSingleTour(dispatch);
             getTourById(dispatch, id);
 
         }
+        tourName = makePath(tourName);
         if (!singleTour) getTourById(dispatch, id);
-        history.push(`/${city}/${lng}/tour-booking?id=tour_${id}`);
+        history.push(`/${city}/${lng}/tour-booking?name=${tourName}&id=tour_${id}`);
     }
     return (
         <div className='tours-page-container'>
@@ -61,7 +64,7 @@ const ToursPage = ({ headerName, fromToursToday }) => {
                 {headerName === 'Tours Today'
                     ? loader ? <Loader /> : <_404_Page headerName='Now we do not have a available tours for today' fromToursToday={true} />
                     : tours && tours.length > 0 ? tours.map(tour => (
-                        <div className='tours-page-container-tour' key={tour.id} onClick={() => handleRedirectClick(tour.id)}>
+                        <div className='tours-page-container-tour' key={tour.id} onClick={() => handleRedirectClick(tour.id, tour[`${getLngKey(lng)}_name`])}>
                             <SimpleExcursion
                                 tour={tour}
                                 lng={lng}
