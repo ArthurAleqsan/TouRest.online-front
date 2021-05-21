@@ -16,6 +16,7 @@ import { CityPopup } from "./../popup/CityPopup";
 import { resetCategories } from "../../store/categories/categories.actions";
 import { setOrderData } from "../../store/order/order.actions";
 import IconComponent from "../simpleUIComponents/IconComponent";
+import HeaderModal from "../popup/HeaderModal";
 
 const Header = () => {
     const { t, i18n } = useTranslation();
@@ -184,7 +185,7 @@ const Header = () => {
                     </div>
                 </a>
             </div>
-            {/* {width <= 1280 && <HeaderModal
+            {width <= 1280 && <HeaderModal
                 visibleModal={visibleModal}
                 setVisibleModal={setVisibleModal}
                 cities={cities}
@@ -193,7 +194,8 @@ const Header = () => {
                 lng={lng}
                 setLng={setLng}
                 city={location}
-            />} */}
+            />}
+        
             <div className="user-icon-container"></div>
         </header>
     );

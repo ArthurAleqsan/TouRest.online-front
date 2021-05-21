@@ -9,7 +9,6 @@ import { setOrderData } from '../../store/order/order.actions';
 import Header from '../../components/common/Header';
 import SocialIcons from '../../components/common/SocialIcons';
 import { CityPopup } from '../../components/popup/CityPopup';
-import { WithTitle } from '../../components/common/withTitle/WithTitle';
 import WithSlider from '../../components/common/withSlider/WithSlider';
 import About from '../pages/About';
 import Privacy from '../pages/Privacy';
@@ -64,7 +63,7 @@ const MainRouter = () => {
                     className='static'
                 />
                 <Switch>
-                    <Route path={`/:location/:lng/cart`} component={() => <WithTitle title='Your selected tours'><CartPage /></WithTitle>} />
+                    <Route path={`/:location/:lng/cart`} component={() => <CartPage />} />
                     <Route path={`/:location/:lng/blog/:id`} component={() => <SingleBlog />} />
                     <Route path={`/:location/:lng/blog`} component={() => <Blog />} />
                     <Route path={`/:location/:lng/privacy`} component={() => <Privacy />} />
@@ -74,8 +73,8 @@ const MainRouter = () => {
                             <WithSlider>
                                 <CategoryContainer />
                             </WithSlider>
-                        </Suspense>} 
-                        />
+                        </Suspense>}
+                    />
                     {/* <Route path={`/:location/:lng/vip-tours`}
                         component={() => <Suspense fallback={<Loader />}>
                             <WithSlider>

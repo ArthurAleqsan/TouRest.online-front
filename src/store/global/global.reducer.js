@@ -6,7 +6,7 @@ const initialState = {
     location: sessionStorage.city ? JSON.parse(sessionStorage.city) : '',
     lng: sessionStorage.lng ? JSON.parse(sessionStorage.lng) : 'Eng',
     imagesArr: shuffle(sliderImages),
-    cities: ['Sharm El Sheikh', 'Hurghada', 'Aswan'],
+    cities: ['Sharm El Sheikh', 'Hurghada', 'Aswan','Luxor'],
     languages: ['eng', 'rus'],
     blogPosts: null,
     singleBlogPost: null,
