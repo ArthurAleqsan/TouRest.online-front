@@ -1,48 +1,51 @@
 .tours-page-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  .tours-page-container-header {
-    font-family: "MontSerratSemiBold";
-    font-size: 28px;
-    line-height: 1.21;
-    letter-spacing: 0.56px;
-    text-align: center;
-    color: #343340;
-    padding-bottom: 20px;
-  }
-  .tours-page-container-content {
-    width: 95%;
-    margin: 0 auto;
     display: flex;
-    flex-wrap: wrap;
-    .tours-page-container-tour {
-      width: 33%;
-      .hoverbox-content {
-        width: unset;
-      }
+    flex-direction: column;
+    width: 100%;
+    .tours-page-container-header {
+        font-family: "MontSerratSemiBold";
+        font-size: 28px;
+        line-height: 1.21;
+        letter-spacing: 0.56px;
+        text-align: center;
+        color: #343340;
+        padding-bottom: 20px;
     }
-  }
+    .tours-page-container-content {
+        width: 95%;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+
+        .tours-page-container-tour {
+            width: 33%;
+            .hoverbox-content {
+                width: unset;
+            }
+        }
+    }
+    .tours-page-container-content:not(:last-child) {
+        justify-content: center !important;
+    }
 }
-@media only screen and (max-width: 1280px){
+@media only screen and (max-width: 1280px) {
     .tours-page-container .tours-page-container-content .tours-page-container-tour {
         margin-bottom: 20px;
     }
-
 }
 @media only screen and (max-width: 800px) {
-  .tours-page-container {
-    .tours-page-container-header {
-      // padding-bottom: unset;
-      padding-top: 30px;
-    }
-    .tours-page-container-content {
-      .tours-page-container-tour {
-        width: 100%;
-        .simpleExcursion-container{
-          margin-bottom: 20px;
+    .tours-page-container {
+        .tours-page-container-header {
+            // padding-bottom: unset;
+            padding-top: 30px;
         }
-      }
+        .tours-page-container-content {
+            .tours-page-container-tour {
+                width: 100%;
+                .simpleExcursion-container {
+                    margin-bottom: 20px;
+                }
+            }
+        }
     }
-  }
 }

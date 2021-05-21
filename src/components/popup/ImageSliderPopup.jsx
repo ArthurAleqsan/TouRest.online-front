@@ -11,7 +11,7 @@ const ImageSliderPopup = ({ visible, toggleVisibility, imagesPathArr }) => {
             closable={false}
             className={'images-modal'}
             centered={true}
-        // maskStyle={{ background: 'rgba(0, 0, 0, 0.85)' }}
+            maskStyle={{ background: 'rgba(0, 0, 0, 0.85)' }}
         >
             <Carousel
                 // afterChange={() => handleChange()}

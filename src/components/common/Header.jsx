@@ -85,14 +85,14 @@ const Header = () => {
             <div className="header-rigth-container">
                 <div
                     className="header-social-icons-conatiner"
-                    style={{ display: width > 1280 ? "flex" : "none" }}
+                    style={{ display: width > 1024? "flex" : "none" }}
                 >
                     <SocialIcons className="header-social-icons" color="#000" />
                 </div>
                 <div
                     className="header-content city-container link"
                     onClick={() => setVisible(true)}
-                    style={{ display: width > 1280 ? "flex" : "none" }}
+                    style={{ display: width > 1024 ? "flex" : "none" }}
                 >
                     <div className="header-content-tab">
                         {t(capitalizeFirstLetter(location))}
@@ -110,7 +110,7 @@ const Header = () => {
                 />
                 <div
                     className="header-content left link"
-                    style={{ display: width > 1280 ? "flex" : "none" }}
+                    style={{ display: width > 1024 ? "flex" : "none" }}
                 >
                     {/* <div className='header-content-tab' style={{ display: width > 1280 ? 'flex' : 'none' }}>
                         <Link className='link' to={`/${location}/${lng}/taxi`}>{t('Taxi')}</Link>
@@ -118,7 +118,7 @@ const Header = () => {
                     </div> */}
                     <div
                         className="header-content-tab"
-                        style={{ display: width > 1280 ? "flex" : "none" }}
+                        style={{ display: width > 1024 ? "flex" : "none" }}
                     >
                         <Link className="link" to={`/${location}/${lng}/blog`}>
                             {t("Blog")}
@@ -127,7 +127,7 @@ const Header = () => {
                     </div>
                     <div
                         className="header-content-tab"
-                        style={{ display: width > 1280 ? "flex" : "none" }}
+                        style={{ display: width > 1024 ? "flex" : "none" }}
                     >
                         <Link className="link" to={`/${location}/${lng}/cart`}>
                             {t("Cart")}
@@ -137,13 +137,13 @@ const Header = () => {
 
                     <div
                         className="header-content language-container link"
-                        style={{ display: width > 1280 ? "flex" : "none" }}
+                        style={{ display: width > 1024 ? "flex" : "none" }}
                     >
                         <div
                             className={`lng-container  ${
                                 lng.toLowerCase() === "eng" ? "lng-eng" : "lng-arm"
                             }`}
-                            style={{ display: width > 1280 ? "flex" : "none" }}
+                            style={{ display: width > 1024 ? "flex" : "none" }}
                         >
                             <div className="header-content-tab">
                                 <p
@@ -185,7 +185,7 @@ const Header = () => {
                     </div>
                 </a>
             </div>
-            {width <= 1280 && <HeaderModal
+            {width <= 1024 && <HeaderModal
                 visibleModal={visibleModal}
                 setVisibleModal={setVisibleModal}
                 cities={cities}
