@@ -8,8 +8,8 @@ import { useTranslation } from 'react-i18next';
 import { Loader } from '../../components/simpleUIComponents/Loader';
 import { _404_Page } from './_404_Page';
 import { SimpleExcursion } from '../../components/components/SimpleExcursion';
-import { getTours, resetTours, resetSingleTour, getTourById } from '../../store/tours/tours.actions';
-import { getVipCategory } from '../../store/categories/categories.actions';
+import {getTours, resetTours, resetSingleTour, getTourById} from '../../store/tours/tours.actions';
+import {getVipTours} from "../../store/tours/tours.actions";
 import  {getLngKey} from "../../util/helpers";
 import {makePath} from "../../util/helpers";
 
@@ -34,11 +34,10 @@ const ToursPage = ({ headerName, fromToursToday }) => {
 
                 break;
             case 'VIP Tours':
-                // getVipCategory(dispatch, city)
-                // getTourByCategory('VIP tours', city);
-                // setTimeout(() => {
-                //     setDisableLoader(false);
-                // }, 2000);
+                getVipTours(dispatch, city)
+                 setTimeout(() => {
+                    setDisableLoader(false);
+                 }, 2000);
                 break;
 
         }

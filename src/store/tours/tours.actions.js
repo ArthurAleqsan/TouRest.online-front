@@ -4,6 +4,7 @@ import { message } from 'antd';
 import { removeFromArray, replaceCitisChars } from '../../util/helpers';
 import { setSliderImages } from '../global/global.actions';
 import ToursService from '../../services/ToursService';
+import CategoryService from "../../services/CategoryService";
 
 
 
@@ -22,9 +23,21 @@ export const getTours = (dispatch, c) => {
             }
         })
 }
+
 export const getVipTours = (dispatch, c) => {
-    
+    CategoryService.getCategories()
+        .then(res => {
+            const { status, json: categories } = res;
+            if (CategoryService.isOkStatus(status)) {
+                const filteredCategories = categories.filter(category => category.city === c);
+                const tours = filteredCategories.filter(category => category.en_name === 'VIP tours');
+                const catId = tours[0].id;
+                const city = tours[0].city;
+                getToursByCategory(dispatch, city, catId);
+            }
+        });
 }
+
 export const getTourById = (dispatch, id) => {
     ToursService.getTourById(id)
         .then(res => {
