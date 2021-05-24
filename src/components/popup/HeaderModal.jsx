@@ -51,6 +51,7 @@ const HeaderModal = ({ visibleModal, setVisibleModal, cities, setCity, resetCate
                 onCancel={() => setVisibleModal(false)}
                 className={'modal-conatiner'}
                 style={{ width: window.innerWidth }}
+                title={<img src={"/assets/images/logo.png"} />}
             >
                 <div className='modal-city-container'>
                     {cities.map(city => (

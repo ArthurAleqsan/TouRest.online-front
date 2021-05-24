@@ -131,3 +131,50 @@
         }
     }
 }
+@media only screen and (max-width: 415px) {
+    .contact-us {
+        .ant-modal-body {
+            height: 65vh;
+        }
+        .contact-us-body {
+            .form-input-container {
+                width: 100%;
+                .contact-header{
+                    font-size: 30px;
+                    margin-bottom: 20px;
+                }
+                .form {
+                    width: 90%;
+                    flex-direction: column;
+                    .contact-input {
+                        width: 100%;
+                        margin-bottom: 15px;
+                        .form-input {
+                            width: 100%;
+                        }
+                    }
+                }
+                .form-footer {
+                    margin: 20px auto 0;
+                }
+            }
+            .contact-footer {
+                width: 95%;
+                font-size: 12px;
+                margin: 30px 0;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 375px){
+    .contact-us{
+        width: 100vw !important;
+        .contact-us-body{
+            .contact-footer{
+                width: 98%;
+                font-size: 11px;
+            }
+        }
+    }
+
+}
