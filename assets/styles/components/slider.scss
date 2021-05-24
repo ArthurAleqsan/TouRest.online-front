@@ -77,11 +77,11 @@
             opacity: 1;
         }
     }
-    .slick-active {
-        .content-container {
-            //   display: flex;
-        }
-    }
+    // .slick-active {
+    //     .content-container {
+    //         //   display: flex;
+    //     }
+    // }
 }
 
 .buttom-container {
@@ -149,11 +149,11 @@
         .ant-carousel {
             .carousel-container {
                 .image {
-                    width: 100%;
+                    // width: 100%;
                     height: 700px;
                 }
                 .slick-dots {
-                    width: 100%;
+                    // width: 100%;
                 }
             }
         }

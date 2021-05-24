@@ -1,8 +1,8 @@
 .images-modal {
     .carousel-container {
-        height: 430px;
+        // height: 430px;
         .slick-list {
-            height: 430px;
+            // height: 430px;
             // width: 580px;
             .modal-carousel-image-container {
                 height: 430px;
@@ -20,6 +20,7 @@
             background-color: #343140;
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
+            align-items: center !important;
         }
         .slick-dots li {
             margin: 0px;

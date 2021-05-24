@@ -77,66 +77,57 @@
         }
 
         .ant-carousel {
-            .slick-dots-bottom {
-                opacity: 1;
-                background-color: #343140;
-                bottom: 0px;
-                height: 15px;
-            }
-
-            .slick-list {
-                height: 300px;
-            }
-
-            .slick-slide img {
-                object-fit: cover;
-            }
-
             .slick-dots li {
-                background-color: #343140;
-                vertical-align: text-top;
                 margin: unset;
-            }
-
-            .slick-dots li button {
+                vertical-align: sub;
+                opacity: 1;
+                width: 90px;
                 height: 4px;
-                border-radius: unset;
-                opacity: 0.6;
-                width: 50px;
+                button {
+                    border-radius: unset;
+                }
             }
-
-            .slick-dots li.slick-active button {
-                opacity: 1 !important;
+            .slick-dots-top {
+                width: 60%;
+                object-fit: cover;
+                margin: 0 auto;
             }
         }
-
-        .tour-description-container {
-            margin-top: 5px;
-            width: 80%;
-            height: 150px;
-            box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.15);
-            border-radius: 20px;
-            background: #fff;
-            padding: 20px;
-            font-size: 15px;
+        .slick-dots li.slick-active button {
+            opacity: 1;
         }
+    }
 
-        .tours-button-container {
-            position: absolute;
-            display: flex;
-            justify-content: space-between;
-            width: 50%;
-            top: 40%;
+    .tour-description-container {
+        margin-top: 5px;
+        width: 80%;
+        height: 150px;
+        box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.15);
+        border-radius: 20px;
+        background: #fff;
+        padding: 20px;
+        font-size: 15px;
+    }
 
-            .tours-button-container-next {
-                transform: rotate(180deg);
-            }
+    .tours-button-container {
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        width: 50%;
+        top: 40%;
+
+        .tours-button-container-next {
+            transform: rotate(180deg);
         }
     }
 }
 
 .tours-container-slider-image {
     height: 300px;
+    img {
+        border-radius: 10px !important;
+        object-fit: cover;
+    }
 }
 
 .ant-dropdown-menu-item {
