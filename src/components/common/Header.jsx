@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory, withRouter } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -8,14 +8,13 @@ import {
     setLng,
     resetImagesArr,
     setLocation,
-    getCountryCode,
+    
 } from "../../store/global/global.actions";
 
 import SocialIcons from "./SocialIcons";
 import { CityPopup } from "./../popup/CityPopup";
 import { resetCategories } from "../../store/categories/categories.actions";
 import { setOrderData } from "../../store/order/order.actions";
-import IconComponent from "../simpleUIComponents/IconComponent";
 import HeaderModal from "../popup/HeaderModal";
 
 const Header = () => {
@@ -25,6 +24,7 @@ const Header = () => {
     const dispatch = useDispatch();
     let { lng, location, cities } = useSelector((s) => s.globals);
     location = makePath(location).toLowerCase();
+ 
     lng = lng.toLowerCase();
     const [activetab, setActive] = useState(lng);
     const [visibleModal, setVisibleModal] = useState(false);
@@ -61,10 +61,10 @@ const Header = () => {
         setActive(lng);
     };
     const toogleList = () => {
-        if (width <= 1280) {
+        if (width <= 800) {
             setVisibleModal(true);
         }
-        if (width > 1280) {
+        if (width > 800) {
             setVisibleModal(false);
         }
     };
@@ -85,14 +85,14 @@ const Header = () => {
             <div className="header-rigth-container">
                 <div
                     className="header-social-icons-conatiner"
-                    style={{ display: width > 1024? "flex" : "none" }}
+                    style={{ display: width > 800? "flex" : "none" }}
                 >
                     <SocialIcons className="header-social-icons" color="#000" />
                 </div>
                 <div
                     className="header-content city-container link"
                     onClick={() => setVisible(true)}
-                    style={{ display: width > 1024 ? "flex" : "none" }}
+                    style={{ display: width > 800 ? "flex" : "none" }}
                 >
                     <div className="header-content-tab">
                         {t(capitalizeFirstLetter(location))}
@@ -110,7 +110,7 @@ const Header = () => {
                 />
                 <div
                     className="header-content left link"
-                    style={{ display: width > 1024 ? "flex" : "none" }}
+                    style={{ display: width > 800 ? "flex" : "none" }}
                 >
                     {/* <div className='header-content-tab' style={{ display: width > 1280 ? 'flex' : 'none' }}>
                         <Link className='link' to={`/${location}/${lng}/taxi`}>{t('Taxi')}</Link>
@@ -118,7 +118,7 @@ const Header = () => {
                     </div> */}
                     <div
                         className="header-content-tab"
-                        style={{ display: width > 1024 ? "flex" : "none" }}
+                        style={{ display: width > 800 ? "flex" : "none" }}
                     >
                         <Link className="link" to={`/${location}/${lng}/blog`}>
                             {t("Blog")}
@@ -127,7 +127,7 @@ const Header = () => {
                     </div>
                     <div
                         className="header-content-tab"
-                        style={{ display: width > 1024 ? "flex" : "none" }}
+                        style={{ display: width > 800 ? "flex" : "none" }}
                     >
                         <Link className="link" to={`/${location}/${lng}/cart`}>
                             {t("Cart")}
@@ -137,13 +137,13 @@ const Header = () => {
 
                     <div
                         className="header-content language-container link"
-                        style={{ display: width > 1024 ? "flex" : "none" }}
+                        style={{ display: width > 800 ? "flex" : "none" }}
                     >
                         <div
                             className={`lng-container  ${
                                 lng.toLowerCase() === "eng" ? "lng-eng" : "lng-arm"
                             }`}
-                            style={{ display: width > 1024 ? "flex" : "none" }}
+                            style={{ display: width > 800 ? "flex" : "none" }}
                         >
                             <div className="header-content-tab">
                                 <p
@@ -185,7 +185,7 @@ const Header = () => {
                     </div>
                 </a>
             </div>
-            {width <= 1024 && <HeaderModal
+            {width <= 800 && <HeaderModal
                 visibleModal={visibleModal}
                 setVisibleModal={setVisibleModal}
                 cities={cities}
@@ -194,6 +194,7 @@ const Header = () => {
                 lng={lng}
                 setLng={setLng}
                 city={location}
+                setOrderData={setOrderData}
             />}
         
             <div className="user-icon-container"></div>

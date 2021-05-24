@@ -3,20 +3,26 @@ import { Modal } from 'antd';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 
-import { makePath, capitalizeFirstLetter }  from './../../util/helpers';
+import { makePath, capitalizeFirstLetter } from './../../util/helpers';
 import { useTranslation } from 'react-i18next';
 import Footer from '.././common/Footer';
+import { useDispatch } from 'react-redux';
 
 
-const HeaderModal = ({ visibleModal, setVisibleModal, cities, setCity, resetCategories, history, lng, setLng, city }) => {
+const HeaderModal = ({ visibleModal, setVisibleModal, cities, setCity, resetCategories, history, lng, setLng, city, setOrderData }) => {
     const { t } = useTranslation();
     const [activetab, setActive] = useState(lng);
+    const dispatch = useDispatch();
+
     const handleSelectCity = (city) => {
+        console.log(city);
         const location = makePath(city);
-        setCity(location);
+        console.log(location);
+        sessionStorage.setItem("city", JSON.stringify(location));
+        setCity(dispatch, location);
         setVisibleModal(!visibleModal);
-        sessionStorage.setItem('city', JSON.stringify(location));
-        resetCategories();
+        resetCategories(dispatch);
+        setOrderData(dispatch, "city", city);
         history.push(`/${location}`);
     };
     const handleSelectLng = (lng) => {
@@ -55,9 +61,6 @@ const HeaderModal = ({ visibleModal, setVisibleModal, cities, setCity, resetCate
                 </div>
                 <div className='modal-body-container'>
                     <div className='header-content-tab' >
-                        <Link className='link' to={`/${city}/${lng}/taxi`} onClick={() => setVisibleModal(false)}>{t('Taxi')}</Link>
-                    </div>
-                    <div className='header-content-tab' >
                         <Link className='link' to={`/${city}/${lng}/blog`} onClick={() => setVisibleModal(false)}>{t('Blog')}</Link>
                         <div className='header-content-border-bottom'></div>
                     </div>
@@ -82,16 +85,11 @@ const HeaderModal = ({ visibleModal, setVisibleModal, cities, setCity, resetCate
                     </div>
 
                 </div>
-                <div
-                    className='header-modal-social-icons-conatiner'
-                >
-                    <Footer
-                        newClass='header-modal-footer'
-                        handleChnage={() => setVisibleModal(false)}
-                    />
-                </div>
+                <Footer
+                    newClass='header-modal-footer'
+                    handleClick={() => setVisibleModal(false)}
+                />
             </Modal>
-
         </div>)
 };
 
@@ -104,6 +102,7 @@ HeaderModal.propTypes = {
     history: PropTypes.object,
     lng: PropTypes.string,
     setLng: PropTypes.func,
+    city: PropTypes.string,
 };
 
 export default withRouter(HeaderModal);

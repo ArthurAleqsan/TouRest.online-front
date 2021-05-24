@@ -22,7 +22,6 @@ const WithSlider = () => {
                 <Route path='/:location/:lng/tours-today' component={() => (<WithTitle title='Todays avaiable tours'><ToursPage headerName={'Tours Today'} fromToursToday={true} /></WithTitle>)} />
                 <Route path='/:location/:lng/vip-tours' component={() => (<WithTitle title='VIP Tours'><ToursPage headerName='VIP Tours' fromToursToday={false} /></WithTitle>)} />
                 <Route path='/:location/:lng/tour-booking' component={() => (<WithTitle title='Book Tour'><TourBookingPage /></WithTitle>)} />
-                <Route path='/:location/:lng/taxi' component={() => (<WithTitle title={'Online taxi'}><Taxi /></WithTitle>)} />
                 <Route path='/:location/:lng' component={() => (<WithTitle><ToursPage headerName='Most Popular' fromToursToday={false} /></WithTitle>)} />
             </Switch>
         </div>

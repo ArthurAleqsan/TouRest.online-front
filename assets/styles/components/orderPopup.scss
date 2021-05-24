@@ -1,4 +1,7 @@
 .orderPoup-modal {
+    .ant-modal-body{
+        width: 100%;
+    }
     .input-container {
         margin: 5px 0;
         .ant-calendar-picker {
@@ -109,6 +112,9 @@
         button {
             align-items: center;
         }
+    }
+    .slick-slide{
+        width: 470px;
     }
 }
 

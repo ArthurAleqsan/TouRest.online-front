@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Modal, Carousel, message } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { isEmail, isValidCardHolderName, isValidCardNo, isValidCVV2, isValidObject } from '../../util/helpers';
-import { checkout, setOrderData } from '../../store/order/order.actions';
+import { checkout, resetOrderData, setOrderData } from '../../store/order/order.actions';
 import { OrderPopupStepOne } from '../common/orderPopup/OrderPopupStepOne';
 import { OrderPopupStepTwo } from '../common/orderPopup/OrderPopupStepTwo';
 import SuccessFailContainer from './SuccessFailContainer';
@@ -33,6 +33,7 @@ const OrderPopup = ({ visible, setVisible, grandtotal }) => {
         const l = new Date(b);
         return f - l;
     });
+    const dispatch = useDispatch();
     const sortedLastDates = endingDates.sort((a, b) => {
         const f = new Date(a);
         const l = new Date(b);
@@ -40,6 +41,7 @@ const OrderPopup = ({ visible, setVisible, grandtotal }) => {
     });
     const handleClick = () => {
         setVisibleModal(false);
+        isSuccess && setVisible(false)
     };
     const handlePagination = () => {
 
@@ -68,7 +70,7 @@ const OrderPopup = ({ visible, setVisible, grandtotal }) => {
         if (!isValidCardNo(cardNumber)) return message.error(t('Card numbers must be a digits'));
         if (!isValidCVV2(userData.cvv2)) return message.error(t('CVV must be a 3 digits'));
         if (isValidObject({ ...userData, childCount: '' + userData.childCount, })) {
-            checkout(userData);
+
             setBool(true);
         } else {
             setBool(false);
@@ -99,14 +101,14 @@ const OrderPopup = ({ visible, setVisible, grandtotal }) => {
                         setOrderData={setOrderData}
                         handlePagination={handlePagination}
                         startDate={sortedStartDates[0]}
-                        lastDate={sortedLastDates[sortedLastDates.length - 1]}
+                        lastDate={'2021-05-29'}
                     /> : <OrderPopupStepTwo
-                            userData={userData}
-                            grandtotal={grandtotal}
-                            setOrderData={setOrderData}
-                            handlePagination={handlePagination}
-                            buy={buy}
-                        />}
+                        userData={userData}
+                        grandtotal={grandtotal}
+                        setOrderData={setOrderData}
+                        handlePagination={handlePagination}
+                        buy={buy}
+                    />}
 
 
                 </Carousel>

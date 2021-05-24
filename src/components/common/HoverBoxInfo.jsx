@@ -13,7 +13,7 @@ export const HoverBoxInfo = memo(({ categoryName, adultPrice, childPrice }) => {
                 <span className='hoverBoxInfo-content-span categoryname'> {t(categoryName)}</span>
             </div>
             <div className='hoverBoxInfo-content'>
-                <span className='hoverBoxInfo-content-span'>{childPrice ? t('For Adults/Childs Starting from') : t('For Adults Starting from')}:</span>
+                <span className='hoverBoxInfo-content-span'>{childPrice ? t('Starting from') : t('Starting from')}:</span>
                 <span className='hoverBoxInfo-content-span price'> {childPrice ? `${adultPrice} / ${childPrice}` : adultPrice}</span>
             </div>
             <div className='hoverBoxInfo-content'>

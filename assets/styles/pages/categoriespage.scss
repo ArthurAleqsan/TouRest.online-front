@@ -46,13 +46,37 @@
         }
     }
 }
+@media only screen and (max-width: 1024px) {
+    .categories-container {
+        .categories-content {
+            .category-container {
+                width: 425px;
+            }
+        }
+    }
+}
 @media only screen and (max-width: 800px) {
     .categories-container {
         display: unset;
         .categories-content {
-            width: 100%;
+          
             .category-container {
+                width: 480px;
+                height: 480px;
                 margin-bottom: 20px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 415px) {
+    .categories-container {
+     
+        .categories-content {
+          
+            .category-container {
+                width: 350px;
+                height: 350px;
             }
         }
     }

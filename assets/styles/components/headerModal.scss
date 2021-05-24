@@ -39,7 +39,6 @@
         }
 
         .language-container {
-            margin-bottom: 5vh;
             border-bottom: 1px solid #e6e6e6;
             width: 80%;
             color: #fff !important;
@@ -62,6 +61,15 @@
                 margin: 0 5px;
             }
         }
+    }
+    .header-modal-footer {
+        display: flex !important;
+        flex-direction: column;
+        padding: 20px 0;
+        width: 100%;
+    }
+    .footer-container {
+        margin-top: unset !important;
     }
 }
 .ant-modal-wrap {

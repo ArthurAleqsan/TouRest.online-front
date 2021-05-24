@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import ContactUs from "./ContactUs";
 import PropTypes from "prop-types";
 
-const Footer = ({ newClass }) => {
+const Footer = ({ newClass, handleClick }) => {
     const { t } = useTranslation();
     const year = new Date().getFullYear();
     const { lng, location } = useSelector((s) => s.globals);
@@ -16,9 +16,10 @@ const Footer = ({ newClass }) => {
     };
     const toogleModal = () => {
         setVisible(true);
+        handleClick();
     };
     return (
-        <footer className={`footer-container  ${newClass}`}>
+        <footer className={`footer-container  ${newClass}`} >
             <SocialIcons
                 color="#fff"
                 className="footer-icon"
@@ -29,10 +30,10 @@ const Footer = ({ newClass }) => {
             </p>
             <p className="footer-text">{t("All Rights Reserved")}.</p>
             <div className="footer-navigation">
-                <Link to={`/${location}/${lng}/about`} className="footer-nav">
+                <Link to={`/${location}/${lng}/about`} className="footer-nav" onClick={handleClick}>
                     {t("About")}
                 </Link>
-                <Link to={`/${location}/${lng}/privacy`} className="footer-nav">
+                <Link to={`/${location}/${lng}/privacy`} className="footer-nav" onClick={handleClick}>
                     {t("Privacy policy")}
                 </Link>
                 <div className="footer-nav" onClick={() => toogleModal()}>
@@ -45,6 +46,7 @@ const Footer = ({ newClass }) => {
 };
 Footer.propTypes = {
     newClass: PropTypes.string,
+    handleClick: PropTypes.func,
 };
 
 export default Footer;

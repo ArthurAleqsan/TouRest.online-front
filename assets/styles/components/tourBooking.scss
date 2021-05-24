@@ -162,7 +162,7 @@
     width: 150px !important;
     border-radius: 20px !important;
 }
-@media only screen and (max-width: 1084px) {
+@media only screen and (max-width: 1024px) {
     .collapse-container {
         flex-direction: column;
         padding: 3%;
@@ -170,12 +170,26 @@
             width: 100%;
         }
         .left-column {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-around;
+            .left-column-info-container {
+                justify-content: center;
+                display: flex;
+                width: 370px;
+                height: 200px;
+            }
+            .left-column-selectBox{
+                width: 300px;
+
+            }
         }
     }
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 415px) {
     .collapse-container .left-column {
         width: 100%;
+        display: unset;
         .left-column-info-container {
             width: 100%;
         }
