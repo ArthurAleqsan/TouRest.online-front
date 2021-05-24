@@ -122,25 +122,13 @@
 
 @media only screen and (max-width: 1280px) {
     .cartpage-container {
+        padding: 100px 50px;
         .cartpage-content {
-            display: unset;
-
             .single-excursion-container {
-                width: 100%;
-
-                .image-column {
-                    min-width: 300px;
-                }
-
                 .excursion-name {
                     font-size: 16px;
                 }
             }
-
-            .left-column {
-                width: 100%;
-            }
-
             .right-column {
                 margin-left: unset;
             }
@@ -150,7 +138,7 @@
 
 @media only screen and (max-width: 1024px) {
     .cartpage-container {
-        padding: 100px 0px 20px 0;
+        padding: 100px 20px;
 
         .cartpage-tours-header-container {
             padding: unset;
@@ -158,27 +146,51 @@
         }
 
         .cartpage-content {
-            .left-column .left-column-content .tour-container {
-                flex-direction: column;
-
+            display: unset;
+            .left-column {
+                width: 100%;
                 .tours-container-slider {
-                    width: 90%;
-                    margin: 0 auto;
+                    width: 50%;
                 }
 
                 .single-excursion-container {
-                    width: 85%;
-                    margin: 0 auto;
+                    width: 100%;
                 }
             }
 
             .right-column {
-                justify-content: center;
+                // justify-content: center;
             }
         }
     }
 }
 
+@media only screen and (max-width: 600px) {
+    .cartpage-container {
+        .cartpage-content {
+            display: unset;
+            .left-column {
+                .left-column-content {
+                    .tour-container {
+                        display: unset;
+                        .tours-container-slider {
+                            width: 100%;
+                        }
+
+                        .single-excursion-container {
+                            .desc-column {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+            .right-column {
+                margin-left: 40px;
+            }
+        }
+    }
+}
 @media only screen and (max-width: 600px) {
     .cartpage-container {
         .cartpage-content {

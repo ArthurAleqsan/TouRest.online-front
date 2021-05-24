@@ -103,10 +103,10 @@
     .hoverbox-content {
         height: 350px;
         .hoverbox-content-details {
-            height: 67px;
-            -webkit-transform: translate(-50%, 119%);
-            -moz-transform: translate(-50%, 119%);
-            transform: translate(-50%, 119%);
+            height: 90px;
+            -webkit-transform: translate(-50%, 67%);
+            -moz-transform: translate(-50%, 67%);
+            transform: translate(-50%, 67%);
         }
     }
 }
@@ -124,9 +124,9 @@
         }
 
         .hoverbox-content-details {
-            -webkit-transform: translate(-50%, 125%);
-            -moz-transform: translate(-50%, 125%);
-            transform: translate(-50%, 125%);
+            -webkit-transform: translate(-50%, 87%);
+            -moz-transform: translate(-50%, 87%);
+            transform: translate(-50%, 87%);
         }
     }
 }

@@ -63,13 +63,20 @@
     .ant-menu-submenu-title {
         height: 60px !important;
         border-bottom: 1px solid #33b7c9;
-        margin-bottom: unset  !important;
+        margin-bottom: unset !important;
+        display: flex;
+        align-items: center;
+        .ant-menu-submenu-expand-icon {
+            width: 20px !important;
+        }
     }
     .ant-menu-item {
         padding-left: 20px !important;
         border-bottom: 1px solid #d9d9d9;
         height: 60px !important;
         margin-bottom: unset !important;
+        display: flex;
+        align-items: center;
         .tab {
             display: flex;
             .tab-icon {

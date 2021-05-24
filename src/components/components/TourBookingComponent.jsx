@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useStore, useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import moment from 'moment';
-import { Collapse, Rate, message, Modal } from 'antd';
+// import moment from 'moment';
+import { Collapse} from 'antd';
 import { addToCart } from '../../store/tours/tours.actions';
 import { resetOrderData } from '../../store/order/order.actions';
 import SuccessFailContainer from '../popup/SuccessFailContainer';
@@ -26,8 +26,8 @@ const TourBookingComponent = ({ singleTour }) => {
     const lngPrefix = lng === 'Eng' ? 'en' : 'ru';
 
     // const aviableDays = 
-    const days = new Array(moment().daysInMonth()).fill(null).map((x, i) => moment().startOf('month').add(i, 'days'));
-    const d = days.map(d => moment().subtract(days.length, 'd'))
+    // const days = new Array(moment().daysInMonth()).fill(null).map((x, i) => moment().startOf('month').add(i, 'days'));
+    // const d = days.map(d => moment().subtract(days.length, 'd'))
     const { startTime, languages } = singleTour;
 
     const duration = Math.round(singleTour.duration / 60 / 60 / 1000);

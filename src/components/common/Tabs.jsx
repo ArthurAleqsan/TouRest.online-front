@@ -30,7 +30,7 @@ const Tabs = () => {
     }
     const [activeTab, setActive] = useState(page);
     const [activeHeader, setActiveHeader] = useState("Most Popular");
-    const [activeIcon, setActiveIcon] = useState("star");
+    // const [activeIcon, setActiveIcon] = useState("star");
     const [isVisibleDisplay, toogleVisiblilityDisplay] = useState(false);
     const [width, setWidth] = useState(window.innerWidth);
     useEffect(() => {
@@ -39,19 +39,19 @@ const Tabs = () => {
         return () => {
             window.removeEventListener("resize", handleResize);
         };
-    });
-    const toogleList = () => {
-        if (width > 800) {
-            toogleVisiblilityDisplay(true);
-        }
-        toogleVisiblilityDisplay(!isVisibleDisplay);
-    };
+    },[]);
+    // const toogleList = () => {
+    //     if (width > 800) {
+    //         toogleVisiblilityDisplay(true);
+    //     }
+    //     toogleVisiblilityDisplay(!isVisibleDisplay);
+    // };
     const handleTabClick = (cb, activeTab, selectedIcon) => {
         resetImagesArr(dispatch);
         cb();
         toogleVisiblilityDisplay(!isVisibleDisplay);
-        setActiveHeader(activeTab);
-        setActiveIcon(selectedIcon);
+        // setActiveHeader(activeTab);
+        // setActiveIcon(selectedIcon);
     };
     return (
         <div className="tabs">

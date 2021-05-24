@@ -17,9 +17,9 @@
             width: 50%;
             font-size: 14px;
             color: #343340;
-      
+
             line-height: 2.2;
-            font-family:"MontserratMedium";
+            font-family: "MontserratMedium";
         }
         .carousel {
             display: flex;
@@ -40,6 +40,47 @@
         .item-title {
             font-size: 16px;
             color: #000;
+        }
+    }
+}
+@media only screen and (max-width: 1024px) {
+    .about-page .about-carousel .carousel {
+        height: unset;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .about-page {
+        .about-carousel {
+            flex-direction: column;
+            .titles-container {
+                .eye-slider-container {
+                    width: unset;
+                }
+            }
+            .ant-carousel {
+                width: 100%;
+            }
+            .carousel .carousel-text {
+                width: unset !important ;
+                margin-top: 5vh;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 415px) {
+    .about-page {
+        .about-carousel {
+            .ant-carousel {
+                width: 100%;
+                margin-top: 5vh;
+            }
+            .carousel {
+                height: unset;
+                .carousel-text{
+                    margin-top: unset;
+                }
+            }
         }
     }
 }

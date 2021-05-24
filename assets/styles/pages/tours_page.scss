@@ -29,17 +29,21 @@
     }
 }
 @media only screen and (max-width: 1280px) {
-    .tours-page-container .tours-page-container-content .tours-page-container-tour {
-        margin-bottom: 20px;
+    .tours-page-container .tours-page-container-content {
+        width: 90%;
+        .tours-page-container-tour {
+            margin-bottom: 20px;
+        }
     }
 }
+
 @media only screen and (max-width: 800px) {
     .tours-page-container {
         .tours-page-container-header {
-            // padding-bottom: unset;
             padding-top: 30px;
         }
         .tours-page-container-content {
+            justify-content: center;
             .tours-page-container-tour {
                 width: 100%;
                 .simpleExcursion-container {

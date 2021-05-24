@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
@@ -6,19 +6,24 @@ import { Menu } from "antd";
 import IconComponent from "../simpleUIComponents/IconComponent";
 
 const ResponsiveTabs = ({ location, lng }) => {
-    console.log(location);
-    const [activeHeader,setActiveHeader] = useState('Most Popular');
+
+    const [activeHeader, setActiveHeader] = useState('');
     const { t } = useTranslation();
     const { SubMenu } = Menu;
+    const handleClick = (tab) => {
+        activeHeader !== tab && setActiveHeader(tab);
+        console.log(activeHeader);
+
+    }
     return (
         <div className="responsive-tab">
             <Menu
                 mode="inline"
                 expandIcon={<img src={"/assets/images/icons/menu.svg"} />}
-               
-                
+
+
             >
-                <SubMenu title={activeHeader == 'Most Popular' ? t('Most Popular') : activeHeader} >
+                <SubMenu title={activeHeader == 'Most Popular' ? t('Most Popular') : activeHeader}  >
                     <Menu.Item>
                         <Link to={"/"}>
                             <div className="tab" >
@@ -37,8 +42,8 @@ const ResponsiveTabs = ({ location, lng }) => {
                         </Link>
                     </Menu.Item>
                     <Menu.Item>
-                        <Link to={`/${location}/${lng}/tours-today`}>
-                            <div className="tab" onClick={()=>setActiveHeader('Tours Today')}>
+                        <Link to={`/${location}/${lng}/tours-today`} onClick={() => handleClick('Tours Today')}>
+                            <div className="tab">
                                 <div
                                     className="tab-icon"
                                     style={{
@@ -73,8 +78,8 @@ const ResponsiveTabs = ({ location, lng }) => {
                     <Menu.Item>
                         <Link to={`/${location}/${lng}/vip-tours`}>
                             <div className='tab'>
-                          <span className="tabs-name"> {t("VIP Tours")}</span> 
-                          </div>
+                                <span className="tabs-name"> {t("VIP Tours")}</span>
+                            </div>
                         </Link>
                     </Menu.Item>
                 </SubMenu>
