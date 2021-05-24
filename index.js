@@ -82,6 +82,14 @@ app.use(
     })
 );
 app.use(
+    '/v1/orders',
+    createProxyMiddleware({
+        target: API,
+        changeOrigin: true,
+        secure: false
+    })
+);
+app.use(
     '/v1/categories',
     createProxyMiddleware({
         target: API,
