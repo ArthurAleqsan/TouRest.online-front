@@ -1,6 +1,7 @@
 import * as types from './../types';
 // import TransactionService from '../../services/TransactionService';
 // import EmailService from '../../services/EmailService';
+import CartService from '../../services/CartService';
 
 export const setOrderData = (dispatch, name, value) => {
     dispatch({
@@ -27,6 +28,26 @@ export const resetOrderData = (dispatch) => {
     });
 }
 
-export const checkout = (data) => {
-    console.log(data)
+export const checkout = (getState, tickets) => {
+    const {name, firstDate, lastDate, email, hotel, room } = getState().orders;
+    const _name = name.split(" ");
+    const data = {
+        startDate: firstDate,
+        endDate: lastDate,
+        hotel: hotel,
+        room: room
+    };
+    data['tickets'] = tickets;
+    data['user'] = {
+        email:email,
+        firstName:_name[0],
+        lastName:_name[1],
+        
+    }
+   
+    CartService.addOrder(data).then(
+        (res) => {
+            console.log(res)
+        }
+    )
 }

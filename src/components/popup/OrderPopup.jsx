@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import {useSelector, useStore} from 'react-redux';
 import { Modal, Carousel, message } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { isEmail, isValidCardHolderName, isValidCardNo, isValidCVV2, isValidObject } from '../../util/helpers';
@@ -8,11 +8,14 @@ import { checkout, setOrderData } from '../../store/order/order.actions';
 import { OrderPopupStepOne } from '../common/orderPopup/OrderPopupStepOne';
 import { OrderPopupStepTwo } from '../common/orderPopup/OrderPopupStepTwo';
 import SuccessFailContainer from './SuccessFailContainer';
+import moment from 'moment';
+import {dateFormat} from "../../util/config";
 
 const OrderPopup = ({ visible, setVisible, grandtotal }) => {
     const { t } = useTranslation();
     const { cartToursArray } = useSelector(s => s.tours);
     const userData = useSelector(s => s.orders);
+    const { getState } = useStore();
     const [visibleModal, setVisibleModal] = useState(false);
     const [isSuccess, setBool] = useState(false);
     const ref = useRef(null);
@@ -22,7 +25,27 @@ const OrderPopup = ({ visible, setVisible, grandtotal }) => {
     }
     const startingDates = []
     const endingDates = [];
+    const tickets = [];
     for (let i = 0; i < cartToursArray.length; i++) {
+        if(cartToursArray[i].childCount > 0) {
+            tickets.push({
+                type:'child',
+                tourId: cartToursArray[i].id,
+                count: cartToursArray[i].childCount,
+                startDate: cartToursArray[i].firstDate,
+                endDate: moment(moment(cartToursArray[i].firstDate).valueOf() + cartToursArray[i].duration).format(dateFormat),
+            })
+        }
+        if(cartToursArray[i].peopleCount > 0) {
+            tickets.push({
+                type:'adult',
+                tourId: cartToursArray[i].id,
+                count: cartToursArray[i].peopleCount,
+                startDate: cartToursArray[i].firstDate, 
+                endDate: moment(moment(cartToursArray[i].firstDate).valueOf() + cartToursArray[i].duration).format(dateFormat),
+            })
+        }
+       
         startingDates.push(new Date(cartToursArray[i].firstDate).toUTCString());
         const startTime = new Date(cartToursArray[i].firstDate).getTime();
         const duration = parseFloat(cartToursArray[i].duration) * 60 * 60;
@@ -68,9 +91,10 @@ const OrderPopup = ({ visible, setVisible, grandtotal }) => {
         if (!isValidCardNo(cardNumber)) return message.error(t('Card numbers must be a digits'));
         if (!isValidCVV2(userData.cvv2)) return message.error(t('CVV must be a 3 digits'));
         if (isValidObject({ ...userData, childCount: '' + userData.childCount, })) {
-            checkout(userData);
+            checkout(getState, tickets);
             setBool(true);
-        } else {
+        }
+         else {
             setBool(false);
         }
 
