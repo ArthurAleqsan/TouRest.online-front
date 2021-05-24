@@ -54,7 +54,7 @@ const ToursPage = ({ headerName, fromToursToday }) => {
         }
         tourName = makePath(tourName);
         if (!singleTour) getTourById(dispatch, id);
-        history.push(`/${city}/${lng}/tour-booking?name=${tourName}&id=tour_${id}`);
+        history.push(`/${makePath(city)}/${lng}/tour-booking?name=${tourName}&id=tour_${id}`);
     }
     return (
         <div className='tours-page-container'>

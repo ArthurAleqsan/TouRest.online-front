@@ -48,7 +48,7 @@ const Tours = () => {
     );
     const handleOpenTourPage = (id,tourName) => {
         tourName = makePath(tourName);
-        history.push(`/${location}/${lng}/tour-booking?name=${tourName}&id=tour_${id}`);
+        history.push(`/${makePath(location)}/${lng}/tour-booking?name=${tourName}&id=tour_${id}`);
     };
     const openImageModal = (images) => {
         setVisible(true);
