@@ -1,6 +1,7 @@
 import { message } from 'antd';
 import BlogService from '../../services/BlogService';
 import * as types from './../types';
+import { batch } from 'react-redux'
 
 export const setLng = (dispatch, lng) => {
     sessionStorage.setItem('lng', JSON.stringify(lng));
@@ -57,16 +58,19 @@ export const getBlogPosts = (dispatch) => {
         })
 };
 export const getSingleBlogPost = (dispatch, id) => {
-    dispatch(setSliderImages([]));
+    // dispatch(setSliderImages([]));
     BlogService.getSingleBlog(id)
         .then(res => {
             const { status, json: singleBlogPost } = res;
             if (BlogService.isOkStatus(status)) {
-                dispatch(setSliderImages(singleBlogPost.urls));
-                dispatch({
-                    type: types.SET_SINGLE_BLOG_POSTS,
-                    singleBlogPost
-                });
+                batch(() => {
+                    dispatch(setSliderImages(singleBlogPost.urls));
+                    dispatch({
+                        type: types.SET_SINGLE_BLOG_POSTS,
+                        singleBlogPost
+                    });
+                })
+
             } else {
                 message.error(singleBlogPost.message);
             }
