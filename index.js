@@ -58,17 +58,33 @@ app.use('/assets', express.static('assets'));
 
 app.get('/:location/:lng/tour-booking', async (request, response) => {
     const filePath = path.resolve(__dirname, './public', 'index.html');
-    let tours = [];
     const tourId = request.query.id.replace('tour_','');
+    const lng = request.params.lng.substring(0, request.params.lng.length - 1).toLowerCase();
     const res = await fetch(`${API}/v1/tours/${tourId}`)
     const metaData = await res.json();
     fs.readFile(filePath, 'utf8', function (err,data) {
         if (err) {
             return console.log(err);
         }
-        data = data.replace(/\$OG_TITLE/g, metaData.en_name);
-        data = data.replace(/\$OG_DESCRIPTION/g, "Blogs page description");
+        data = data.replace(/\$OG_TITLE/g, metaData[`${lng}_name`]);
+        data = data.replace(/\$OG_DESCRIPTION/g, metaData[`${lng}_shortDescription`]);
         result = data.replace(/\$OG_IMAGE/g, metaData.images[0]);
+        response.send(result);
+    });
+});
+app.get('/:location/:lng/blog/:id', async (request, response) => {
+    const filePath = path.resolve(__dirname, './public', 'index.html');
+    const blogId = request.params.id;
+    const lng = request.params.lng.substring(0, request.params.lng.length - 1).toLowerCase();
+    const res = await fetch(`${API}/v1/blogs/${blogId}`)
+    const metaData = await res.json();
+    fs.readFile(filePath, 'utf8', function (err,data) {
+        if (err) {
+            return console.log(err);
+        }
+        data = data.replace(/\$OG_TITLE/g, metaData[`${lng}_title`]);
+        data = data.replace(/\$OG_DESCRIPTION/g, metaData[`${lng}_description`]);
+        result = data.replace(/\$OG_IMAGE/g, metaData.urls[0]);
         response.send(result);
     });
 });

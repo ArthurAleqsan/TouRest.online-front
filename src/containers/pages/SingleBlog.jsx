@@ -24,13 +24,10 @@ const SingleBlog = () => {
             {singleBlogPost ? <div className='single-blog-body'>
                 <Slider imagesArr={singleBlogPost.urls} />
                 <SliderContentDesc
-                    header={singleBlogPost[`${getLngKey(lng)}_name`]}
+                    header={singleBlogPost[`${getLngKey(lng)}_title`]}
                     text={replaceSimbolToBR(singleBlogPost[`${getLngKey(lng)}_description`], '##')}
                 />
             </div> : <Loader />}
-
-
-            {/* <div className='single-blog'></div> */}
         </div>
     )
 };

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom'
 import { Carousel } from 'antd';
-import { getLngKey } from '../../util/helpers';
+import {getLngKey, makePath} from '../../util/helpers';
 import { Loader } from '../../components/simpleUIComponents/Loader';
 import { getBlogPosts, setSliderImages } from '../../store/global/global.actions';
 import ImageSliderPopup from '../../components/popup/ImageSliderPopup';
@@ -36,7 +36,8 @@ const Blog = () => {
     };
     const handleRedirect = (post) => {
         dispatch(setSliderImages(post.urls));
-        history.push(`${location.pathname}/${post.id}`);
+        const blogName = makePath(post[`${getLngKey(lng)}_title`])
+        history.push(`${location.pathname}/${post.id}?name=${blogName}`);
     };
     return (
         <div className='blog-page'>
@@ -64,7 +65,7 @@ const Blog = () => {
                         <ImageSliderPopup visible={visible} toggleVisibility={() => setVisible(false)} imagesPathArr={tourImages} />
                         <div className={`blog-post-desc-content ${i % 2 == 0 ? '' : 'reverse-content'}`} onClick={() => handleRedirect(post)}>
                             <div className='blog-post-text-content'>
-                                <div className='blog-post-name'><span>{post[`${getLngKey(lng)}_name`]}</span></div>
+                                <div className='blog-post-name'><span>{post[`${getLngKey(lng)}_title`]}</span></div>
                                 <div className='blog-post-desc'>
                                     {replaceSimbolToBR(post[`${getLngKey(lng)}_description`], '##')}
                                 </div>
