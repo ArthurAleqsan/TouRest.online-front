@@ -24,7 +24,7 @@ export const removeFromArray = (array, findFn) => {
     newArray.splice(index, 1);
     return newArray;
 }
-export const getIdFromPath = (path, separator) => path.split(separator)[1];
+export const getIdFromPath = (path, separator, index = 1) => path.split(separator)[index];
 
 export const makeRoundedRate = rate => {
     const roundedRate = rate - Math.floor(rate) > 0.5 ? Math.ceil(rate) : Math.floor(rate) + 0.5;

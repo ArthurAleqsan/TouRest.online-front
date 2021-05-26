@@ -11,10 +11,13 @@ const TourBookingPage = () => {
     const { search } = useLocation();
     const { singleTour } = useSelector(s => s.tours, shallowEqual);
 
-    if(!singleTour) {
-        const id = getIdFromPath(search, 'id=tour_');
-        getTourById(dispatch, id);
-    }
+    useEffect(() => {
+        if(!singleTour) {
+            let id = getIdFromPath(search, 'id=tour_');
+            id = getIdFromPath(id, '&', 0);
+            getTourById(dispatch, id);
+        }  
+    },[])
     return (
         <div className='tourBookingPage-container'>
             {singleTour ? (

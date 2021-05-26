@@ -34,7 +34,7 @@ const ToursPage = ({ headerName, fromToursToday }) => {
 
                 break;
             case 'VIP Tours':
-                // getVipTours(dispatch, city)
+                 getVipTours(dispatch, city)
                  setTimeout(() => {
                     setDisableLoader(false);
                  }, 2000);

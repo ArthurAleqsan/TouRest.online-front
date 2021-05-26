@@ -5,6 +5,7 @@ import { removeFromArray, replaceCitisChars } from '../../util/helpers';
 import { setSliderImages } from '../global/global.actions';
 import ToursService from '../../services/ToursService';
 import CategoryService from "../../services/CategoryService";
+import {batch} from "react-redux";
 
 
 
@@ -43,11 +44,13 @@ export const getTourById = (dispatch, id) => {
         .then(res => {
             const { status, json: singleTour } = res;
             if (ToursService.isOkStatus(status)) {
-                dispatch(setSliderImages(singleTour.images));
-                dispatch({
-                    type: types.GET_SINGLE_TOUR,
-                    singleTour,
-                });
+                batch(() => {
+                    dispatch(setSliderImages(singleTour.images));
+                    dispatch({
+                        type: types.GET_SINGLE_TOUR,
+                        singleTour,
+                    });
+                })
             } else {
                 message.error(singleTour.message);
             }
