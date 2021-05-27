@@ -9,6 +9,7 @@ export const RESET_CATEGORIES = 'RESET_CATEGORIES';
 
 
 export const SET_ORDER_DATA = 'SET_ORDER_DATA';
+export const GET_ORDER_DATA = 'GET_ORDER_DATA';
 export const GET_SINGLE_TOUR = 'GET_SINGLE_TOUR';
 export const MUTATE_TO_CART = 'MUTATE_TO_CART';
 export const SET_TOUR_DATA = 'SET_TOUR_DATA';

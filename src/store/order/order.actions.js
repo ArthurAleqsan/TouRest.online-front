@@ -2,6 +2,10 @@ import * as types from './../types';
 // import TransactionService from '../../services/TransactionService';
 // import EmailService from '../../services/EmailService';
 import CartService from '../../services/CartService';
+import ToursService from "../../services/ToursService";
+import {batch} from "react-redux";
+import {setSliderImages} from "../global/global.actions";
+import {message} from "antd";
 
 export const setOrderData = (dispatch, name, value) => {
     dispatch({
@@ -28,8 +32,8 @@ export const resetOrderData = (dispatch) => {
     });
 }
 
-export const checkout = (getState, tickets) => {
-    const {name, firstDate, lastDate, email, hotel, room } = getState().orders;
+export const checkout = (dispatch, getState, tickets) => {
+    const {name, firstDate, lastDate, email, hotel, room } = getState().orders.orderState;
     const _name = name.split(" ");
     const data = {
         startDate: firstDate,
@@ -42,12 +46,17 @@ export const checkout = (getState, tickets) => {
         email:email,
         firstName:_name[0],
         lastName:_name[1],
-        
     }
    
-    CartService.addOrder(data).then(
-        (res) => {
-            console.log(res)
+    CartService.addOrder(data).then(res => {
+        const { status, json: order } = res;
+        if (CartService.isOkStatus(status)) {
+                dispatch({
+                    type: types.GET_ORDER_DATA,
+                    isLoading: true
+                });
+        } else {
+            message.error(order.message);
         }
-    )
+    });
 }

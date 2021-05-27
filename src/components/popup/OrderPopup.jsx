@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector, useStore } from 'react-redux';
 import { Modal, Carousel, message } from 'antd';
@@ -14,12 +14,13 @@ import {dateFormat} from "../../util/config";
 const OrderPopup = ({ visible, setVisible, grandtotal }) => {
     const { t } = useTranslation();
     const { cartToursArray } = useSelector(s => s.tours);
-    const userData = useSelector(s => s.orders);
+    const userData = useSelector(s => s.orders.orderState);
     const { getState } = useStore();
     const [visibleModal, setVisibleModal] = useState(false);
     const [isSuccess, setBool] = useState(false);
-    const ref = useRef(null);
+    const ref = useRef(null);   
     const [step, setStep] = useState(0);
+    const { isLoading } = useSelector(state => state.orders); 
     const handleChange = () => {
         step === 0 ? setStep(1) : setStep(0);
     }
@@ -27,25 +28,13 @@ const OrderPopup = ({ visible, setVisible, grandtotal }) => {
     const endingDates = [];
     const tickets = [];
     for (let i = 0; i < cartToursArray.length; i++) {
-        if(cartToursArray[i].childCount > 0) {
-            tickets.push({
-                type:'child',
-                tourId: cartToursArray[i].id,
-                count: cartToursArray[i].childCount,
-                startDate: cartToursArray[i].firstDate,
-                endDate: moment(moment(cartToursArray[i].firstDate).valueOf() + cartToursArray[i].duration).format(dateFormat),
-            })
-        }
-        if(cartToursArray[i].peopleCount > 0) {
-            tickets.push({
-                type:'adult',
-                tourId: cartToursArray[i].id,
-                count: cartToursArray[i].peopleCount,
-                startDate: cartToursArray[i].firstDate, 
-                endDate: moment(moment(cartToursArray[i].firstDate).valueOf() + cartToursArray[i].duration).format(dateFormat),
-            })
-        }
-       
+        tickets.push({
+            tourId: cartToursArray[i].id,
+            childsCount: cartToursArray[i].childCount,
+            adultsCount: cartToursArray[i].peopleCount,
+            startDate: cartToursArray[i].firstDate,
+            endDate: moment(moment(cartToursArray[i].firstDate).valueOf() + cartToursArray[i].duration).format(dateFormat),
+        })
         startingDates.push(new Date(cartToursArray[i].firstDate).toUTCString());
         const startTime = new Date(cartToursArray[i].firstDate).getTime();
         const duration = parseFloat(cartToursArray[i].duration) * 60 * 60;
@@ -64,7 +53,7 @@ const OrderPopup = ({ visible, setVisible, grandtotal }) => {
     });
     const handleClick = () => {
         setVisibleModal(false);
-        isSuccess && setVisible(false)
+        setVisible(false);
     };
     const handlePagination = () => {
 
@@ -93,8 +82,7 @@ const OrderPopup = ({ visible, setVisible, grandtotal }) => {
         if (!isValidCardNo(cardNumber)) return message.error(t('Card numbers must be a digits'));
         if (!isValidCVV2(userData.cvv2)) return message.error(t('CVV must be a 3 digits'));
         if (isValidObject({ ...userData, childCount: '' + userData.childCount, })) {
-            checkout(getState, tickets);
-            setBool(true);
+            checkout(dispatch, getState, tickets);
         }
          else {
             setBool(false);
@@ -146,12 +134,12 @@ const OrderPopup = ({ visible, setVisible, grandtotal }) => {
              </div> */}
             </Modal>
             <SuccessFailContainer
-                visibleModal={visibleModal}
+                visibleModal={isLoading && visibleModal}
                 setVisibleModal={setVisibleModal}
                 handleClick={() => handleClick()}
                 isFromCartPage={false}
-                isSuccess={isSuccess}
-                text={isSuccess ? 'Ordered is done' : 'Something is wrong'}
+                isSuccess={isLoading}
+                text={isLoading ? 'Ordered is done' : 'Something is wrong'}
             />
         </div>
     )
