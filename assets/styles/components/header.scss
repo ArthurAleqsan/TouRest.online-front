@@ -14,11 +14,11 @@
         justify-content: flex-end;
         align-items: center;
         padding: 10px;
-        width: 150px;
+        width: 200px;
         // background: rgba(255,255,255,0.5);
         .logo {
             object-fit: contain;
-            height: 45px;
+
         }
     }
     .anticon {
@@ -135,7 +135,7 @@
         color: rgba(0, 0, 0, 0.75) !important;
     }
     .header .header-logo-container {
-        width: 130px;
+        width: 150px;
     }
     .header .header-rigth-container {
         display: block;

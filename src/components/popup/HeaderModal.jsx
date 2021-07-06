@@ -13,18 +13,6 @@ const HeaderModal = ({ visibleModal, setVisibleModal, cities, setCity, resetCate
     const { t } = useTranslation();
     const [activetab, setActive] = useState(lng);
     const dispatch = useDispatch();
-
-    const handleSelectCity = (city) => {
-        console.log(city);
-        const location = makePath(city);
-        console.log(location);
-        sessionStorage.setItem("city", JSON.stringify(location));
-        setCity(dispatch, location);
-        setVisibleModal(!visibleModal);
-        resetCategories(dispatch);
-        setOrderData(dispatch, "city", city);
-        history.push(`/${location}`);
-    };
     const handleSelectLng = (lng) => {
         let newPath = '';
         const isBasicPath = window.location.pathname.split('/').length > 2;
@@ -42,6 +30,18 @@ const HeaderModal = ({ visibleModal, setVisibleModal, cities, setCity, resetCate
 
     };
 
+    const handleSelectCity = (city) => {
+        console.log(city);
+        const location = makePath(city);
+        console.log(location);
+        sessionStorage.setItem("city", JSON.stringify(location));
+        setCity(dispatch, location);
+        setVisibleModal(!visibleModal);
+        resetCategories(dispatch);
+        setOrderData(dispatch, "city", city);
+        history.push(`/${location}`);
+    };
+
     return (
         <div>
             <Modal
@@ -56,7 +56,7 @@ const HeaderModal = ({ visibleModal, setVisibleModal, cities, setCity, resetCate
                 <div className='modal-city-container'>
                     {cities.map(city => (
                         <div key={city} className='city link' onClick={() => handleSelectCity(city)}>
-                            {t(capitalizeFirstLetter(city))}
+                            {t(city)}
                         </div>
                     ))}
                 </div>
@@ -68,8 +68,8 @@ const HeaderModal = ({ visibleModal, setVisibleModal, cities, setCity, resetCate
                     <div className='header-content-tab'>
                         <Link className='link' to={`/${city}/${lng}/cart`} onClick={() => setVisibleModal(false)}>{t('Cart')}</Link>
                     </div>
-                </div>  <div
-                    className='header-content language-container link'
+                </div>
+                <div className='header-content language-container link'
                 >
                     <div className={`lng-container`}
                     >

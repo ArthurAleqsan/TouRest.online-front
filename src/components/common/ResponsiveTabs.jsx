@@ -6,22 +6,14 @@ import { Menu } from "antd";
 import IconComponent from "../simpleUIComponents/IconComponent";
 
 const ResponsiveTabs = ({ location, lng }) => {
-
-    const [activeHeader, setActiveHeader] = useState('');
+    const [activeHeader, setActiveHeader] = useState('Most Popular');
     const { t } = useTranslation();
     const { SubMenu } = Menu;
-    const handleClick = (tab) => {
-        activeHeader !== tab && setActiveHeader(tab);
-        console.log(activeHeader);
-
-    }
     return (
         <div className="responsive-tab">
             <Menu
                 mode="inline"
-                expandIcon={<img src={"/assets/images/icons/menu.svg"} />}
-
-
+                expandIcon={<img src={"/assets/images/icons/menu.png"} />}
             >
                 <SubMenu title={activeHeader == 'Most Popular' ? t('Most Popular') : activeHeader}  >
                     <Menu.Item>
@@ -42,8 +34,8 @@ const ResponsiveTabs = ({ location, lng }) => {
                         </Link>
                     </Menu.Item>
                     <Menu.Item>
-                        <Link to={`/${location}/${lng}/tours-today`} onClick={() => handleClick('Tours Today')}>
-                            <div className="tab">
+                        <Link to={`/${location}/${lng}/tours-today`}  >
+                            <div className="tab" >
                                 <div
                                     className="tab-icon"
                                     style={{
@@ -60,7 +52,7 @@ const ResponsiveTabs = ({ location, lng }) => {
                     </Menu.Item>
                     <Menu.Item>
                         <Link to={`/${location}/${lng}/categories`}>
-                            <div className="tab">
+                            <div className="tab" >
                                 <div
                                     className="tab-icon"
                                     style={{

@@ -56,6 +56,19 @@ app.use('/public', express.static('public'));
 app.use('/locales', express.static('locales'));
 app.use('/assets', express.static('assets'));
 
+app.get(‘/’,  (request, response) => {
+    const filePath = path.resolve(__dirname, ‘./public’, ‘index.html’);
+    fs.readFile(filePath, ‘utf8’, function (err,data) {
+        if (err) {
+            return console.log(err);
+        }
+        data = data.replace(/TouRest Online/g, ‘TouRest Online’);
+        data = data.replace(/\$OG_DESCRIPTION/g, ‘Everyone deserves to feel the delight of traveling, so, our founding team decided to be one of the firsts to give that chance. TouRest was founded in 2019 by some programmers who are devoted to their job.‘);
+        result = data.replace(/\$OG_IMAGE/g, ‘’);
+        response.send(result);
+    });
+})
+
 app.get('/:location/:lng/tour-booking', async (request, response) => {
     const filePath = path.resolve(__dirname, './public', 'index.html');
     const tourId = request.query.id.replace('tour_','');

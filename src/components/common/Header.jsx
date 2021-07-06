@@ -181,7 +181,7 @@ const Header = () => {
                         className="header-icon"
                         style={{ width: 30, height: 30, color: "#000" }}
                     >
-                        <img src="/assets/images/icons/menu.svg" />
+                        <img src="/assets/images/icons/menu.png" />
                     </div>
                 </a>
             </div>
