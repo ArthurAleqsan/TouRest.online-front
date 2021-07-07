@@ -125,7 +125,7 @@ const Excursion = memo(
                             ) : (
                                 <div className="excursion-desc-str">
                                     <Rate
-                                        allowHalf
+                                        
                                         value={makeRoundedRate(rate)}
                                         disabled={disabled}
                                     />

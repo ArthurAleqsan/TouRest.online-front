@@ -1,8 +1,8 @@
 import moment from 'moment';
 import ToursService from "../services/ToursService";
-import {setSliderImages} from "../store/global/global.actions";
+import { setSliderImages } from "../store/global/global.actions";
 import * as types from "../store/types";
-import {message} from "antd";
+import { message } from "antd";
 
 
 
@@ -27,7 +27,8 @@ export const removeFromArray = (array, findFn) => {
 export const getIdFromPath = (path, separator, index = 1) => path.split(separator)[index];
 
 export const makeRoundedRate = rate => {
-    const roundedRate = rate - Math.floor(rate) > 0.5 ? Math.ceil(rate) : Math.floor(rate) + 0.5;
+
+    const roundedRate = rate - Math.floor(rate) > 0.5 ? 3 + Math.ceil(rate) : 3 + Math.floor(rate) + 0.5;
     return roundedRate;
 }
 export const capitalizeFirstLetter = string => string.charAt(0).toUpperCase() + string.slice(1);
@@ -83,7 +84,7 @@ export const setAviableDates = (type, aviableDates, weekDates) => {
             dates = aviableDates;
             break;
         default:
-           
+
 
     }
     return dates;

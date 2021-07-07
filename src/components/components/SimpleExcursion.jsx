@@ -16,7 +16,7 @@ export const SimpleExcursion = memo(({ tour, lng, fromToursToday }) => {
     const lngPrefix = lng === "Eng" ? "en" : "ru";
     const { country } = useSelector((s) => s.globals);
     const isFromArmenia = country == "Armenia";
-    
+
     return (
         <div className="simpleExcursion-container">
             <div className="simpleExcursion-container-header">
@@ -26,7 +26,7 @@ export const SimpleExcursion = memo(({ tour, lng, fromToursToday }) => {
                     </span>
                 </p>
 
-                <Rate allowHalf value={makeRoundedRate(tour.rate)} />
+                <Rate value={makeRoundedRate(tour.rate)} />
                 {fromToursToday ? (
                     <div>
                         <span className="tour-start">
