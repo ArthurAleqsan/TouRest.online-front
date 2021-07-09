@@ -34,8 +34,8 @@ const TourBookingComponent = ({ singleTour }) => {
     const { Panel } = Collapse;
 
     const [selectBoxData, setSelectBoxData] = useState({
-        childCount,
-        peopleCount,
+        childCount:1,
+        peopleCount :1,
         firstDate,
     });
 

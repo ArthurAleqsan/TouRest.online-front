@@ -30,6 +30,11 @@ export const resetOrderData = (dispatch) => {
         name: 'childCount',
         value: 0,
     });
+    dispatch({
+        type: types.SET_ORDER_DATA,
+        name: 'peopleCount',
+        value: 0,
+    });
 }
 
 export const checkout = (dispatch, getState, tickets) => {

@@ -11,7 +11,7 @@ const initialState = {
         firstDate: '',
         lastDate: '',
         peopleCount: 1,
-        childCount: 0,
+        childCount: 1,
         cardholderCard: '',
         cardNumber: '',
         cvv2: '',
