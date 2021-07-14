@@ -26,7 +26,10 @@ export const SimpleExcursion = memo(({ tour, lng, fromToursToday }) => {
                     </span>
                 </p>
 
-                <Rate value={makeRoundedRate(tour.rate)} />
+                <Rate
+                    //  value={makeRoundedRate(tour.rate)}
+                    value={5}
+                />
                 {fromToursToday ? (
                     <div>
                         <span className="tour-start">

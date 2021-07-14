@@ -28,7 +28,7 @@ export const getIdFromPath = (path, separator, index = 1) => path.split(separato
 
 export const makeRoundedRate = rate => {
 
-    const roundedRate = rate - Math.floor(rate) > 0.5 ? 3 + Math.ceil(rate) : 3 + Math.floor(rate) + 0.5;
+    const roundedRate = rate - Math.floor(rate) > 0.5 ? 4 + Math.ceil(rate) : 3 + Math.floor(rate) + 0.5;
     return roundedRate;
 }
 export const capitalizeFirstLetter = string => string.charAt(0).toUpperCase() + string.slice(1);

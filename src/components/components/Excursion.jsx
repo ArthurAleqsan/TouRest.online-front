@@ -126,7 +126,8 @@ const Excursion = memo(
                                 <div className="excursion-desc-str">
                                     <Rate
                                         
-                                        value={makeRoundedRate(rate)}
+                                        // value={makeRoundedRate(rate)}
+                                        value={5}
                                         disabled={disabled}
                                     />
                                 </div>
@@ -163,7 +164,7 @@ const Excursion = memo(
                                             {" "}
                                             {isNaN(+tour.duration)
                                                 ? tour.duration
-                                                : `${Math.round(tour.duration / 60 / 60 / 1000)} hour`}
+                                                : `${tour.duration } hour`}
                                         </span>
                                     </div>
                                 </Fragment>

@@ -30,7 +30,7 @@ const TourBookingComponent = ({ singleTour }) => {
     // const d = days.map(d => moment().subtract(days.length, 'd'))
     const { startTime, languages } = singleTour;
 
-    const duration = Math.round(singleTour.duration / 60 / 60 / 1000);
+    const duration =(singleTour.duration );
     const { Panel } = Collapse;
 
     const [selectBoxData, setSelectBoxData] = useState({
