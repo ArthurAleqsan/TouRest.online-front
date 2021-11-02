@@ -19,7 +19,7 @@ const transport = nodemailer.createTransport({
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const API = 'https://api.tourest.online/api';
+const API = 'http://64.227.126.83:3010/api';
 
 router.post('/email', async (request, response, next) => {
     const { name, surname, link, email, message, title, phone } = request.body;
